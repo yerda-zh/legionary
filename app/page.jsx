@@ -1,16 +1,16 @@
-'use client'
-
-import { useState } from "react";
+import About from "./_components/about/About";
+import Footer from "./_components/footer/Footer";
+import Hero from "./_components/hero/Hero";
+import Join from "./_components/join/Join";
 
 export default function Home() {
-  const [response, setResponse] = useState('ee');
-
-  
 
   return (
     <div>
-      <input/>
-      <p>{response}</p>
+      <Hero/>
+      <About/>
+      <Join/>
+      <Footer/>
     </div>
-  )
+  );
 }
