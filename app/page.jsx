@@ -1,3 +1,4 @@
+'use client'
 import About from "./_components/about/About";
 import Footer from "./_components/footer/Footer";
 import Hero from "./_components/hero/Hero";
