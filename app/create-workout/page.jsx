@@ -1,22 +1,15 @@
 'use client'
 import { useState } from "react";
 import { OptionDiv } from "./cw.styles";
+import { sex, questionsMale, questionsFemale } from "../_constants/constants";
+import { useRouter } from 'next/navigation';
 
 export default function CreateWorkout() {
     const [index, setIndex] = useState(0);
     const [choice, setChoice] = useState(null); // used for dynamic styling and building the answers set
     const [answers, setAnswers] = useState([]); // used to make server requests
-  
-    const questions = [
-      {
-        question: 'age',
-        options: ['18-29', '30-39']
-      },
-      {
-        question: 'goal',
-        options: ['lose weight', 'gain muscle mass']
-      },
-    ]
+    const [questionsArray, setQuestionsArray] = useState(sex);
+    const router = useRouter();
 
     const handleNextButton = () => {
       if(choice) {
@@ -25,6 +18,13 @@ export default function CreateWorkout() {
         // if user already chose one option before, the currenly chosen choice replaces the old one, otherwise the option gets added
         // to the answers set
         setChoice(answers[index+1]); // setting choice to next questions already chosen option if it exists
+
+        answers[0] === 'Male' ? setQuestionsArray(questionsMale) : setQuestionsArray(questionsFemale);
+        // changes the question set based on the first answer
+
+      }
+      if(index > 0 && index === (questionsArray.length - 1)) {
+        router.push('/create-workout/step-additional');
       }
     }
     const handleBackButton = () => {
@@ -39,14 +39,14 @@ export default function CreateWorkout() {
     return (
       <div>
         <h3>
-          {questions[index] && questions[index].question}
+          {questionsArray[index] && questionsArray[index].question}
         </h3>
         <div>
-          {questions[index] && questions[index].options.map((option, opIndex)=>(
+          {questionsArray[index] && questionsArray[index].options.map((option, opIndex)=>(
             <OptionDiv onClick={() => handleOptionClick(option)} $selected={choice} $divindex={option} key={opIndex}>{option}</OptionDiv>
           ))}
         </div>
-        {index > 0 && <button onClick={handleBackButton}>back</button>}
+        {index > 1 && <button onClick={handleBackButton}>back</button>}
         <button onClick={handleNextButton}>next</button>
       </div>
     );
