@@ -18,9 +18,11 @@ export default function StepAdditional() {
       setTargetWeight(e.target.value); // Update the state with the input value
     };
     const handleNextButton = () => {
-        console.log(height, currentWeight, targetWeight);
-        router.push('/my-workout');
-    }
+        if(height && currentWeight && targetWeight) {
+
+            
+            router.push('/my-workout')};
+        }
 
     return (
         <div>

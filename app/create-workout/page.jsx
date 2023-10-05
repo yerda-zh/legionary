@@ -18,7 +18,7 @@ export default function CreateWorkout() {
         // if user already chose one option before, the currenly chosen choice replaces the old one, otherwise the option gets added
         // to the answers set
         setChoice(answers[index+1]); // setting choice to next questions already chosen option if it exists
-
+        console.log(answers);
         answers[0] === 'Male' ? setQuestionsArray(questionsMale) : setQuestionsArray(questionsFemale);
         // changes the question set based on the first answer
 
