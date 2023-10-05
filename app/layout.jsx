@@ -1,9 +1,9 @@
-import ReduxProvider from "./redux/redux.provider";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Navbar from "./_components/navbar/Navbar";
 const inter = Inter({ subsets: ["latin"] });
 import StyledComponentsRegistry from "./lib/registry";
+import ReduxProvider from "./redux/redux.provider";
 
 export const metadata = {
   title: "Legionary",

@@ -1,43 +1,48 @@
-'use client'
-import { useState } from "react";
-import { useRouter } from 'next/navigation';
+"use client";
+import { useRouter } from "next/navigation";
+import { useSelector, useDispatch } from "react-redux";
+import { updateValue } from "@/app/redux/additionalSlice";
 
 export default function StepAdditional() {
-    const [height, setHeight] = useState();
-    const [currentWeight, setCurrentWeight] = useState();
-    const [targetWeight, setTargetWeight] = useState();
-    const router = useRouter();
+  const router = useRouter();
 
-    const handleHeightChange = (e) => {
-      setHeight(e.target.value); // Update the state with the input value
-    };
-    const handleCurrentWeightChange = (e) => {
-      setCurrentWeight(e.target.value); // Update the state with the input value
-    };
-    const handleTargetWeightChange = (e) => {
-      setTargetWeight(e.target.value); // Update the state with the input value
-    };
-    const handleNextButton = () => {
-        if(height && currentWeight && targetWeight) {
+  const additional = useSelector((state) => state.additional);
+  const answers = useSelector((state) => state.answers);
+  const dispatch = useDispatch();
 
-            
-            router.push('/my-workout')};
-        }
+  const handleHeightChange = (e) => {
+    dispatch(updateValue({ index: 0, howmany: 1, item: e.target.value })); // Update the state with the input value
+  };
+  const handleWeightChange = (e) => {
+    dispatch(updateValue({ index: 1, howmany: 1, item: e.target.value })); // Update the state with the input value
+  };
 
-    return (
-        <div>
-            <h3>
-                What's your height? (cm)
-            </h3>
-            <input onChange={handleHeightChange}/>
-            <h3>
-                What's your current and target weight?
-            </h3>
-            <label>Current Weight (kg)</label>
-            <input onChange={handleCurrentWeightChange}/>
-            <label>Target Weight (kg)</label>
-            <input onChange={handleTargetWeightChange}/>
-            <button onClick={handleNextButton}>next</button>
-        </div>
-    )
+  const handleNextButton = () => {
+    fetch("http://localhost:5000/chat", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        answers: answers,
+      }),
+    })
+      .then((res) => res.json())
+      .then((answers) => {
+        console.log(answers.data);
+      })
+      .catch(console.log);
+
+    // if (additional[0] && additional[1]) {
+    //   router.push("/my-workout");
+    // }
+  };
+
+  return (
+    <div>
+      <h3>What's your height? (cm)</h3>
+      <input onChange={handleHeightChange} />
+      <h3>What's your current weight?</h3>
+      <input onChange={handleWeightChange} />
+      <button onClick={handleNextButton}>next</button>
+    </div>
+  );
 }

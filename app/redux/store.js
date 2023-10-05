@@ -1,9 +1,13 @@
+'use client';
 import { configureStore } from "@reduxjs/toolkit";
-import answersReducer from "./answers";
+import answersReducer from "./answersSlice";
+import additionalReducer from './additionalSlice';
 
+ 
 const store = configureStore({
   reducer: {
-    answersReducer,
+    answers: answersReducer,
+    additional: additionalReducer
   },
 });
 export default store;

@@ -4,21 +4,28 @@ import { OptionDiv } from "./cw.styles";
 import { sex, questionsMale, questionsFemale } from "../_constants/constants";
 import { useRouter } from 'next/navigation';
 
+import { useSelector, useDispatch } from "react-redux";
+import { addAnswer, updateAnswer } from "../redux/answersSlice";
+
 export default function CreateWorkout() {
     const [index, setIndex] = useState(0);
     const [choice, setChoice] = useState(null); // used for dynamic styling and building the answers set
-    const [answers, setAnswers] = useState([]); // used to make server requests
     const [questionsArray, setQuestionsArray] = useState(sex);
+    
     const router = useRouter();
+
+    const dispatch = useDispatch();
+    const answers = useSelector((state) => state.answers); // used to make server requests
+    
 
     const handleNextButton = () => {
       if(choice) {
         setIndex((prevIndex) => prevIndex + 1); // incrementing index by 1 so that the question set would change to the next one
-        answers[index] || answers[index] === choice ? answers.splice(index, 1, choice) : answers.push(choice);
+        answers[index] || answers[index] === choice ? dispatch(updateAnswer({index: index, howmany: 1, item: choice})) : dispatch(addAnswer(choice));
         // if user already chose one option before, the currenly chosen choice replaces the old one, otherwise the option gets added
         // to the answers set
         setChoice(answers[index+1]); // setting choice to next questions already chosen option if it exists
-        console.log(answers);
+        
         answers[0] === 'Male' ? setQuestionsArray(questionsMale) : setQuestionsArray(questionsFemale);
         // changes the question set based on the first answer
 

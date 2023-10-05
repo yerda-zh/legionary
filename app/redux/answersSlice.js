@@ -1,14 +1,16 @@
+'use client';
 import { createSlice } from "@reduxjs/toolkit";
 
 const answersSlice = createSlice({
   name: "answers",
   initialState: [],
   reducers: {
-    addAnswer(state, action) {
-      state.items.push(action.payload);
+    addAnswer: (state, action) => {
+      state.push(action.payload);
     },
-    updateAnswer(state, action) {
-        state.answers.splice(action.payload);
+    updateAnswer: (state, action) => {
+        const { index, howmany, item } = action.payload;
+        state.splice(index, howmany, item);
     },
   },
 });
