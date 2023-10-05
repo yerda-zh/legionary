@@ -19,6 +19,9 @@ export default function CreateWorkout() {
     
 
     const handleNextButton = () => {
+      if(index > 0 && index === (questionsArray.length - 1)) {
+        return router.push('/create-workout/step-additional');
+      }
       if(choice) {
         setIndex((prevIndex) => prevIndex + 1); // incrementing index by 1 so that the question set would change to the next one
         answers[index] || answers[index] === choice ? dispatch(updateAnswer({index: index, howmany: 1, item: choice})) : dispatch(addAnswer(choice));
@@ -29,9 +32,6 @@ export default function CreateWorkout() {
         answers[0] === 'Male' ? setQuestionsArray(questionsMale) : setQuestionsArray(questionsFemale);
         // changes the question set based on the first answer
 
-      }
-      if(index > 0 && index === (questionsArray.length - 1)) {
-        router.push('/create-workout/step-additional');
       }
     }
     const handleBackButton = () => {

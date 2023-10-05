@@ -18,22 +18,9 @@ export default function StepAdditional() {
   };
 
   const handleNextButton = () => {
-    fetch("http://localhost:5000/chat", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        answers: answers,
-      }),
-    })
-      .then((res) => res.json())
-      .then((answers) => {
-        console.log(answers.data);
-      })
-      .catch(console.log);
-
-    // if (additional[0] && additional[1]) {
-    //   router.push("/my-workout");
-    // }
+    if (additional[0] && additional[1]) {
+      router.push("/my-workout");
+    }
   };
 
   return (
