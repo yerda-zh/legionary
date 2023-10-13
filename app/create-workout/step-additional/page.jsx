@@ -19,8 +19,9 @@ export default function StepAdditional() {
 
   const handleNextButton = () => {
     if (additional[0] && additional[1]) {
+      // check whether the answers array is empty or not
       if(answers.length !== 0) {
-        fetch("http://localhost:5000/test", {
+        fetch("http://localhost:5000/chat", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
