@@ -8,7 +8,8 @@ export default function MyWorkout() {
 
   return (
     <div>
-      <pre>{routine.length === 0 ? <p>loading</p> : routine}</pre>
+      <pre>{routine === null ? <p>loading</p> : routine}</pre>
+      {console.log(routine)}
     </div>
   );
 }

@@ -4,10 +4,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const routineSlice = createSlice({
   name: "routine",
-  initialState: [],
+  initialState: null,
   reducers: {
     setRoutine: (state, action) => {
-      state.splice(0, 1, action.payload);
+      return action.payload;
     },
   },
 });
