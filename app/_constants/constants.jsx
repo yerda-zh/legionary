@@ -81,3 +81,30 @@ export const questionsFemale = [
     options: ["30 minutes", "45-60 minutes", "1-2 hours", "More than 2 hours"],
   },
 ];
+
+export const bmiCategories = [
+  {
+    category: 'Underweight',
+    description: 'Individuals in this category may have a lower body weight in relation to their height, which can be an indicator of potential health risks.'
+  },
+  {
+    category: 'Normal Weight',
+    description: 'This range is considered to be a healthy weight for most adults. People falling into this category are generally at lower risk for weight-related health problems.'
+  },
+  {
+    category: 'Overweight',
+    description: 'Individuals in this category have a higher body weight in relation to their height, indicating an increased risk for certain health conditions, such as heart disease, diabetes, and hypertension.'
+  },
+  {
+    category: 'Obese (Class I)',
+    description: 'This is the first level of obesity and indicates a significantly higher risk of obesity-related health problems.'
+  },
+  {
+    category: 'Obese (Class II)',
+    description: 'This is the second level of obesity and is associated with even greater health risks.'
+  },
+  {
+    category: 'Obese (Class III)',
+    description: 'This is the third level of obesity, often referred to as "severe" or "morbid" obesity. It carries the highest risk for obesity-related health issues.'
+  }
+];

@@ -1,24 +1,26 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { updateValue } from "@/app/redux/additionalSlice";
+import { updateBmi } from "@/app/redux/additionalSlice";
 import { setRoutine } from "@/app/redux/routineSlice";
+import { useState } from "react";
 
 export default function StepAdditional() {
   const router = useRouter();
   const dispatch = useDispatch();
-  const additional = useSelector((state) => state.additional);
   const answers = useSelector((state) => state.answers);
+  const [height, setHeight] = useState(null);
+  const [weight, setWeight] = useState(null);
 
   const handleHeightChange = (e) => {
-    dispatch(updateValue({ index: 0, howmany: 1, item: e.target.value })); // Update the state with the input value
+    setHeight(e.target.value); // Update the state with the input value
   };
   const handleWeightChange = (e) => {
-    dispatch(updateValue({ index: 1, howmany: 1, item: e.target.value })); // Update the state with the input value
+    setWeight(e.target.value); // Update the state with the input value
   };
 
   const handleNextButton = () => {
-    if (additional[0] && additional[1]) {
+    if (height && weight) {
       // check whether the answers array is empty or not
       if(answers.length !== 0) {
         fetch("http://localhost:5000/chat", {
@@ -34,6 +36,10 @@ export default function StepAdditional() {
         })
         .catch(console.log);
         
+        const squareHight = height * height / 10000;
+        const bmiValue = weight / squareHight;
+        dispatch(updateBmi(bmiValue.toFixed(1)));
+        
         router.push("/my-workout");
       }
     }
@@ -42,9 +48,9 @@ export default function StepAdditional() {
   return (
     <div>
       <h3>What's your height? (cm)</h3>
-      <input onChange={handleHeightChange} />
-      <h3>What's your current weight?</h3>
-      <input onChange={handleWeightChange} />
+      <input type="number" onChange={handleHeightChange} />
+      <h3>What's your current weight? (kg)</h3>
+      <input type="number" onChange={handleWeightChange} />
       <button onClick={handleNextButton}>next</button>
     </div>
   );

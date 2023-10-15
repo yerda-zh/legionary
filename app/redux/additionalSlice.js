@@ -2,14 +2,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const additionalSlice = createSlice({
-  name: "additional",
-  initialState: ['', ''],
+  name: "bmi",
+  initialState: null,
   reducers: {
-    updateValue: (state, action) => {
-      const { index, howmany, item } = action.payload;
-      state.splice(index, howmany, item);
+    updateBmi: (state, action) => {
+      return action.payload;
   },
   },
 });
-export const { updateValue } = additionalSlice.actions;
+export const { updateBmi } = additionalSlice.actions;
 export default additionalSlice.reducer;
