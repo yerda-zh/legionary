@@ -1,11 +1,12 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { updateBmi } from "@/app/redux/additionalSlice";
+// import { updateBmi } from "@/app/redux/additionalSlice";
 // import { setRoutine } from "@/app/redux/routineSlice";
-import { setUser, setRoutine } from "@/app/redux/userSlice";
+import { setRoutine, setBmi } from "@/app/redux/userSlice";
 import { useState } from "react";
 import { setFetching } from "@/app/redux/fetchingSlice";
+import { resetAnswer } from "@/app/redux/answersSlice";
 
 export default function StepAdditional() {
   const router = useRouter();
@@ -38,13 +39,14 @@ export default function StepAdditional() {
         .then((res) => res.json())
         .then((answers) => {
           dispatch(setRoutine(answers.data));
+          dispatch(resetAnswer());
           dispatch(setFetching(false));
         })
         .catch(console.log);
         
         const squareHight = height * height / 10000;
         const bmiValue = weight / squareHight;
-        dispatch(updateBmi(bmiValue.toFixed(1)));
+        dispatch(setBmi(bmiValue.toFixed(1)));
 
         router.push("/my-workout");
       }

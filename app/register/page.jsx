@@ -29,6 +29,7 @@ export default function Register() {
   const onSubmitRegister = () => {
     if (pass1 === pass2 && pass1.length !== 0) {
       const password = pass1;
+
       fetch("http://localhost:5000/register", {
         method: "post",
         headers: { "Content-Type": "application/json" },
@@ -51,6 +52,8 @@ export default function Register() {
                 id: user.id,
                 name: user.name,
                 email: user.email,
+                bmi: user.bmi,
+                joined: user.joined,
                 routine: user.routine
               })
             );

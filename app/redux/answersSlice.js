@@ -12,7 +12,10 @@ const answersSlice = createSlice({
         const { index, howmany, item } = action.payload;
         state.splice(index, howmany, item);
     },
+    resetAnswer: (state, action) => {
+      return [];
+    }
   },
 });
-export const { addAnswer, updateAnswer } = answersSlice.actions;
+export const { addAnswer, updateAnswer, resetAnswer } = answersSlice.actions;
 export default answersSlice.reducer;

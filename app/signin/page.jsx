@@ -40,6 +40,8 @@ export default function SignIn() {
               id: user.id,
               name: user.name,
               email: user.email,
+              bmi: user.bmi,
+              joined: user.joined,
               routine: user.routine
             })
           );
