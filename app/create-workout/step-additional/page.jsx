@@ -2,13 +2,16 @@
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
 import { updateBmi } from "@/app/redux/additionalSlice";
-import { setRoutine } from "@/app/redux/routineSlice";
+// import { setRoutine } from "@/app/redux/routineSlice";
+import { setUser, setRoutine } from "@/app/redux/userSlice";
 import { useState } from "react";
+import { setFetching } from "@/app/redux/fetchingSlice";
 
 export default function StepAdditional() {
   const router = useRouter();
   const dispatch = useDispatch();
   const answers = useSelector((state) => state.answers);
+
   const [height, setHeight] = useState(null);
   const [weight, setWeight] = useState(null);
 
@@ -22,6 +25,8 @@ export default function StepAdditional() {
   const handleNextButton = () => {
     if (height && weight) {
       // check whether the answers array is empty or not
+      dispatch(setFetching(true));
+
       if(answers.length !== 0) {
         fetch("http://localhost:5000/chat", {
         method: "post",
@@ -33,13 +38,14 @@ export default function StepAdditional() {
         .then((res) => res.json())
         .then((answers) => {
           dispatch(setRoutine(answers.data));
+          dispatch(setFetching(false));
         })
         .catch(console.log);
         
         const squareHight = height * height / 10000;
         const bmiValue = weight / squareHight;
         dispatch(updateBmi(bmiValue.toFixed(1)));
-        
+
         router.push("/my-workout");
       }
     }

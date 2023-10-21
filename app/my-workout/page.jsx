@@ -5,11 +5,15 @@ import { WorkoutRoutineDiv, InfoDiv } from "./mw.styles";
 import { bmiCategories } from "../_constants/constants";
 
 export default function MyWorkout() {
-  const response = useSelector((state) => state.routine);
+  // const response = useSelector((state) => state.routine);
   const bmi = useSelector((state) => state.additional);
 
+  const user = useSelector((state) => state.user);
+  const fetching = useSelector((state) => state.fetching);
+  console.log(user);
   const [category, setCategory] = useState();
   const [description, setDescription] = useState();
+  const [loading, setLoading] = useState(true);
 
   // used to display as header for each day and dynamically map over received exercises
   const days = [
@@ -22,50 +26,67 @@ export default function MyWorkout() {
     "sunday",
   ];
 
-  const [loading, setLoading] = useState(true);
-
   // setting loading state based on whether response has changed or not
-  useEffect(() => {
-    if (response !== null) {
-      setLoading(false);
-    }
-  }, [response]);
+  // useEffect(() => {
+  //   if (response !== null) {
+  //     setLoading(false);
+  //   }
+  // }, [response]);
 
-  useEffect(()=>{
-    if(bmi<18.5) {
+  useEffect(() => {
+    if (bmi < 18.5) {
       setCategory(bmiCategories[0].category);
       setDescription(bmiCategories[0].description);
-    } else if(bmi>=18.5 && bmi<=24.9) {
+    } else if (bmi >= 18.5 && bmi <= 24.9) {
       setCategory(bmiCategories[1].category);
       setDescription(bmiCategories[1].description);
-    } else if(bmi>=25 && bmi<=29.9) {
+    } else if (bmi >= 25 && bmi <= 29.9) {
       setCategory(bmiCategories[2].category);
       setDescription(bmiCategories[2].description);
-    } else if(bmi>=30 && bmi<=34.9) {
+    } else if (bmi >= 30 && bmi <= 34.9) {
       setCategory(bmiCategories[3].category);
       setDescription(bmiCategories[3].description);
-    } else if(bmi>=35 && bmi<39.9) {
+    } else if (bmi >= 35 && bmi < 39.9) {
       setCategory(bmiCategories[4].category);
       setDescription(bmiCategories[4].description);
-    } else if(bmi>=40) {
+    } else if (bmi >= 40) {
       setCategory(bmiCategories[5].category);
       setDescription(bmiCategories[5].description);
-    } 
+    }
   }, [bmi]);
 
-  if (loading) {
-    return <p>loading...</p>;
+  const handleSaveButton = () => {
+    console.log(user);
+    fetch("http://localhost:5000/save", {
+      method: "put",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        id: user.id,
+        routine: user.routine
+      }),
+    })
+      .then((res) => res.json())
+      .then((answers) => {
+        alert('success');
+      })
+      .catch(console.log);
+  };
+
+  if (fetching) {
+    return <p>loading...</p>
+  } else if(!fetching && !user.routine) {
+    return <p>no data</p>
   } else {
     return (
       <div>
         <div>
           <h3>Introduction</h3>
-          <p>{response.introduction}</p>
+          <p>{user.routine.introduction}</p>
         </div>
         <InfoDiv>
           <div>
             <h3>Equipment Needed</h3>
-            {response.equipment.map((item) => (
+            {user.routine.equipment.map((item) => (
               <p key={item}>{item}</p>
             ))}
           </div>
@@ -79,7 +100,7 @@ export default function MyWorkout() {
             {days.map((day) => (
               <div key={day}>
                 <h4>{day.charAt(0).toUpperCase() + day.slice(1)}</h4>
-                {response.routine[day].map((exercise) => (
+                {user.routine.routine[day].map((exercise) => (
                   <p key={exercise}>{exercise}</p>
                 ))}
               </div>
@@ -88,9 +109,10 @@ export default function MyWorkout() {
         </div>
         <div>
           <h3>Advice</h3>
-          <p>{response.advice}</p>
+          <p>{user.routine.advice}</p>
         </div>
+        <button onClick={handleSaveButton}>save</button>
       </div>
-    );
+    )
   }
 }

@@ -1,11 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useDispatch } from "react-redux";
+import { setUser } from "../redux/userSlice";
 
 export default function Register() {
-  const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
+  const dispatch = useDispatch();
+  const router = useRouter();
 
+  const [email, setEmail] = useState("");
+  const [name, setName] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
 
@@ -21,6 +25,7 @@ export default function Register() {
   const onPass2Change = (event) => {
     setPass2(event.target.value);
   };
+
   const onSubmitRegister = () => {
     if (pass1 === pass2 && pass1.length !== 0) {
       const password = pass1;
@@ -33,9 +38,25 @@ export default function Register() {
           password: password,
         }),
       })
-        .then((res) => res.json())
-        .then((answers) => {
-          console.log(answers);
+        .then((res) => {
+          if (res.status === 400) {
+            alert("Incorrect form submission");
+          }
+          return res.json();
+        })
+        .then((user) => {
+          if (user.id) {
+            dispatch(
+              setUser({
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                routine: user.routine
+              })
+            );
+            router.push("/");
+          }
+          
         })
         .catch(console.log);
     }
@@ -44,7 +65,7 @@ export default function Register() {
   return (
     <div>
       <h1>Register</h1>
-      <form>
+      <div>
         <p>Name</p>
         <input
           placeholder="Enter Name"
@@ -75,7 +96,7 @@ export default function Register() {
         <button type="submit" onClick={onSubmitRegister}>
           Register
         </button>
-      </form>
+      </div>
     </div>
   );
 }
