@@ -1,16 +1,18 @@
 "use client";
 import { createSlice } from "@reduxjs/toolkit";
 
+const INITIAL_STATE = {
+  id: null,
+  name: null,
+  email: null,
+  bmi: null,
+  joined: null,
+  routine: null,
+};
+
 const userSlice = createSlice({
   name: "user",
-  initialState: {
-    id: null,
-    name: null,
-    email: null,
-    bmi: null,
-    joined: null,
-    routine: null,
-  },
+  initialState: INITIAL_STATE,
   reducers: {
     setUser: (state, action) => {
       const { id, name, email, bmi, joined, routine } = action.payload;
@@ -26,8 +28,11 @@ const userSlice = createSlice({
     },
     setBmi: (state, action) => {
       state.bmi = action.payload;
-    }
+    },
+    resetUser: (state, action) => {
+      return INITIAL_STATE;
+    },
   },
 });
-export const { setUser, setRoutine, setBmi } = userSlice.actions;
+export const { setUser, setRoutine, setBmi, resetUser } = userSlice.actions;
 export default userSlice.reducer;

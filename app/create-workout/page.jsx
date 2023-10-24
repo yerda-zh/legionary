@@ -70,7 +70,7 @@ export default function CreateWorkout() {
       ) : (
         <>
           <p>Please log in first</p>
-          <button onClick={() => router.push("/signin")}>Register</button>
+          <button onClick={() => router.push("/signin")}>Log In</button>
         </>
       )}
     </div>

@@ -16,7 +16,7 @@ const Navbar = () => {
           <li onClick={()=>router.push("/")}>Home</li>
           <li>About</li>
           <li onClick={()=>router.push("/my-workout")}>My Workout Plan</li>
-          <li>{user.name}</li>
+          <li onClick={()=>router.push("/profile")}>{user.name}</li>
         </ul>
     </NavContainer>
   )
