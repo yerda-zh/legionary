@@ -39,6 +39,7 @@ export default function StepAdditional() {
         .then((res) => res.json())
         .then((answers) => {
           dispatch(setRoutine(answers.data));
+        }).then(() => {
           dispatch(resetAnswer());
           dispatch(setFetching(false));
         })

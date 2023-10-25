@@ -21,7 +21,7 @@ export default function Profile() {
       method: "delete",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id: user.id,
+        email: user.email,
       }),
     })
       .then((res) => res.json())

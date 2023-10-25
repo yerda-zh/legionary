@@ -52,14 +52,14 @@ export default function MyWorkout() {
       method: "put",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        id: user.id,
+        email: user.email,
         bmi: user.bmi,
         routine: user.routine
       }),
     })
       .then((res) => res.json())
-      .then((answers) => {
-        alert('success');
+      .then((response) => {
+        alert(response);
       })
       .catch(console.log);
   };
