@@ -10,6 +10,7 @@ export default function SignIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [message, setMessage] = useState('');
 
   const onEmailChange = (event) => {
     setEmail(event.target.value);
@@ -18,22 +19,24 @@ export default function SignIn() {
     setPassword(event.target.value);
   };
 
-  const onSubmitSignIn = () => {
-    fetch("http://localhost:5000/signin", {
-      method: "post",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-    })
-      .then((res) => {
-        if (res.status === 400) {
-          alert("Incorrect form submission");
-        }
-        return res.json();
-      })
-      .then((user) => {
+  const onSubmitSignIn = async (event) => {
+    event.preventDefault();
+    setMessage('');
+
+    try {
+      const response = await fetch("http://localhost:5000/signin", {
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: email,
+          password: password,
+        }),
+      });
+
+      if (response.status === 400) {
+        setMessage("Incorrect email or password");
+      } else {
+        const user = await response.json();
         if (user.id) {
           dispatch(
             setUser({
@@ -42,23 +45,26 @@ export default function SignIn() {
               email: user.email,
               bmi: user.bmi,
               joined: user.joined,
-              routine: user.routine
+              routine: user.routine,
             })
           );
-          router.push("/");
+          router.push('/');
         }
-      })
-      .catch(console.log);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <div>
       <h1>Sign In</h1>
-      <div>
+      <form onSubmit={onSubmitSignIn}>
         <p>Email</p>
         <input
           placeholder="Enter Email"
           type="email"
+          value={email}
           onChange={onEmailChange}
           required
         />
@@ -66,14 +72,19 @@ export default function SignIn() {
         <input
           placeholder="Enter Password"
           type="password"
+          value={password}
           onChange={onPasswordChange}
           required
         />
-        <button type="submit" onClick={onSubmitSignIn}>
+        {message && <p>{message}</p>}
+        <button type="submit">
           Sign In
         </button>
-        <p>Don't have an account? <button onClick={() => router.push('/register')}>Register</button></p>
-      </div>
+        <p>
+          Don't have an account?{" "}
+          <button onClick={() => router.push("/register")}>Register</button>
+        </p>
+      </form>
     </div>
   );
 }

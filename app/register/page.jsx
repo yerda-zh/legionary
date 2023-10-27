@@ -12,6 +12,7 @@ export default function Register() {
   const [name, setName] = useState("");
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
+  const [message, setMessage] = useState("");
 
   const onNameChange = (event) => {
     setName(event.target.value);
@@ -26,26 +27,27 @@ export default function Register() {
     setPass2(event.target.value);
   };
 
-  const onSubmitRegister = () => {
-    if (pass1 === pass2 && pass1.length !== 0) {
-      const password = pass1;
+  const onSubmitRegister = async (event) => {
+    event.preventDefault(); //prevents default action of form which is refreshing
+    setMessage("");
 
-      fetch("http://localhost:5000/register", {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: name,
-          email: email,
-          password: password,
-        }),
-      })
-        .then((res) => {
-          if (res.status === 400) {
-            alert("Incorrect form submission");
-          }
-          return res.json();
-        })
-        .then((user) => {
+    if (pass1 === pass2) {
+      try {
+        const response = await fetch("http://localhost:5000/register", {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: name,
+            email: email,
+            password: pass1,
+          }),
+        });
+
+        if (response.status === 400) {
+          setMessage("Failed to register, try again");
+        } else {
+          const user = await response.json();
+
           if (user.id) {
             dispatch(
               setUser({
@@ -54,25 +56,29 @@ export default function Register() {
                 email: user.email,
                 bmi: user.bmi,
                 joined: user.joined,
-                routine: user.routine
+                routine: user.routine,
               })
             );
             router.push("/");
           }
-          
-        })
-        .catch(console.log);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      setMessage("Passwords must match");
     }
   };
 
   return (
     <div>
       <h1>Register</h1>
-      <div>
+      <form onSubmit={onSubmitRegister}>
         <p>Name</p>
         <input
           placeholder="Enter Name"
           type="text"
+          value={name}
           onChange={onNameChange}
           required
         />
@@ -80,6 +86,7 @@ export default function Register() {
         <input
           placeholder="Enter Email"
           type="email"
+          value={email}
           onChange={onEmailChange}
           required
         />
@@ -87,19 +94,20 @@ export default function Register() {
         <input
           placeholder="Enter Password"
           type="password"
+          value={pass1}
           onChange={onPass1Change}
           required
         />
         <input
           placeholder="Enter Password Again"
           type="password"
+          value={pass2}
           onChange={onPass2Change}
           required
         />
-        <button type="submit" onClick={onSubmitRegister}>
-          Register
-        </button>
-      </div>
+        <p>{message}</p>
+        <button type="submit">Register</button>
+      </form>
     </div>
   );
 }

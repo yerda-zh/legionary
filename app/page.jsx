@@ -5,7 +5,6 @@ import Hero from "./_components/hero/Hero";
 import Join from "./_components/join/Join";
 
 export default function Home() {
-
   return (
     <div>
       <Hero/>
