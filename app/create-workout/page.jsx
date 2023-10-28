@@ -13,23 +13,27 @@ export default function CreateWorkout() {
   const [questionsArray, setQuestionsArray] = useState(sex);
 
   const router = useRouter();
-
   const dispatch = useDispatch();
+
   const answers = useSelector((state) => state.answers); // used to make server requests
   const user = useSelector((state) => state.user);
 
   const handleNextButton = () => {
-    if (index > 0 && index === questionsArray.length - 1) {
-      return router.push("/create-workout/step-additional");
-    }
+
     if (choice) {
       setIndex((prevIndex) => prevIndex + 1); // incrementing index by 1 so that the question set would change to the next one
+      
       answers[index] || answers[index] === choice
-        ? dispatch(updateAnswer({ index: index, howmany: 1, item: choice }))
+        ? dispatch(updateAnswer({ index, howmany: 1, item: choice }))
         : dispatch(addAnswer(choice));
       // if user already chose one option before, the currenly chosen choice replaces the old one, otherwise the option gets added
       // to the answers set
-      setChoice(answers[index + 1]); // setting choice to next questions already chosen option if it exists
+
+      if (index > 0 && index === questionsArray.length - 1) {
+        return router.push("/create-workout/step-additional");
+      } else {
+        setChoice(answers[index + 1]); // setting choice to next questions already chosen option if it exists
+      } // push router to the next if the questions were finished
 
       answers[0] === "Male"
         ? setQuestionsArray(questionsMale)

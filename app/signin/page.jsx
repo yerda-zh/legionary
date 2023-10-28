@@ -80,11 +80,11 @@ export default function SignIn() {
         <button type="submit">
           Sign In
         </button>
-        <p>
+      </form>
+      <p>
           Don't have an account?{" "}
           <button onClick={() => router.push("/register")}>Register</button>
         </p>
-      </form>
     </div>
   );
 }

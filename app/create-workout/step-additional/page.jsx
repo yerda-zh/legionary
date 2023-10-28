@@ -1,8 +1,6 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-// import { updateBmi } from "@/app/redux/additionalSlice";
-// import { setRoutine } from "@/app/redux/routineSlice";
 import { setRoutine, setBmi } from "@/app/redux/userSlice";
 import { useState } from "react";
 import { setFetching } from "@/app/redux/fetchingSlice";
@@ -13,8 +11,8 @@ export default function StepAdditional() {
   const dispatch = useDispatch();
   const answers = useSelector((state) => state.answers);
 
-  const [height, setHeight] = useState(null);
-  const [weight, setWeight] = useState(null);
+  const [height, setHeight] = useState('');
+  const [weight, setWeight] = useState('');
 
   const handleHeightChange = (e) => {
     setHeight(e.target.value); // Update the state with the input value
@@ -23,33 +21,38 @@ export default function StepAdditional() {
     setWeight(e.target.value); // Update the state with the input value
   };
 
-  const handleNextButton = () => {
+  const handleNextButton = async () => {
     if (height && weight) {
-      // check whether the answers array is empty or not
       dispatch(setFetching(true));
+      router.push("/my-workout");
 
-      if(answers.length !== 0) {
-        fetch("http://localhost:5000/chat", {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          answers: answers,
-        }),
-      })
-        .then((res) => res.json())
-        .then((answers) => {
-          dispatch(setRoutine(answers.data));
-        }).then(() => {
+      const squareHight = height * height / 10000;
+      const bmiValue = weight / squareHight;
+      dispatch(setBmi(bmiValue.toFixed(1)));
+
+      if(answers.length === 9) {
+        try {
+          const response = await fetch("http://localhost:5000/chat", {
+            method: "post",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              answers: answers,
+            }),
+          });
+
           dispatch(resetAnswer());
-          dispatch(setFetching(false));
-        })
-        .catch(console.log);
-        
-        const squareHight = height * height / 10000;
-        const bmiValue = weight / squareHight;
-        dispatch(setBmi(bmiValue.toFixed(1)));
 
-        router.push("/my-workout");
+          if(response.status === 400) {
+            alert("There was an issue, please try again");
+          } else {
+            const routine = await response.json();
+            dispatch(setRoutine(routine.data));
+          }
+          
+          dispatch(setFetching(false));
+        } catch (error) {
+          console.log(error);
+        }
       }
     }
   };
@@ -57,9 +60,9 @@ export default function StepAdditional() {
   return (
     <div>
       <h3>What's your height? (cm)</h3>
-      <input type="number" onChange={handleHeightChange} />
+      <input type="number" value={height} onChange={handleHeightChange} />
       <h3>What's your current weight? (kg)</h3>
-      <input type="number" onChange={handleWeightChange} />
+      <input type="number" value={weight} onChange={handleWeightChange} />
       <button onClick={handleNextButton}>next</button>
     </div>
   );
