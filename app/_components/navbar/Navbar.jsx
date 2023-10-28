@@ -1,5 +1,5 @@
 "use client";
-import { NavContainer } from "./navbar.styles";
+import { NavContainer, FirstDiv, SecondDiv, UserP } from "./navbar.styles";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 
@@ -9,19 +9,17 @@ const Navbar = () => {
 
   return (
     <NavContainer>
-      <div>
-        <p>Logo</p>
-      </div>
-      <ul>
-        <li onClick={() => router.push("/")}>Home</li>
-        <li>About</li>
-        <li onClick={() => router.push("/my-workout")}>My Workout Plan</li>
+      <FirstDiv>
+        <p onClick={() => router.push("/")}>LEGIONARY</p>
+      </FirstDiv>
+      <SecondDiv>
+        <p onClick={() => router.push("/my-workout")}>My Workout Plan</p>
         {user.id ? (
-          <li onClick={() => router.push("/profile")}>{user.name}</li>
+          <p className="username" onClick={() => router.push("/profile")}>{user.name}</p>
         ) : (
-          <li onClick={() => router.push("/signin")}>Log In</li>
+          <p onClick={() => router.push("/signin")}>Log In</p>
         )}
-      </ul>
+      </SecondDiv>
     </NavContainer>
   );
 };
