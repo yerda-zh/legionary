@@ -7,7 +7,7 @@ export const NavContainer = styled.nav`
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
-    color: #fff;
+    color: var(--color-base);
 `;
 export const FirstDiv = styled.div`
     p {
@@ -22,6 +22,6 @@ export const SecondDiv = styled.div`
         cursor: pointer;
     }
     .username {
-        color: #FF7676;
+        color: var(--color-accent);
     }
 `;
