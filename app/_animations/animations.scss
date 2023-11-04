@@ -1,0 +1,26 @@
+.navbar-slide-left {
+    -webkit-animation: navbar-slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+              animation: navbar-slide-left 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@-webkit-keyframes navbar-slide-left {
+    0% {
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+    100% {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+    }
+}
+
+@keyframes navbar-slide-left {
+    0% {
+        -webkit-transform: translateX(100%);
+                transform: translateX(100%);
+    }
+    100% {
+        -webkit-transform: translateX(0);
+                transform: translateX(0);
+    }
+}
