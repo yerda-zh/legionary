@@ -10,8 +10,21 @@ export const NavContainer = styled.nav`
     align-items: center;
     justify-content: space-between;
     padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+
     p {
         cursor: pointer;
+        transition: 0.2s ease;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+
+    .username {
+        color: var(--color-accent);
     }
 `;
 export const FirstDiv = styled.div`
@@ -22,10 +35,6 @@ export const FirstDiv = styled.div`
 export const SecondDiv = styled.div`
     display: flex;
     gap: 2rem;
-    
-    .username {
-        color: var(--color-accent);
-    }
 
     @media screen and (max-width: 576px) {
         display: none;
@@ -35,10 +44,6 @@ export const SecondDiv = styled.div`
 export const SmallScreenContainer = styled.div`
     display: none;
     color: var(--color-white);
-
-    .username {
-        color: var(--color-accent);
-    }
     
     @media screen and (max-width: 576px) {
         display: flex;
@@ -46,6 +51,7 @@ export const SmallScreenContainer = styled.div`
 `;
 
 export const SmallScreen = styled.div`
+    background: var(--color-main);
     z-index: 1;
     position: fixed;
     display: flex;
@@ -55,34 +61,29 @@ export const SmallScreen = styled.div`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: var(--color-main);
     transition: .5s ease;
+
+
+    ul {
+        list-style: none;
+
+        li {
+            margin: 2rem;
+            font-size: 1.2rem;
+            text-align: center;
+        }
+    }
+    
 `;
 
 export const MenuIcon = styled(HiMenuAlt3)`
     font-size: 1.6rem;
-
 `;
+
 export const CloseIcon = styled(RxCross2)`
     font-size: 1.6rem;
 
     position: absolute;
     top: 1rem;
     right: 1.2rem;
-`;
-export const SmallScreenLinks = styled.ul`
-    list-style: none;
-
-    li {
-        font-family: var(--font-base);
-        margin: 2rem;
-        cursor: pointer;
-        color: var(--color-white);
-        font-size: 1.2rem;
-        text-align: center;
-        
-        &:hover {
-            color: var(--color-l-blue);
-        }
-    }
 `;

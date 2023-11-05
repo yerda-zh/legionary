@@ -3,7 +3,7 @@ import { MainAboutContainer } from "./about.styles";
 
 const About = () => {
   return (
-    <div id="about">
+    <div id="about" style={{background: 'black', color: 'white'}}>
       <br />
       <MainAboutContainer>
         <div>

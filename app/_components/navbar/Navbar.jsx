@@ -7,7 +7,6 @@ import {
   MenuIcon,
   SmallScreen,
   CloseIcon,
-  SmallScreenLinks,
 } from "./navbar.styles";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
@@ -46,7 +45,7 @@ const Navbar = () => {
         {toggleMenu && (
           <SmallScreen className={`${toggleMenu && "navbar-slide-left"}`}>
             <CloseIcon onClick={() => setToggleMenu(false)} />
-            <SmallScreenLinks>
+            <ul>
               <li><p onClick={() => handleMenuLinks("/my-workout")}>My Workout Plan</p></li>
               <li>
                 {user.id ? (
@@ -55,7 +54,7 @@ const Navbar = () => {
                   <p onClick={() => handleMenuLinks("/signin")}>Log In</p>
                 )}
               </li>
-            </SmallScreenLinks>
+            </ul>
           </SmallScreen>
         )}
       </SmallScreenContainer>
