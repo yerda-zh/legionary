@@ -1,15 +1,28 @@
 "use client";
-import { MainAboutContainer } from "./about.styles";
+import { AboutContainer, MainAboutContainer, ImageContainer, Block, FirstDiv } from "./about.styles";
+import Image from "next/image";
+import About1 from '../../../public/about1.jpg';
+import { useState, useEffect } from "react";
 
 const About = () => {
+
+  const [offsetY, setOffsetY] = useState(0);
+  const handleScroll = () => setOffsetY(window.scrollY);
+
+  useEffect(()=>{
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div id="about" style={{background: 'black', color: 'white'}}>
-      <br />
+    <AboutContainer>
       <MainAboutContainer>
-        <div>
-          <h1>*SOME IMG*</h1>
-        </div>
-        <div>
+        <ImageContainer>
+          <Image  src={About1} alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Block style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
+        </ImageContainer>
+        <FirstDiv>
           <h2>Future of Fitness: AI-Powered Workout Routine</h2>
           <p>
             In the fast-paced world of fitness, staying motivated and achieving
@@ -18,7 +31,7 @@ const About = () => {
             routines tailored to your unique needs and goals? That's where our
             AI-powered workout routine creation platform comes in.
           </p>
-        </div>
+        </FirstDiv>
       </MainAboutContainer>
       <br />
       <MainAboutContainer>
@@ -70,7 +83,7 @@ const About = () => {
           </div>
         </MainAboutContainer>
       </div>
-    </div>
+    </AboutContainer>
   );
 };
 

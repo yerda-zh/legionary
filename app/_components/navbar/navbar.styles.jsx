@@ -70,7 +70,14 @@ export const SmallScreen = styled.div`
         li {
             margin: 2rem;
             font-size: 1.2rem;
+            border: 1.5px solid var(--color-base);
+            border-radius: 0.5rem;
+            padding: 0.5rem;
             text-align: center;
+
+            &:active {
+                border-color: var(--color-accent);
+            }
         }
     }
     
