@@ -1,41 +1,69 @@
 import styled from "styled-components";
 
 export const AboutContainer = styled.div`
-    background: var(--color-secondary);
+    background: linear-gradient(130deg, var(--color-secondary) 0%, var(--color-main) 100%);
     color: var(--color-base);
 `;
 
-export const MainAboutContainer = styled.div`
+export const RowContainer = styled.div`
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: 3rem;
-    padding: 1rem;
+    padding: 1.5rem;
+
+    @media screen and (max-width: 1064px){
+        flex-direction: column;
+        padding: 1rem;
+        gap: 2rem;
+    }
 `;
 
 export const ImageContainer = styled.div`
     position: relative;
-    width: 120rem;
+    width: 110rem;
+    max-width: 100%;
     aspect-ratio: 16/9;
 `;
 
-export const Block = styled.div`
+export const Block1 = styled.div`
     position: absolute;
     background: var(--color-main);
-    height: 8rem;
-    width: 30rem;
-    bottom: 1rem;
-    right: -2rem;
+    height: 40%;
+    width: 90%;
+    bottom: 5%;
+    right: -7%;
+
+    @media screen and (max-width: 1064px){
+        right: 2%;
+        width: 80%;
+    }
 `;
 
-export const FirstDiv = styled.div`
+export const Block2 = styled.div`
+    position: absolute;
+    background: var(--color-main);
+    height: 30%;
+    width: 70%;
+    top: -25%;
+    left: -6%;
+
+    @media screen and (max-width: 1064px){
+        left: 2%;
+    }
+`;
+
+export const ContentDiv = styled.div`
+    z-index: 1;
+
     h2 {
-        font-size: 1.8rem;
-        margin-bottom: 1.8rem;
+        font-size: clamp(1rem, 2vw + 1rem, 2rem);
+        margin-bottom: 1.5rem;
         color: var(--color-accent);
     }
 
     p {
-        line-height: 1.8rem;
+        font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+        text-align: justify;
+        line-height: 2rem;
     }
 `;

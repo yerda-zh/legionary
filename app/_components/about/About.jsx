@@ -1,8 +1,9 @@
 "use client";
-import { AboutContainer, MainAboutContainer, ImageContainer, Block, FirstDiv } from "./about.styles";
+import { AboutContainer, RowContainer, ImageContainer, Block1, Block2, ContentDiv } from "./about.styles";
 import Image from "next/image";
-import About1 from '../../../public/about1.jpg';
 import { useState, useEffect } from "react";
+import About1 from '../../../public/about1.jpg';
+import About6 from '../../../public/about6.jpg';
 
 const About = () => {
 
@@ -17,12 +18,12 @@ const About = () => {
 
   return (
     <AboutContainer>
-      <MainAboutContainer>
+      <RowContainer>
         <ImageContainer>
           <Image  src={About1} alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
-          <Block style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
+          <Block1 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
         </ImageContainer>
-        <FirstDiv>
+        <ContentDiv>
           <h2>Future of Fitness: AI-Powered Workout Routine</h2>
           <p>
             In the fast-paced world of fitness, staying motivated and achieving
@@ -31,11 +32,11 @@ const About = () => {
             routines tailored to your unique needs and goals? That's where our
             AI-powered workout routine creation platform comes in.
           </p>
-        </FirstDiv>
-      </MainAboutContainer>
-      <br />
-      <MainAboutContainer>
-        <div>
+        </ContentDiv>
+      </RowContainer>
+
+      <RowContainer>
+        <ContentDiv>
           <h2>The Power of AI in Fitness</h2>
           <p>
             Our platform harnesses the incredible capabilities of artificial
@@ -44,45 +45,12 @@ const About = () => {
             personalized workout routines that are not only effective but also
             enjoyable.
           </p>
-        </div>
-        <div>
-          <h1>*SOME IMG*</h1>
-        </div>
-      </MainAboutContainer>
-      <br />
-      <div>
-        <h2>Why Choose AI-Powered Workouts?</h2>
-        <MainAboutContainer>
-          <div>
-            <h4>Personalizion</h4>
-            <p>
-              AI considers your unique needs, making your workouts more
-              effective and enjoyable.
-            </p>
-          </div>
-          <div>
-            <h4>Efficiency</h4>
-            <p>
-              Say goodbye to hours spent searching for the perfect routine. Our
-              AI does the heavy lifting for you.
-            </p>
-          </div>
-          <div>
-            <h4>Motivation</h4>
-            <p>
-              With ever-evolving workouts and achievable goals, you'll stay
-              motivated and eager to hit the gym.
-            </p>
-          </div>
-          <div>
-            <h4>Results</h4>
-            <p>
-              AI's precision ensures you get results faster, helping you achieve
-              your fitness goals.
-            </p>
-          </div>
-        </MainAboutContainer>
-      </div>
+        </ContentDiv>
+        <ImageContainer>
+          <Image  src={About6} alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Block2 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
+        </ImageContainer>
+      </RowContainer>
     </AboutContainer>
   );
 };
