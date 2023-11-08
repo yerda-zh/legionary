@@ -16,7 +16,7 @@ const Join = () => {
         <FeaturesContainer>
           <FeatureDiv>
             <div>
-                <h4>Personalizion</h4>
+                <h4>Personalization</h4>
                 <BsFillPersonFill className="featureLogo"/>
             </div>
             <p>

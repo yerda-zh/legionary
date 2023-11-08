@@ -64,6 +64,6 @@ export const ContentDiv = styled.div`
     p {
         font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
         text-align: justify;
-        line-height: 2rem;
+        line-height: 1.9rem;
     }
 `;

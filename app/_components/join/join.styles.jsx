@@ -6,7 +6,7 @@ export const JoinContainer = styled.div`
     padding: 2rem 1rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 `;
 export const WhyContainer = styled.div`
     h2 {
@@ -38,7 +38,7 @@ export const FeatureDiv = styled.div`
 
     div {
         color: var(--color-accent-light);
-        font-size: clamp(1rem, 2vw + 1.3rem, 1.5rem);
+        font-size: clamp(1rem, 2vw + 1.1rem, 1.4rem);
         border-bottom: 0.1rem solid var(--color-accent);
         display: flex;
         align-items: center;
@@ -50,12 +50,12 @@ export const FeatureDiv = styled.div`
 
     p {
         font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
-        line-height: 2rem;
+        line-height: 1.9rem;
         text-align: justify;
     }
       
     &:hover {
-        opacity: 0.7;
+       background: rgba(51, 51, 51, 0.5);
         transform: scale(1.03);
     }
 `;
@@ -74,13 +74,14 @@ export const JoinDiv = styled.div`
     }
 
     p {
+        color: var(--color-secondary);
         font-size: clamp(0.5rem, 2vw + 1rem, 1rem);
         margin-bottom: 1rem;
         text-align: center;
     }
 
     div {
-        width: 19rem;
+        width: 18rem;
         height: 3rem;
         border-radius: 1rem;
         overflow: hidden;
@@ -108,12 +109,12 @@ export const JoinDiv = styled.div`
 
     button::before {
         content: "";
-        width: 0%;
-        height: 100%;
+        width: 100%;
+        height: 0%;
         position: absolute;
         background: var(--color-accent-light);
-        right: 0;
-        top: 0;
+        left: 0;
+        bottom: 0;
         z-index: -1;
         transition: 0.25s ease-in-out;
     }
@@ -130,7 +131,7 @@ export const JoinDiv = styled.div`
 
     @media screen and (max-width: 575px) {
         div {
-            width: 17rem;
+            width: 15rem;
             align-self: center;
         }
     }
