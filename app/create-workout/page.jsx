@@ -19,10 +19,9 @@ export default function CreateWorkout() {
   const user = useSelector((state) => state.user);
 
   const handleNextButton = () => {
-
     if (choice) {
       setIndex((prevIndex) => prevIndex + 1); // incrementing index by 1 so that the question set would change to the next one
-      
+
       answers[index] || answers[index] === choice
         ? dispatch(updateAnswer({ index, howmany: 1, item: choice }))
         : dispatch(addAnswer(choice));
@@ -73,8 +72,15 @@ export default function CreateWorkout() {
         </>
       ) : (
         <LoginContainer>
-          <h3>Please log in first</h3>
-          <button onClick={() => router.push("/signin")}>Log In</button>
+          <h2>To create workout routine, please log in to your account</h2>
+          <p>
+            Logging in allows you to personalize your experience, save
+            preferences, and access exclusive content. Thank you for being part
+            of our community!
+          </p>
+          <div>
+            <button onClick={() => router.push("/signin")}><span>Login</span></button>
+          </div>
         </LoginContainer>
       )}
     </CreateWorkoutContainer>

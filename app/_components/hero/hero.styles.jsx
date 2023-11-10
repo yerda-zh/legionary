@@ -102,6 +102,11 @@ export const ContentDiv = styled.div`
         position: absolute;
     }
 
+    button:active {
+        transform: scale(1.2);
+        transition: 0.2s ease-in-out;
+    }
+
     @media screen and (max-width: 575px) {
         div {
             width: 17rem;
