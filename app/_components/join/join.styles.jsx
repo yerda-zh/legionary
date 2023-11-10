@@ -34,7 +34,7 @@ export const FeatureDiv = styled.div`
     background: var(--color-secondary);
     padding: 2.5rem 1rem;
     border-radius: 1rem;
-    transition: 0.2s ease-in-out;
+    transition: 0.25s ease-in-out;
 
     div {
         color: var(--color-accent-light);
@@ -53,11 +53,12 @@ export const FeatureDiv = styled.div`
         line-height: 1.9rem;
         text-align: justify;
     }
-      
+
     &:hover {
-       background: rgba(51, 51, 51, 0.5);
         transform: scale(1.03);
+        background: var(--color-secondary-dark);
     }
+
 `;
 export const JoinDiv = styled.div`
     background: var(--color-accent-light);
@@ -67,6 +68,11 @@ export const JoinDiv = styled.div`
     align-items: center;
     padding: 1rem;
     border-radius: 0.5rem;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        transform: scale(0.985);
+    }
 
     h2{
         font-size: clamp(1rem, 2vw + 1rem, 2rem);

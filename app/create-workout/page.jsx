@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { OptionDiv } from "./cw.styles";
+import { OptionDiv, LoginContainer, CreateWorkoutContainer } from "./cw.styles";
 import { sex, questionsMale, questionsFemale } from "../_constants/constants";
 import { useRouter } from "next/navigation";
 
@@ -51,7 +51,7 @@ export default function CreateWorkout() {
   };
 
   return (
-    <div>
+    <CreateWorkoutContainer>
       {user.id ? (
         <>
           <h3>{questionsArray[index] && questionsArray[index].question}</h3>
@@ -72,11 +72,11 @@ export default function CreateWorkout() {
           <button onClick={handleNextButton}>next</button>
         </>
       ) : (
-        <>
-          <p>Please log in first</p>
+        <LoginContainer>
+          <h3>Please log in first</h3>
           <button onClick={() => router.push("/signin")}>Log In</button>
-        </>
+        </LoginContainer>
       )}
-    </div>
+    </CreateWorkoutContainer>
   );
 }

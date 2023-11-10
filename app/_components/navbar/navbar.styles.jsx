@@ -4,7 +4,7 @@ import { HiMenuAlt3 } from 'react-icons/hi';
 import {RxCross2} from 'react-icons/rx';
 
 export const NavContainer = styled.nav`
-    background: var(--color-main);
+    background: var(--color-main-dark);
     color: var(--color-base);
     display: flex;
     align-items: center;
@@ -19,12 +19,12 @@ export const NavContainer = styled.nav`
         transition: 0.2s ease;
 
         &:hover {
-            opacity: 0.6;
+            opacity: 0.7;
         }
     }
 
     .username {
-        color: var(--color-accent);
+        color: var(--color-accent-light);
     }
 `;
 export const FirstDiv = styled.div`

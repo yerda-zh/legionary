@@ -28,9 +28,9 @@ const About = () => {
           <p>
             In the fast-paced world of fitness, staying motivated and achieving
             your fitness goals can be a challenging task. But what if you had a
-            personal fitness expert by your side, creating customized workout
+            personal fitness expert by your side, creating workout
             routines tailored to your unique needs and goals? That's where our
-            AI-powered workout routine creation platform comes in.
+            AI-powered workout routine platform comes in.
           </p>
         </ContentDiv>
       </RowContainer>
