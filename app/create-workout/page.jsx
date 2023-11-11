@@ -1,6 +1,13 @@
 "use client";
 import { useState } from "react";
-import { OptionDiv, LoginContainer, CreateWorkoutContainer } from "./cw.styles";
+import {
+  OptionDiv,
+  LoginContainer,
+  CreateWorkoutContainer,
+  QuestionDiv,
+  OptionsContainer,
+  IndexBar,
+} from "./cw.styles";
 import { sex, questionsMale, questionsFemale } from "../_constants/constants";
 import { useRouter } from "next/navigation";
 
@@ -53,22 +60,27 @@ export default function CreateWorkout() {
     <CreateWorkoutContainer>
       {user.id ? (
         <>
-          <h3>{questionsArray[index] && questionsArray[index].question}</h3>
-          <div>
-            {questionsArray[index] &&
-              questionsArray[index].options.map((option, opIndex) => (
-                <OptionDiv
-                  onClick={() => handleOptionClick(option)}
-                  $selected={choice}
-                  $divindex={option}
-                  key={opIndex}
-                >
-                  {option}
-                </OptionDiv>
-              ))}
-          </div>
-          {index > 1 && <button onClick={handleBackButton}>back</button>}
-          <button onClick={handleNextButton}>next</button>
+          <p className="indicator">{index > 0 ? `${index}/${questionsArray.length}`  : ' '}</p>
+          <IndexBar $index={index} $total={questionsArray.length}/>
+          <QuestionDiv>
+            <h4>{questionsArray[index] && questionsArray[index].question}</h4>
+            <>
+              {questionsArray[index] &&
+                questionsArray[index].options.map((option, opIndex) => (
+                  <OptionDiv
+                    onClick={() => handleOptionClick(option)}
+                    $selected={choice}
+                    $divindex={option}
+                    key={opIndex}
+                  >
+                    {option}
+                  </OptionDiv>
+                ))}
+            </>
+            {index > 1 && <button onClick={handleBackButton}>back</button>}
+            <button onClick={handleNextButton}>next</button>
+          </QuestionDiv>
+          <p className="description">{questionsArray[index].description}</p>
         </>
       ) : (
         <LoginContainer>

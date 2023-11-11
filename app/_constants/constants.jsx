@@ -21,6 +21,7 @@ export const questionsMale = [
   {
     question: "Choose your body type",
     options: ["Ectomorph", "Mesomorph", "Endomorph"],
+    description: "Ectomorphs are typically characterized by a lean and slender build. They tend to have narrow shoulders, a fast metabolism, and difficulty gaining weight or muscle. Mesomorphs are known for a more muscular and athletic physique. They tend to have a naturally higher percentage of muscle mass, a broader shoulder-to-hip ratio, and an easier time gaining both muscle and strength. Endomorphs typically have a softer, rounder physique with a higher tendency to store body fat. They may have a slower metabolism and find it easier to gain weight."
   },
   {
     question: "Choose the body you want",

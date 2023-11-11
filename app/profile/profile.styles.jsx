@@ -6,12 +6,12 @@ export const ProfileContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 2rem;
+    margin: 2rem 1rem 0 1rem;
 
     h2 {
         color: var(--color-accent);
         font-size: clamp(1.5rem, 2vw + 1.5rem, 2rem);
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
     }
 
     h4 {
@@ -29,12 +29,13 @@ export const ProfileContainer = styled.div`
 `
 
 export const ProfileDiv = styled.div`
-    background: var(--color-secondary);
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    width: 40rem;
-    height: 14rem;
+    width: 42rem;
+    max-width: 100%;
+    height: 15rem;
     padding: 1rem;
     border-radius: 0.7rem;
 
@@ -57,11 +58,19 @@ export const ProfileDiv = styled.div`
         transform: scale(0.95);
         transition: 0.2s ease;
     }
+
+    @media screen and (max-width: 525px) {
+        flex-direction: column;
+        height: auto;
+
+        button {
+            margin: 0.5rem 0.2rem;
+        }
+    }
 `
 
 export const Block = styled.div`
     width: 0.1rem;
     height: 100%;
     background: var(--color-base);
-
 `;
