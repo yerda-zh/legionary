@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
+import { RegisterContainer } from "./register.styles";
 
 export default function Register() {
   const dispatch = useDispatch();
@@ -71,43 +72,45 @@ export default function Register() {
   };
 
   return (
-    <div>
-      <h1>Register</h1>
-      <form onSubmit={onSubmitRegister}>
-        <p>Name</p>
-        <input
-          placeholder="Enter Name"
-          type="text"
-          value={name}
-          onChange={onNameChange}
-          required
-        />
-        <p>Email</p>
-        <input
-          placeholder="Enter Email"
-          type="email"
-          value={email}
-          onChange={onEmailChange}
-          required
-        />
-        <p>Password</p>
-        <input
-          placeholder="Enter Password"
-          type="password"
-          value={pass1}
-          onChange={onPass1Change}
-          required
-        />
-        <input
-          placeholder="Enter Password Again"
-          type="password"
-          value={pass2}
-          onChange={onPass2Change}
-          required
-        />
-        <p>{message}</p>
-        <button type="submit">Register</button>
-      </form>
-    </div>
+    <RegisterContainer>
+      <div>
+        <h2>Register</h2>
+        <form onSubmit={onSubmitRegister}>
+          <p>Name</p>
+          <input
+            placeholder="Enter Name"
+            type="text"
+            value={name}
+            onChange={onNameChange}
+            required
+          />
+          <p>Email</p>
+          <input
+            placeholder="Enter Email"
+            type="email"
+            value={email}
+            onChange={onEmailChange}
+            required
+          />
+          <p>Password</p>
+          <input
+            placeholder="Enter Password"
+            type="password"
+            value={pass1}
+            onChange={onPass1Change}
+            required
+          />
+          <input
+            placeholder="Enter Password Again"
+            type="password"
+            value={pass2}
+            onChange={onPass2Change}
+            required
+          />
+          {message && <p>{message}</p>}
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </RegisterContainer>
   );
 }

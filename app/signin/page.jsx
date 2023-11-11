@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
+import { SigninContainer } from "./signin.styles";
 
 export default function SignIn() {
   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ export default function SignIn() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
 
   const onEmailChange = (event) => {
     setEmail(event.target.value);
@@ -21,7 +22,7 @@ export default function SignIn() {
 
   const onSubmitSignIn = async (event) => {
     event.preventDefault();
-    setMessage('');
+    setMessage("");
 
     try {
       const response = await fetch("http://localhost:5000/signin", {
@@ -48,7 +49,7 @@ export default function SignIn() {
               routine: user.routine,
             })
           );
-          router.push('/');
+          router.push("/");
         }
       }
     } catch (error) {
@@ -57,34 +58,32 @@ export default function SignIn() {
   };
 
   return (
-    <div>
-      <h1>Sign In</h1>
-      <form onSubmit={onSubmitSignIn}>
-        <p>Email</p>
-        <input
-          placeholder="Enter Email"
-          type="email"
-          value={email}
-          onChange={onEmailChange}
-          required
-        />
-        <p>Password</p>
-        <input
-          placeholder="Enter Password"
-          type="password"
-          value={password}
-          onChange={onPasswordChange}
-          required
-        />
-        {message && <p>{message}</p>}
-        <button type="submit">
-          Sign In
-        </button>
-      </form>
-      <p>
-          Don't have an account?{" "}
-          <button onClick={() => router.push("/register")}>Register</button>
-        </p>
-    </div>
+    <SigninContainer>
+      <div>
+        <h2>Sign In</h2>
+        <form onSubmit={onSubmitSignIn}>
+          <p>Email</p>
+          <input
+            placeholder="Enter Email"
+            type="email"
+            value={email}
+            onChange={onEmailChange}
+            required
+          />
+          <p>Password</p>
+          <input
+            placeholder="Enter Password"
+            type="password"
+            value={password}
+            onChange={onPasswordChange}
+            required
+          />
+          {message && <p>{message}</p>}
+          <button type="submit">Sign In</button>
+        </form>
+        <p>Don't have an account?</p>
+        <p className="register" onClick={() => router.push("/register")}>Click here to register</p>
+      </div>
+    </SigninContainer>
   );
 }

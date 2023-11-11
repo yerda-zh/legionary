@@ -78,9 +78,7 @@ export default function CreateWorkout() {
             preferences, and access exclusive content. Thank you for being part
             of our community!
           </p>
-          <div>
-            <button onClick={() => router.push("/signin")}><span>Login</span></button>
-          </div>
+          <button onClick={() => router.push("/signin")}>Login</button>
         </LoginContainer>
       )}
     </CreateWorkoutContainer>

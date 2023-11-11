@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { resetUser } from "../redux/userSlice";
 import { useState } from "react";
+import {ProfileContainer, ProfileDiv, Block} from './profile.styles';
 
 export default function Profile() {
   const router = useRouter();
@@ -15,7 +16,7 @@ export default function Profile() {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, "0");
   const day = String(date.getDate()).padStart(2, "0");
-  const formattedDate = `${month}-${day}-${year}`;
+  const formattedDate = `${month}/${day}/${year}`;
 
   const handleDeleteButton = async () => {
     try {
@@ -46,15 +47,24 @@ export default function Profile() {
   }
 
   return (
-    <div>
-      <h1>My Profile</h1>
-      <h3>{`Name - ${user.name}`}</h3>
-      <p>{`Email - ${user.email}`}</p>
-      <p>{`BMI - ${user.bmi}`}</p>
-      <p>{`Date joined - ${formattedDate}`}</p>
-      <button onClick={handleSignOut}>Sign out</button>
-      <button onClick={handleDeleteButton}>Delete account</button>
+    <ProfileContainer>
+      <h2>My Profile</h2>
+      {user.name && (
+        <ProfileDiv>
+          <div>
+            <h4>{user.name}</h4>
+          </div>
+          <Block/>
+          <div>
+            <p><span>Email - </span>{user.email}</p>
+            <p><span>BMI - </span>{user.bmi}</p>
+            <p><span>Date joined - </span>{formattedDate}</p>
+            <button onClick={handleSignOut}>Sign out</button>
+            <button onClick={handleDeleteButton}>Delete account</button>
+          </div>
+        </ProfileDiv>
+      )}
       {message && <p>{message}</p>}
-    </div>
+    </ProfileContainer>
   );
 }

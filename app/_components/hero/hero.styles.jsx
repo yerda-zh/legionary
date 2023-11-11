@@ -9,22 +9,22 @@ export const HeroContainer = styled.div`
 `;
 
 export const Block = styled.div`
-  z-index: -1;
-  background: #000;
-  position: absolute;
-  object-fit: contain;
-  opacity: 0.6;
-  width: 100%;
-  height: 100%;
-  clip-path: polygon(0 0, 60% 0, 30% 100%, 0 100%);
+    z-index: -1;
+    background: #000;
+    position: absolute;
+    object-fit: contain;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(0 0, 60% 0, 30% 100%, 0 100%);
 
-  @media screen and (max-width: 1300px){
-    clip-path: polygon(0 0, 70% 0, 40% 100%, 0 100%);
-  }
+    @media screen and (max-width: 1300px){
+        clip-path: polygon(0 0, 70% 0, 40% 100%, 0 100%);
+    }
 
-  @media screen and (max-width: 575px){
-    clip-path: polygon(0 0, 80% 0, 60% 100%, 0 100%);
-  }
+    @media screen and (max-width: 575px){
+        clip-path: polygon(0 0, 80% 0, 60% 100%, 0 100%);
+    }
 `;
 
 export const ContentDiv = styled.div`
@@ -102,8 +102,8 @@ export const ContentDiv = styled.div`
         position: absolute;
     }
 
-    button:active {
-        transform: scale(1.2);
+    div:active {
+        transform: scale(0.95);
         transition: 0.2s ease-in-out;
     }
 
