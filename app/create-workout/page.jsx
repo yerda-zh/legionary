@@ -7,9 +7,11 @@ import {
   QuestionDiv,
   OptionsContainer,
   IndexBar,
+  InfoDiv,
 } from "./cw.styles";
 import { sex, questionsMale, questionsFemale } from "../_constants/constants";
 import { useRouter } from "next/navigation";
+import { AiFillInfoCircle } from "react-icons/ai";
 
 import { useSelector, useDispatch } from "react-redux";
 import { addAnswer, updateAnswer } from "../redux/answersSlice";
@@ -24,6 +26,11 @@ export default function CreateWorkout() {
 
   const answers = useSelector((state) => state.answers); // used to make server requests
   const user = useSelector((state) => state.user);
+
+  const [info, setInfo] = useState({
+    status: false,
+    opIndex: null,
+  });
 
   const handleNextButton = () => {
     if (choice) {
@@ -56,12 +63,17 @@ export default function CreateWorkout() {
     // if the choice matches with option then that option will dynamically change style
   };
 
-  return (
-    <CreateWorkoutContainer>
-      {user.id ? (
-        <>
-          <p className="indicator">{index > 0 ? `${index}/${questionsArray.length}`  : ' '}</p>
-          <IndexBar $index={index} $total={questionsArray.length}/>
+
+
+  if (user.id && index < questionsArray.length) {
+    return (
+      <CreateWorkoutContainer>
+        <p className="indicator">
+          {index > 0 ? `${index}/${questionsArray.length}` : " "}
+        </p>
+        <IndexBar $index={index} $total={questionsArray.length} />
+        <div className="grid">
+          <div/>
           <QuestionDiv>
             <h4>{questionsArray[index] && questionsArray[index].question}</h4>
             <>
@@ -74,15 +86,32 @@ export default function CreateWorkout() {
                     key={opIndex}
                   >
                     {option}
+                    {questionsArray[index].description && (
+                      <AiFillInfoCircle
+                        onMouseEnter={() =>
+                          setInfo({ status: true, opIndex: opIndex })
+                        }
+                        onMouseLeave={() => setInfo(false)}
+                        style={{ fontSize: "1.2rem" }}
+                      />
+                    )}
                   </OptionDiv>
                 ))}
             </>
             {index > 1 && <button onClick={handleBackButton}>back</button>}
             <button onClick={handleNextButton}>next</button>
           </QuestionDiv>
-          <p className="description">{questionsArray[index].description}</p>
-        </>
-      ) : (
+          <InfoDiv $status={info.status}>
+            {questionsArray[index].description && (
+              <p>{questionsArray[index].description[info.opIndex]}</p>
+            )}
+          </InfoDiv>
+        </div>
+      </CreateWorkoutContainer>
+    );
+  } else if (!user.id) {
+    return (
+      <CreateWorkoutContainer>
         <LoginContainer>
           <h2>To create workout routine, please log in to your account</h2>
           <p>
@@ -92,7 +121,9 @@ export default function CreateWorkout() {
           </p>
           <button onClick={() => router.push("/signin")}>Login</button>
         </LoginContainer>
-      )}
-    </CreateWorkoutContainer>
-  );
+      </CreateWorkoutContainer>
+    );
+  } else {
+    return <CreateWorkoutContainer>loading...</CreateWorkoutContainer>;
+  }
 }

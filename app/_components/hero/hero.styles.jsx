@@ -65,7 +65,7 @@ export const ContentDiv = styled.div`
     }
 
     button {
-        border: 1.5px solid var(--color-base);
+        border: 0.1rem solid var(--color-base);
         color: var(--color-base);
         font-weight: 700;
         font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
@@ -103,7 +103,7 @@ export const ContentDiv = styled.div`
     }
 
     div:active {
-        transform: scale(0.95);
+        transform: scale(0.97);
         transition: 0.2s ease-in-out;
     }
 

@@ -6,16 +6,31 @@ export const CreateWorkoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 3rem;
+  margin: 0rem 2rem 2rem 2rem;
+
+  p {
+    font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+  }
 
   .indicator {
     align-self: flex-end;
     margin-top: 2rem;
   }
-  .description {
-    opacity: 0.7;
-    text-align: justify;
-    margin: 2rem 0;
+
+  .grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 40rem 1fr;
+
+    @media screen and (max-width: 1300px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    margin: 0 1rem 2rem 1rem;
   }
 `;
 
@@ -42,7 +57,12 @@ export const QuestionDiv = styled.div`
   background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
   padding: 2rem;
   border-radius: 0.7rem;
-  width: 30rem;
+  width: 40rem;
+  max-width: 100%;
+
+  @media screen and (max-width: 600px) {
+    padding: 1.5rem 1rem;
+  }
 
   h4 {
     color: var(--color-accent-light);
@@ -52,7 +72,7 @@ export const QuestionDiv = styled.div`
   }
 
   button {
-    margin: 1rem 0.3rem;
+    margin: 0.5rem 0.3rem;
     background: var(--color-secondary-light);
     color: var(--color-base);
     border: none;
@@ -81,16 +101,38 @@ export const OptionDiv = styled.div`
   border: 0.1rem solid ${(props) => (props.$selected === props.$divindex ? "var(--color-accent-light)" : "var(--color-secondary-light)")};
   margin: 1rem 0;
   cursor: pointer;
-  transition: 0.2s ease-in-out;
+  transition: 0.17s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
   &:hover {
     background: var(--color-main);
   }
 `;
 
+export const InfoDiv = styled.div`
+  background: var(--color-main-dark);
+  display: ${props => (props.$status === true ? 'block' : 'none')};
+  padding: 1.5rem 1rem;
+  margin: 5rem 0 0 1rem;
+  border-radius: 0.5rem;
+  height: fit-content;
+
+  p {
+    font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+    line-height: 1.9rem;
+    opacity: 0.8;
+    text-align: justify;
+  }
+
+  @media screen and (max-width: 1300px){
+    margin: 1.5rem 0 0 0;
+  }
+`;
+
 export const LoginContainer = styled.div`
   margin-top: 7rem;
-  padding: 0 1.5rem;
   text-align: center;
 
   h2 {
@@ -99,7 +141,6 @@ export const LoginContainer = styled.div`
 
   p {
     margin: 1.5rem 0 3rem 0;
-    font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
     opacity: 0.85;
   }
 
