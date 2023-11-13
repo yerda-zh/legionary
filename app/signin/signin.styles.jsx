@@ -58,7 +58,7 @@ export const SigninContainer = styled.div`
         transition: 0.2s ease-in-out;
 
         &:focus {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.9);
             color: var(--color-main);
         }
         &:focus::placeholder {

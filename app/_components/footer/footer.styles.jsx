@@ -28,16 +28,18 @@ export const InfoDiv = styled.div`
 
     .logo {
         font-weight: bold;
-        color: var(--color-accent-light);
     }
 
     .contact {
         display: flex;
-        justify-content: end;
+        justify-self: end;
         align-items: center;
         gap: 0.3rem;
+        cursor: pointer;
+        width: fit-content;
+        transition: 0.15s ease;
 
-        span {
+        &:hover {
             color: var(--color-accent-light);
         }
     }
@@ -58,6 +60,8 @@ export const InfoDiv = styled.div`
     }
 
     @media screen and (max-width: 600px) {
+        display: flex;
+        justify-content: space-between;
         h5 {
             display: none;
         }

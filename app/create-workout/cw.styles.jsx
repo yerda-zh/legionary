@@ -109,13 +109,17 @@ export const OptionDiv = styled.div`
   &:hover {
     background: var(--color-main);
   }
+
+  @media screen and (max-width:600px) {
+    padding: 1rem;
+  }
 `;
 
 export const InfoDiv = styled.div`
   background: var(--color-main-dark);
   display: ${props => (props.$status === true ? 'block' : 'none')};
   padding: 1.5rem 1rem;
-  margin: 5rem 0 0 1rem;
+  margin: 6rem 0 0 1rem;
   border-radius: 0.5rem;
   height: fit-content;
 

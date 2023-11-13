@@ -5,6 +5,7 @@ import { setRoutine, setBmi } from "@/app/redux/userSlice";
 import { useState } from "react";
 import { setFetching } from "@/app/redux/fetchingSlice";
 import { resetAnswer } from "@/app/redux/answersSlice";
+import {AdditionalDiv} from './additional.styles';
 
 export default function StepAdditional() {
   const router = useRouter();
@@ -58,12 +59,12 @@ export default function StepAdditional() {
   };
 
   return (
-    <div>
-      <h3>What's your height? (cm)</h3>
-      <input type="number" value={height} onChange={handleHeightChange} />
-      <h3>What's your current weight? (kg)</h3>
-      <input type="number" value={weight} onChange={handleWeightChange} />
+    <AdditionalDiv>
+      <h4>What's your height? (cm)</h4>
+      <input type="number" value={height} onChange={handleHeightChange} placeholder="Enter your height"/>
+      <h4>What's your current weight? (kg)</h4>
+      <input type="number" value={weight} onChange={handleWeightChange} placeholder="Enter your weight"/>
       <button onClick={handleNextButton}>next</button>
-    </div>
+    </AdditionalDiv>
   );
 }

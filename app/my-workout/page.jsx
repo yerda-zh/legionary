@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { WorkoutRoutineDiv, InfoDiv } from "./mw.styles";
+import { WorkoutRoutineDiv, FirstDiv, DefaultContainer, WorkoutContainer, BMICircle } from "./mw.styles";
 import { bmiCategories } from "../_constants/constants";
+import { useRouter } from "next/navigation";
 
 export default function MyWorkout() {
   const user = useSelector((state) => state.user);
@@ -10,6 +11,8 @@ export default function MyWorkout() {
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+
+  const router = useRouter();
   
   // used to display as header for each day and dynamically map over received exercises
   const days = [
@@ -80,45 +83,55 @@ export default function MyWorkout() {
   if (fetching) {
     return <p>loading...</p>
   } else if(!fetching && !user.routine) {
-    return <p>No data</p>
+    return (
+      <DefaultContainer>
+        <h2>It looks like you haven't set up any workout routines yet.</h2>
+        <p>To begin creating your personalized workout routine, simply navigate <span onClick={()=>router.push('/create-workout')}>here</span></p>
+      </DefaultContainer>
+    )
   } else {
     return (
-      <div>
-        <div>
-          <h3>Introduction</h3>
-          <p>{user.routine.introduction}</p>
-        </div>
-        <InfoDiv>
+      <WorkoutContainer>
+        <h2>My Workout Plan</h2>
+        <p>{user.routine.introduction}</p>
+
+        <FirstDiv>
           <div>
             <h3>Equipment Needed</h3>
             {user.routine.equipment.map((item) => (
               <p key={item}>{item}</p>
             ))}
           </div>
-          <h3>{`Your BMI is: ${user.bmi}`}</h3>
-          <p>{category}</p>
-          <p>{description}</p>
-        </InfoDiv>
-        <div>
-          <h3>Workout Routine</h3>
-          <WorkoutRoutineDiv>
-            {days.map((day) => (
-              <div key={day}>
-                <h4>{day.charAt(0).toUpperCase() + day.slice(1)}</h4>
-                {user.routine.routine[day].map((exercise) => (
-                  <p key={exercise}>{exercise}</p>
-                ))}
-              </div>
-            ))}
-          </WorkoutRoutineDiv>
-        </div>
-        <div>
-          <h3>Advice</h3>
-          <p>{user.routine.advice}</p>
-        </div>
+
+          <div>
+            <BMICircle/>
+            <h3>{`Your BMI is: ${user.bmi}`}</h3>
+          </div>
+          <div>
+            <p>{category}</p>
+            <p>{description}</p>
+          </div>
+          
+        </FirstDiv>
+        
+        <h3>Routine</h3>
+        <WorkoutRoutineDiv>
+          {days.map((day) => (
+            <div key={day}>
+              <h4>{day.charAt(0).toUpperCase() + day.slice(1)}</h4>
+              {user.routine.routine[day].map((exercise) => (
+                <p key={exercise}>{exercise}</p>
+              ))}
+            </div>
+          ))}
+        </WorkoutRoutineDiv>
+        
+        <h3>Advice</h3>
+        <p>{user.routine.advice}</p>
+
         <button onClick={handleSaveButton}>save</button>
         {message && <p>{message}</p>}
-      </div>
+      </WorkoutContainer>
     )
   }
 }
