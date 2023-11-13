@@ -1,7 +1,7 @@
 "use client";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { WorkoutRoutineDiv, FirstDiv, DefaultContainer, WorkoutContainer, BMICircle } from "./mw.styles";
+import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, WorkoutContainer, BMICircle } from "./mw.styles";
 import { bmiCategories } from "../_constants/constants";
 import { useRouter } from "next/navigation";
 
@@ -26,7 +26,7 @@ export default function MyWorkout() {
   ];
 
   const updateCategoryAndDescription = (bmi) => {
-    if (bmi > 18.5) {
+    if (bmi < 18.5) {
       setCategory(bmiCategories[0].category);
       setDescription(bmiCategories[0].description);
     } else if (bmi >= 18.5 && bmi <= 24.9) {
@@ -38,7 +38,7 @@ export default function MyWorkout() {
     } else if (bmi >= 30 && bmi <= 34.9) {
       setCategory(bmiCategories[3].category);
       setDescription(bmiCategories[3].description);
-    } else if (bmi >= 35 && bmi < 40) {
+    } else if (bmi >= 35 && bmi <= 40) {
       setCategory(bmiCategories[4].category);
       setDescription(bmiCategories[4].description);
     } else if (bmi > 40) {
@@ -96,19 +96,22 @@ export default function MyWorkout() {
         <p>{user.routine.introduction}</p>
 
         <FirstDiv>
-          <div>
+          <EquipmentDiv>
             <h3>Equipment Needed</h3>
-            {user.routine.equipment.map((item) => (
-              <p key={item}>{item}</p>
-            ))}
-          </div>
+            <ul>
+              {user.routine.equipment.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+          </EquipmentDiv>
+
+          <LevelIndicator>
+            <BMICircle $level = {user.bmi}/>
+          </LevelIndicator>
 
           <div>
-            <BMICircle/>
-            <h3>{`Your BMI is: ${user.bmi}`}</h3>
-          </div>
-          <div>
-            <p>{category}</p>
+            <h3 className="bmi">{`Your BMI is: ${user.bmi}`}</h3>
+            <p className="category">{category}</p>
             <p>{description}</p>
           </div>
           
@@ -117,10 +120,10 @@ export default function MyWorkout() {
         <h3>Routine</h3>
         <WorkoutRoutineDiv>
           {days.map((day) => (
-            <div key={day}>
+            <div className="oneDay" key={day}>
               <h4>{day.charAt(0).toUpperCase() + day.slice(1)}</h4>
               {user.routine.routine[day].map((exercise) => (
-                <p key={exercise}>{exercise}</p>
+                <p className="exercise" key={exercise}>{exercise}</p>
               ))}
             </div>
           ))}

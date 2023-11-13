@@ -24,7 +24,7 @@ export const NavContainer = styled.nav`
     }
 
     .username {
-        color: var(--color-accent-light);
+        color: var(--color-accent);
     }
 `;
 export const FirstDiv = styled.div`
