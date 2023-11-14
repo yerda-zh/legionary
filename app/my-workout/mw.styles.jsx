@@ -27,11 +27,6 @@ export const WorkoutContainer = styled.div`
         margin-bottom: 1rem;
     }
 
-    h4 {
-        font-size: clamp(1rem, 2vw + 1.1rem, 1.2rem);
-        margin-bottom: 0.5rem;
-    }
-
     p {
         font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
         line-height: 1.6rem;
@@ -51,7 +46,8 @@ export const WorkoutContainer = styled.div`
         cursor: pointer;
     }
     button:hover {
-        background: var(--color-accent-light);
+        background: var(--color-main-dark);
+        color: var(--color-accent);
     }
     button:active {
         transform: scale(0.95);
@@ -75,21 +71,19 @@ export const FirstDiv = styled.div`
         font-weight: bolder;
     }
 
-    @media screen and (max-width: 920px) {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        
-        
+    @media screen and (max-width: 850px) {
+        display: flex;
+        flex-direction: column;
     }
 `;
 
 export const EquipmentDiv = styled.div`
-    min-width: 22rem;
+    width: 32rem;
+    min-width: 21rem;
     background: var(--color-secondary);
     padding: 1.3rem 1rem;
     border-radius: 0.7rem;
     transition: 0.2s ease-in-out;
-    grid-column: span 2;
 
     h3 {
         margin-bottom: 1rem;
@@ -109,22 +103,22 @@ export const EquipmentDiv = styled.div`
         background: var(--color-main-dark);
     }
 
-    @media screen and (max-width: 920px) {
-        margin: 0 3rem;
+    @media screen and (max-width: 850px) {
+        min-width: auto;
+        max-width: 100%;
     }
 `;
 export const LevelIndicator = styled.div`
-    margin: 1rem 0;
-
-    @media screen and (max-width: 920px) {
-        display: flex;
-        justify-content: center;
-    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
 `;
 
 export const BMICircle = styled.div`
     background: var(--color-main-dark);
     width: 10rem;
+    min-width: 8rem;
     aspect-ratio: 1/1;
     border-radius: 50%;
     position: relative;
@@ -134,7 +128,7 @@ export const BMICircle = styled.div`
         background: var(--color-accent);
         content: "";
         position: absolute;
-        width: 10rem;
+        width: 100%;
         aspect-ratio: 1/1;
         border-radius: 50%;
         clip-path: ${(props) => {
@@ -148,10 +142,6 @@ export const BMICircle = styled.div`
         }};
         opacity: 0;
         animation: ${BMIAnimation} 1s ease-out forwards;
-
-        @media screen and (max-width: 920px) {
-            width: 15rem;
-        }
     }
 
     &::after {
@@ -159,33 +149,43 @@ export const BMICircle = styled.div`
         content: "";
         position: absolute;
         clip-path: circle(32% at 50% 50%);
-        width: 10rem;
+        width: 100%;
         aspect-ratio: 1/1;
-
-        @media screen and (max-width: 920px) {
-            width: 15rem;
-        }
-    }
-
-    @media screen and (max-width: 920px) {
-        width: 15rem;
     }
 
 `;
 
 export const WorkoutRoutineDiv = styled.div`
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    text-align: center;
-    gap: 0.5rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
     background: linear-gradient(40deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    display: grid;
+    grid-template-columns: repeat(7, minmax(11rem, 1fr));
+    margin: 1rem 0;
+    gap: 0.5rem;
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    overflow-x: auto;
+    grid-auto-flow: column;
 
     .oneDay {
+        /* min-width: 11rem; */
         padding: 0.5rem;
-        border-radius: 0.5rem;
+        border-radius: 0.3rem;
         transition: 0.2s ease;
+
+        h4 {
+            font-size: clamp(1rem, 2vw + 1.1rem, 1.2rem);
+            text-align: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 0.1rem solid var(--color-secondary-light);
+        }
+
+        p {
+            text-align: justify;
+            line-height: 1.2rem;
+            margin-bottom: 1.4rem;
+        }
+
         &:hover {
             background: var(--color-main-dark);
         }

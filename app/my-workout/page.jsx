@@ -107,13 +107,12 @@ export default function MyWorkout() {
 
           <LevelIndicator>
             <BMICircle $level = {user.bmi}/>
-          </LevelIndicator>
-
-          <div>
-            <h3 className="bmi">{`Your BMI is: ${user.bmi}`}</h3>
-            <p className="category">{category}</p>
-            <p>{description}</p>
-          </div>
+            <div>
+              <h3 className="bmi">{`Your BMI is: ${user.bmi}`}</h3>
+              <p className="category">{category}</p>
+              <p>{description}</p>
+            </div>
+          </LevelIndicator>          
           
         </FirstDiv>
         
