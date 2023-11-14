@@ -1,4 +1,5 @@
 import styled, { keyframes } from "styled-components";
+import { HiArrowCircleLeft,  HiArrowCircleRight} from "react-icons/hi";
 
 const BMIAnimation = keyframes`
     0% {
@@ -164,10 +165,9 @@ export const WorkoutRoutineDiv = styled.div`
     padding: 0.3rem;
     border-radius: 0.5rem;
     overflow-x: auto;
-    grid-auto-flow: column;
+    scroll-behavior: smooth;
 
     .oneDay {
-        /* min-width: 11rem; */
         padding: 0.5rem;
         border-radius: 0.3rem;
         transition: 0.2s ease;
@@ -194,6 +194,49 @@ export const WorkoutRoutineDiv = styled.div`
     .exercise {
         text-align: center;
         margin-bottom: 0.3rem;
+    }
+
+    @media screen and (max-width: 1320px) {
+        padding: 0.3rem 2.5rem;
+    }
+`;
+
+export const RoutineContainer = styled.div`
+    position: relative;
+    overflow-x: hidden;
+`
+
+export const LeftButton = styled(HiArrowCircleLeft)`
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+    top: 50%;
+    left: 0.5rem;
+    font-size: 2.2rem;
+    color: var(--color-base);
+    background-color: var(--color-main-dark);
+    border-radius: 50%;
+
+    @media screen and (max-width: 1320px) {
+        display: block;
+    }
+`;
+
+export const RightButton = styled(HiArrowCircleRight)`
+    display: none;
+    position: absolute;
+    cursor: pointer;
+    z-index: 5;
+    top: 50%;
+    right: 0.5rem;
+    font-size: 2.2rem;
+    color: var(--color-base);
+    background-color: var(--color-main-dark);
+    border-radius: 50%;
+
+    @media screen and (max-width: 1320px) {
+        display: block;
     }
 `;
 

@@ -1,7 +1,7 @@
 "use client";
-import { use, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, WorkoutContainer, BMICircle } from "./mw.styles";
+import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle } from "./mw.styles";
 import { bmiCategories } from "../_constants/constants";
 import { useRouter } from "next/navigation";
 
@@ -80,6 +80,22 @@ export default function MyWorkout() {
     }
   };
 
+  const routineContainerRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (routineContainerRef.current) {
+      const elementWidth = routineContainerRef.current.querySelector('.oneDay').offsetWidth;
+      routineContainerRef.current.scrollLeft -= elementWidth;
+    }
+  };
+
+  const scrollRight = () => {
+    if (routineContainerRef.current) {
+      const elementWidth = routineContainerRef.current.querySelector('.oneDay').offsetWidth;
+      routineContainerRef.current.scrollLeft += elementWidth;
+    }
+  };
+
   if (fetching) {
     return <p>loading...</p>
   } else if(!fetching && !user.routine) {
@@ -106,34 +122,39 @@ export default function MyWorkout() {
           </EquipmentDiv>
 
           <LevelIndicator>
-            <BMICircle $level = {user.bmi}/>
+            <BMICircle $level={user.bmi} />
             <div>
               <h3 className="bmi">{`Your BMI is: ${user.bmi}`}</h3>
               <p className="category">{category}</p>
               <p>{description}</p>
             </div>
-          </LevelIndicator>          
-          
+          </LevelIndicator>
         </FirstDiv>
-        
+
         <h3>Routine</h3>
-        <WorkoutRoutineDiv>
-          {days.map((day) => (
-            <div className="oneDay" key={day}>
-              <h4>{day.charAt(0).toUpperCase() + day.slice(1)}</h4>
-              {user.routine.routine[day].map((exercise) => (
-                <p className="exercise" key={exercise}>{exercise}</p>
-              ))}
-            </div>
-          ))}
-        </WorkoutRoutineDiv>
-        
+        <RoutineContainer>
+          <WorkoutRoutineDiv ref={routineContainerRef}>
+            {days.map((day) => (
+              <div className="oneDay" key={day}>
+                <h4>{day.charAt(0).toUpperCase() + day.slice(1)}</h4>
+                {user.routine.routine[day].map((exercise) => (
+                  <p className="exercise" key={exercise}>
+                    {exercise}
+                  </p>
+                ))}
+              </div>
+            ))}
+          </WorkoutRoutineDiv>
+          <LeftButton onClick={scrollLeft}/>
+          <RightButton onClick={scrollRight}/>
+        </RoutineContainer>
+
         <h3>Advice</h3>
         <p>{user.routine.advice}</p>
 
         <button onClick={handleSaveButton}>save</button>
         {message && <p>{message}</p>}
       </WorkoutContainer>
-    )
+    );
   }
 }
