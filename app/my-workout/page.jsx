@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle } from "./mw.styles";
 import { bmiCategories } from "../_constants/constants";
 import { useRouter } from "next/navigation";
+import { trio } from 'ldrs';
 
 export default function MyWorkout() {
   const user = useSelector((state) => state.user);
@@ -11,6 +12,8 @@ export default function MyWorkout() {
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+
+  trio.register();
 
   const router = useRouter();
   
@@ -97,7 +100,11 @@ export default function MyWorkout() {
   };
 
   if (fetching) {
-    return <p>loading...</p>
+    return (
+      <div style={{width: "100%", height: "90vh", display: "flex", justifyContent: "center", alignItems: "center",}}>
+        <l-trio size="55" speed="1.3" color="var(--color-base)"/>
+      </div>
+    );
   } else if(!fetching && !user.routine) {
     return (
       <DefaultContainer>
@@ -152,8 +159,8 @@ export default function MyWorkout() {
         <h3>Advice</h3>
         <p>{user.routine.advice}</p>
 
+        {message && <p className="message">{message}</p>}
         <button onClick={handleSaveButton}>save</button>
-        {message && <p>{message}</p>}
       </WorkoutContainer>
     );
   }

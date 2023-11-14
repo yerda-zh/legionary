@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "ldrs": "^1.0.1",
     "next": "^13.5.4",
     "react": "latest",
     "react-dom": "latest",

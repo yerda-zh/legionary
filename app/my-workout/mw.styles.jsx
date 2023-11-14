@@ -10,9 +10,18 @@ const BMIAnimation = keyframes`
     }
 `;
 
+const MessageAnimation = keyframes`
+    0% {
+        display: block;
+    }
+    100% {
+        display: none;
+    }
+`;
+
 export const WorkoutContainer = styled.div`
     color: var(--color-base);
-    margin: 2rem 1rem;
+    margin: 1.5rem 1rem;
 
     h2 {
         color: var(--color-accent);
@@ -32,6 +41,13 @@ export const WorkoutContainer = styled.div`
         font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
         line-height: 1.6rem;
         text-align: justify;
+    }
+
+    .message {
+        margin-top: 0.5rem;
+        font-weight: bold;
+        color: var(--color-accent);
+        animation: ${MessageAnimation} 2s ease-out forwards;
     }
 
     button {
@@ -62,7 +78,7 @@ export const FirstDiv = styled.div`
     justify-content: space-evenly;
     align-items: center;
     gap: 1.5rem;
-    margin: 1rem 0;
+    margin: 1.5rem 0;
 
     .bmi {
         text-align: start;
@@ -157,14 +173,14 @@ export const BMICircle = styled.div`
 `;
 
 export const WorkoutRoutineDiv = styled.div`
-    background: linear-gradient(40deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+    background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
     display: grid;
     grid-template-columns: repeat(7, minmax(11rem, 1fr));
-    margin: 1rem 0;
+    margin-bottom: 1.5rem;
     gap: 0.5rem;
     padding: 0.3rem;
     border-radius: 0.5rem;
-    overflow-x: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
 
     .oneDay {
@@ -196,8 +212,12 @@ export const WorkoutRoutineDiv = styled.div`
         margin-bottom: 0.3rem;
     }
 
+    @media screen and (max-width: 450px) {
+        grid-template-columns: repeat(7, minmax(85%, 1fr));
+    }
+
     @media screen and (max-width: 1320px) {
-        padding: 0.3rem 2.5rem;
+        padding: 0.3rem 2rem;
     }
 `;
 
@@ -210,12 +230,11 @@ export const LeftButton = styled(HiArrowCircleLeft)`
     display: none;
     position: absolute;
     cursor: pointer;
-    z-index: 5;
-    top: 50%;
-    left: 0.5rem;
-    font-size: 2.2rem;
-    color: var(--color-base);
-    background-color: var(--color-main-dark);
+    top: 45%;
+    left: 0.2rem;
+    font-size: 2rem;
+    color: var(--color-accent);
+    background-color: rgba(0,0,0,0.7);
     border-radius: 50%;
 
     @media screen and (max-width: 1320px) {
@@ -227,12 +246,11 @@ export const RightButton = styled(HiArrowCircleRight)`
     display: none;
     position: absolute;
     cursor: pointer;
-    z-index: 5;
-    top: 50%;
-    right: 0.5rem;
-    font-size: 2.2rem;
-    color: var(--color-base);
-    background-color: var(--color-main-dark);
+    top: 45%;
+    right: 0.2rem;
+    font-size: 2rem;
+    color: var(--color-accent);
+    background-color: rgba(0,0,0,0.7);
     border-radius: 50%;
 
     @media screen and (max-width: 1320px) {

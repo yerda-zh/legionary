@@ -16,6 +16,8 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { addAnswer, updateAnswer } from "../redux/answersSlice";
 
+import { trio } from "ldrs";
+
 export default function CreateWorkout() {
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState(null); // used for dynamic styling and building the answers set
@@ -31,6 +33,8 @@ export default function CreateWorkout() {
     status: false,
     opIndex: null,
   });
+
+  trio.register();
 
   const handleNextButton = () => {
     if (choice) {
@@ -124,6 +128,10 @@ export default function CreateWorkout() {
       </CreateWorkoutContainer>
     );
   } else {
-    return <CreateWorkoutContainer>loading...</CreateWorkoutContainer>;
+    return (
+      <div style={{width: "100%", height: "90vh", display: "flex", justifyContent: "center", alignItems: "center",}}>
+        <l-trio size="40" speed="1.3" color="var(--color-base)"/>
+      </div>
+    );
   }
 }
