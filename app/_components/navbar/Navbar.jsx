@@ -1,17 +1,10 @@
 "use client";
-import {
-  NavContainer,
-  FirstDiv,
-  SecondDiv,
-  SmallScreenContainer,
-  MenuIcon,
-  SmallScreen,
-  CloseIcon,
-} from "./navbar.styles";
+import {NavContainer, FirstDiv, SecondDiv, SmallScreenContainer, MenuIcon, SmallScreen, CloseIcon,} from "./navbar.styles";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import "../../_animations/animations.scss";
+import { Twirl as Hamburger } from 'hamburger-react'
 
 const Navbar = () => {
   const user = useSelector((state) => state.user);
@@ -41,9 +34,8 @@ const Navbar = () => {
       </SecondDiv>
 
       <SmallScreenContainer>
-        <MenuIcon onClick={() => setToggleMenu(true)} />
-        <SmallScreen className={`${toggleMenu ? "navbar-slide-left": "navbar-slide-right"}`} $toggle={toggleMenu}>
-          <CloseIcon onClick={() => setToggleMenu(false)} />
+        <Hamburger rounded size={25} toggled={toggleMenu} onToggle={(toggle) => {setToggleMenu(toggle)}}/>
+        <SmallScreen className={`${toggleMenu && "navbar-slide-down"}`} $toggle={toggleMenu}>
           <ul>
             <li><p onClick={() => handleMenuLinks("/my-workout")}>My Workout Plan</p></li>
             <li>

@@ -3,15 +3,19 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
-import { SigninContainer } from "./signin.styles";
+import { SigninContainer, LoaderDiv } from "./signin.styles";
+import { orbit } from 'ldrs';
 
 export default function SignIn() {
+  orbit.register();
+
   const dispatch = useDispatch();
   const router = useRouter();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+  const [fetching, setFetching] = useState(false);
 
   const onEmailChange = (event) => {
     setEmail(event.target.value);
@@ -23,6 +27,7 @@ export default function SignIn() {
   const onSubmitSignIn = async (event) => {
     event.preventDefault();
     setMessage("");
+    setFetching(true);
 
     try {
       const response = await fetch("http://localhost:5000/signin", {
@@ -35,6 +40,7 @@ export default function SignIn() {
       });
 
       if (response.status === 400) {
+        setFetching(false);
         setMessage("Incorrect email or password");
       } else {
         const user = await response.json();
@@ -49,6 +55,7 @@ export default function SignIn() {
               routine: user.routine,
             })
           );
+          setFetching(false);
           router.push("/");
         }
       }
@@ -78,6 +85,9 @@ export default function SignIn() {
             onChange={onPasswordChange}
             required
           />
+          {fetching && <LoaderDiv>
+            <l-orbit size="35" speed="1.3"color="white"/>
+          </LoaderDiv> }
           {message && <p>{message}</p>}
           <button type="submit">Sign In</button>
         </form>

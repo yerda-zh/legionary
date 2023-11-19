@@ -1,12 +1,12 @@
 'use client'
-import { dotSpinner } from "ldrs";
+import { momentum } from "ldrs";
 
 export default function Loading() {
-  dotSpinner.register();
+  momentum.register();
   
   return (
-    <div style={{width: '100%', height: '90vh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-      <l-dot-spinner size="45" speed="0.9" color="white"/>
+    <div style={{width: '100%', height: '90dvh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+      <l-momentum size="47" speed="0.9" color="white"/>
     </div>
   );
 }

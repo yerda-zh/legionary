@@ -3,9 +3,12 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
-import { RegisterContainer } from "./register.styles";
+import { RegisterContainer, LoaderDiv } from "./register.styles";
+import { orbit } from 'ldrs';
 
 export default function Register() {
+  orbit.register();
+
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -14,6 +17,7 @@ export default function Register() {
   const [pass1, setPass1] = useState("");
   const [pass2, setPass2] = useState("");
   const [message, setMessage] = useState("");
+  const [fetching, setFetching] = useState(false);
 
   const onNameChange = (event) => {
     setName(event.target.value);
@@ -31,6 +35,7 @@ export default function Register() {
   const onSubmitRegister = async (event) => {
     event.preventDefault(); //prevents default action of form which is refreshing
     setMessage("");
+    setFetching(true);
 
     if (pass1 === pass2) {
       try {
@@ -45,6 +50,7 @@ export default function Register() {
         });
 
         if (response.status === 400) {
+          setFetching(false);
           setMessage("Failed to register, try again");
         } else {
           const user = await response.json();
@@ -60,6 +66,7 @@ export default function Register() {
                 routine: user.routine,
               })
             );
+            setFetching(false);
             router.push("/");
           }
         }
@@ -107,6 +114,9 @@ export default function Register() {
             onChange={onPass2Change}
             required
           />
+          {fetching && <LoaderDiv>
+            <l-orbit size="35" speed="1.3"color="white"/>
+          </LoaderDiv> }
           {message && <p>{message}</p>}
           <button type="submit">Register</button>
         </form>

@@ -7,16 +7,18 @@ import { useRouter } from "next/navigation";
 import { trio } from 'ldrs';
 
 export default function MyWorkout() {
+  trio.register();
+  const router = useRouter();
+
   const user = useSelector((state) => state.user);
   const fetching = useSelector((state) => state.fetching);
+
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
   const [message, setMessage] = useState('');
+  const [leftArrow, setleftArrow] = useState(false);
+  const [rightArrow, setRightArrow] = useState(true);
 
-  trio.register();
-
-  const router = useRouter();
-  
   // used to display as header for each day and dynamically map over received exercises
   const days = [
     "monday",
@@ -84,25 +86,36 @@ export default function MyWorkout() {
   };
 
   const routineContainerRef = useRef(null);
+  const container = routineContainerRef.current;
 
   const scrollLeft = () => {
-    if (routineContainerRef.current) {
-      const elementWidth = routineContainerRef.current.querySelector('.oneDay').offsetWidth;
-      routineContainerRef.current.scrollLeft -= elementWidth;
+    if (container) {
+      const elementWidth = container.querySelector('.oneDay').offsetWidth;
+      container.scrollLeft -= elementWidth;
+      setRightArrow(true);
+
+      if (container.scrollLeft < 10) {
+        setleftArrow(false);
+      }
     }
   };
 
   const scrollRight = () => {
-    if (routineContainerRef.current) {
-      const elementWidth = routineContainerRef.current.querySelector('.oneDay').offsetWidth;
-      routineContainerRef.current.scrollLeft += elementWidth;
+    if (container) {
+      const elementWidth = container.querySelector('.oneDay').offsetWidth;
+      container.scrollLeft += elementWidth;
+      setleftArrow(true);
+
+      if (container.scrollLeft + 10 > container.scrollWidth-container.clientWidth) {
+        setRightArrow(false);
+      }
     }
   };
 
   if (fetching) {
     return (
-      <div style={{width: "100%", height: "90vh", display: "flex", justifyContent: "center", alignItems: "center",}}>
-        <l-trio size="55" speed="1.3" color="var(--color-base)"/>
+      <div style={{width: "100%", height: "90dvh", display: "flex", justifyContent: "center", alignItems: "center",}}>
+        <l-trio size="55" speed="1.3" color="var(--color-accent)"/>
       </div>
     );
   } else if(!fetching && !user.routine) {
@@ -152,8 +165,8 @@ export default function MyWorkout() {
               </div>
             ))}
           </WorkoutRoutineDiv>
-          <LeftButton onClick={scrollLeft}/>
-          <RightButton onClick={scrollRight}/>
+          {leftArrow && <LeftButton onClick={scrollLeft}/>}
+          {rightArrow && <RightButton onClick={scrollRight}/>}
         </RoutineContainer>
 
         <h3>Advice</h3>

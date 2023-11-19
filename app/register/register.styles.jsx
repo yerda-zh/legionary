@@ -87,3 +87,8 @@ export const RegisterContainer = styled.div`
         }
     }
 `;
+
+export const LoaderDiv = styled.div`
+    padding: 0!important;
+    margin-top: 1.5rem;
+`;

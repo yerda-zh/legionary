@@ -12,7 +12,7 @@ export const NavContainer = styled.nav`
     padding: 1rem 2rem;
     position: sticky;
     top: 0;
-    z-index: 10;
+    z-index: 5;
 
     p {
         cursor: pointer;
@@ -51,7 +51,7 @@ export const SmallScreenContainer = styled.div`
 `;
 
 export const SmallScreen = styled.div`
-    background: var(--color-main);
+    background: var(--color-main-dark);
     z-index: -1;
     position: fixed;
     display: ${(props) => (props.$toggle === true ? "flex" : "none")};
@@ -60,7 +60,7 @@ export const SmallScreen = styled.div`
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     transition: .5s ease;
 
 
