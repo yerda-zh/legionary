@@ -42,21 +42,19 @@ const Navbar = () => {
 
       <SmallScreenContainer>
         <MenuIcon onClick={() => setToggleMenu(true)} />
-        {toggleMenu && (
-          <SmallScreen className={`${toggleMenu && "navbar-slide-left"}`}>
-            <CloseIcon onClick={() => setToggleMenu(false)} />
-            <ul>
-              <li><p onClick={() => handleMenuLinks("/my-workout")}>My Workout Plan</p></li>
-              <li>
-                {user.id ? (
-                  <p className="username" onClick={() => handleMenuLinks("/profile")}>{user.name}</p>
-                ) : (
-                  <p onClick={() => handleMenuLinks("/signin")}>Log In</p>
-                )}
-              </li>
-            </ul>
-          </SmallScreen>
-        )}
+        <SmallScreen className={`${toggleMenu ? "navbar-slide-left": "navbar-slide-right"}`} $toggle={toggleMenu}>
+          <CloseIcon onClick={() => setToggleMenu(false)} />
+          <ul>
+            <li><p onClick={() => handleMenuLinks("/my-workout")}>My Workout Plan</p></li>
+            <li>
+              {user.id ? (
+                <p className="username" onClick={() => handleMenuLinks("/profile")}>{user.name}</p>
+              ) : (
+                <p onClick={() => handleMenuLinks("/signin")}>Log In</p>
+              )}
+            </li>
+          </ul>
+        </SmallScreen>
       </SmallScreenContainer>
     </NavContainer>
   );
