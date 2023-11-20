@@ -43,14 +43,15 @@ export default function StepAdditional() {
 
           dispatch(resetAnswer());
 
-          if(response.status === 400) {
-            alert("There was an issue, please try again");
-          } else {
+          if(response.status === 200) {
             const routine = await response.json();
+
             dispatch(setRoutine(routine.data));
+            dispatch(setFetching(false));
+          } else {
+            dispatch(setFetching(false));
+            alert("There was an issue, please try again");
           }
-          
-          dispatch(setFetching(false));
         } catch (error) {
           console.log(error);
         }

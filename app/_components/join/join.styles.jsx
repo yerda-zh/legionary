@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const JoinContainer = styled.div`
     background: var(--color-main);
     color: var(--color-base);
-    padding: 2rem 1rem;
+    padding: 3rem 1rem;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -12,7 +12,7 @@ export const WhyContainer = styled.div`
     h2 {
         color: var(--color-accent);
         font-size: clamp(1rem, 2vw + 1rem, 2rem);
-        margin-bottom: 2rem;
+        margin-bottom: 2.5rem;
         text-align: center;
     }
 `;
@@ -20,12 +20,14 @@ export const WhyContainer = styled.div`
 export const FeaturesContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    padding: 0 1.5rem;
+    gap: 1.7rem;
 
     @media screen and (max-width: 1064px){
         grid-template-columns: repeat(2, 1fr);
     }
     @media screen and (max-width: 600px){
+        padding: 0 0.5rem;
         grid-template-columns: repeat(1, 1fr);
     }
 `;

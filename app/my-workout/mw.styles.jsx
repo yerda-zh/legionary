@@ -279,3 +279,33 @@ export const DefaultContainer = styled.div`
         }
     }
 `;
+
+export const LoaderDiv = styled.div`
+    padding: 0!important;
+    margin: 1rem 0;
+`;
+
+export const FetchingContainer = styled.div`
+    width: 100%;
+    height: 90dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1rem 1rem 1rem;
+
+    h2 {
+        color: var(--color-base);
+        font-size: clamp(1rem, 2vw + 1rem, 1.7rem);
+    }
+
+    p {
+        margin-top: 1.5rem;
+        color: rgba(255,255,255,0.8);
+    }
+
+    div {
+        position: absolute;
+        top: 45%;
+    }
+`

@@ -16,15 +16,16 @@ import { AiFillInfoCircle } from "react-icons/ai";
 import { useSelector, useDispatch } from "react-redux";
 import { addAnswer, updateAnswer } from "../redux/answersSlice";
 
-import { trio } from "ldrs";
+import { momentum } from "ldrs";
 
 export default function CreateWorkout() {
+  momentum.register();
+  const router = useRouter();
+  const dispatch = useDispatch();
+
   const [index, setIndex] = useState(0);
   const [choice, setChoice] = useState(null); // used for dynamic styling and building the answers set
   const [questionsArray, setQuestionsArray] = useState(sex);
-
-  const router = useRouter();
-  const dispatch = useDispatch();
 
   const answers = useSelector((state) => state.answers); // used to make server requests
   const user = useSelector((state) => state.user);
@@ -33,8 +34,6 @@ export default function CreateWorkout() {
     status: false,
     opIndex: null,
   });
-
-  trio.register();
 
   const handleNextButton = () => {
     if (choice) {
@@ -129,8 +128,8 @@ export default function CreateWorkout() {
     );
   } else {
     return (
-      <div style={{width: "100%", height: "90vh", display: "flex", justifyContent: "center", alignItems: "center",}}>
-        <l-trio size="40" speed="1.3" color="var(--color-base)"/>
+      <div style={{width: '100%', height: '90dvh', display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+        <l-momentum size="47" speed="0.9" color="white"/>
       </div>
     );
   }

@@ -9,7 +9,7 @@ export const RowContainer = styled.div`
     display: flex;
     align-items: center;
     gap: 3rem;
-    padding: 1.5rem;
+    padding: 3rem 1.5rem;
 
     @media screen and (max-width: 1064px){
         flex-direction: column;

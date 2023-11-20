@@ -1,7 +1,5 @@
 'use client'
 import { styled } from "styled-components";
-import { HiMenuAlt3 } from 'react-icons/hi';
-import {RxCross2} from 'react-icons/rx';
 
 export const NavContainer = styled.nav`
     background: var(--color-main-dark);
@@ -25,6 +23,10 @@ export const NavContainer = styled.nav`
 
     .username {
         color: var(--color-accent);
+    }
+
+    @media screen and (max-width: 576px) {
+        padding: 0.3rem 1.2rem;
     }
 `;
 export const FirstDiv = styled.div`
@@ -78,16 +80,4 @@ export const SmallScreen = styled.div`
         }
     }
     
-`;
-
-export const MenuIcon = styled(HiMenuAlt3)`
-    font-size: 1.6rem;
-`;
-
-export const CloseIcon = styled(RxCross2)`
-    font-size: 1.6rem;
-
-    position: absolute;
-    top: 1rem;
-    right: 1.2rem;
 `;

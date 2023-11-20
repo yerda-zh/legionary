@@ -87,7 +87,7 @@ export default function SignIn() {
           />
           {fetching && <LoaderDiv>
             <l-orbit size="35" speed="1.3"color="white"/>
-          </LoaderDiv> }
+          </LoaderDiv>}
           {message && <p>{message}</p>}
           <button type="submit">Sign In</button>
         </form>

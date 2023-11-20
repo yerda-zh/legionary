@@ -67,7 +67,7 @@ const Join = () => {
         </p>
         <div>
           <button onClick={() => router.push("/create-workout")}>
-            Create a workout routine
+            Get Started
           </button>
         </div>
       </JoinDiv>

@@ -1,13 +1,15 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle } from "./mw.styles";
+import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle, LoaderDiv, FetchingContainer } from "./mw.styles";
 import { bmiCategories } from "../_constants/constants";
 import { useRouter } from "next/navigation";
-import { trio } from 'ldrs';
+import { trio, orbit } from 'ldrs';
+
 
 export default function MyWorkout() {
   trio.register();
+  orbit.register();
   const router = useRouter();
 
   const user = useSelector((state) => state.user);
@@ -18,6 +20,7 @@ export default function MyWorkout() {
   const [message, setMessage] = useState('');
   const [leftArrow, setleftArrow] = useState(false);
   const [rightArrow, setRightArrow] = useState(true);
+  const [saveFetching, setSaveFetching] = useState(false);
 
   // used to display as header for each day and dynamically map over received exercises
   const days = [
@@ -61,6 +64,7 @@ export default function MyWorkout() {
 
   const handleSaveButton = async () => {
     setMessage('');
+    setSaveFetching(true);
 
     try {
       const response = await fetch("http://localhost:5000/save", {
@@ -74,12 +78,15 @@ export default function MyWorkout() {
       });
 
       if(response.status === 400) {
+        setSaveFetching(false);
         setMessage('There was an issue, try again');
       } else {
         const result = await response.json();
+        setSaveFetching(false);
         setMessage(result);
       }
     } catch (error) {
+      setSaveFetching(false);
       setMessage('There was an issue, try again');
       console.log(error);
     }
@@ -111,12 +118,17 @@ export default function MyWorkout() {
       }
     }
   };
+  console.log(user.routine)
 
   if (fetching) {
     return (
-      <div style={{width: "100%", height: "90dvh", display: "flex", justifyContent: "center", alignItems: "center",}}>
-        <l-trio size="55" speed="1.3" color="var(--color-accent)"/>
-      </div>
+      <FetchingContainer>
+        <h2>Building your personalized workout routine</h2>
+        <p>This might take a minute, so hang tight while our AI puts together an awesome plan that suits you best. Thanks for your patience!</p>
+        <div>
+          <l-trio size="80" speed="1.3" color="var(--color-accent)"/>
+        </div>
+      </FetchingContainer>
     );
   } else if(!fetching && !user.routine) {
     return (
@@ -171,9 +183,11 @@ export default function MyWorkout() {
 
         <h3>Advice</h3>
         <p>{user.routine.advice}</p>
-
+        {saveFetching && <LoaderDiv>
+          <l-orbit size="35" speed="1.3"color="white"/>
+        </LoaderDiv>}
         {message && <p className="message">{message}</p>}
-        <button onClick={handleSaveButton}>save</button>
+        <button onClick={handleSaveButton}>Save my workout</button>
       </WorkoutContainer>
     );
   }
