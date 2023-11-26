@@ -1,13 +1,19 @@
 import styled, { keyframes } from "styled-components";
 import { HiArrowCircleLeft,  HiArrowCircleRight} from "react-icons/hi";
 
-const BMIAnimation = keyframes`
+const BMIAnimation1 = keyframes`
     0% {
+        clip-path: polygon(0 50%, 50% 50%, 0 50%, 0 0, 0 0);
+    }
+`;
+const BMIAnimation2 = keyframes`
+    0% {
+        clip-path: polygon(0 50%, 50% 50%, 0 50%, 0 0, 0 0);
         opacity: 0;
     }
-    100% {
-        opacity: 1;
-    }
+    /* 15% {
+        clip-path: polygon(0 50%, 50% 50%, 0 0, 0 0, 0 0);
+    } */
 `;
 
 const MessageAnimation = keyframes`
@@ -150,15 +156,22 @@ export const BMICircle = styled.div`
         border-radius: 50%;
         clip-path: ${(props) => {
             if(props.$level <= 25) {
-                return `polygon(0 50%, 50% 50%, 0 ${-2*props.$level+50}%, 0 0);`
+                return `polygon(0 50%, 50% 50%, 0 ${-2*props.$level+50}%, 0 0, 0 0);`
             } else if (props.$level>25 && props.$level<=75) {
-                return `polygon(0 50%, 50% 50%, ${2*props.$level-50}% 0, 0 0);`
+                return `polygon(0 50%, 50% 50%, ${2*props.$level-50}% 0, ${2*props.$level-50}% 0, 0 0);`
             } else {
                 return `polygon(0 50%, 50% 50%, 100% ${2*props.$level-150}%, 100% 0, 0 0);`
             }
         }};
-        opacity: 0;
-        animation: ${BMIAnimation} 1s ease-out forwards;
+        animation: ${(props) => {
+            if(props.$level <= 25) {
+                return BMIAnimation1;
+            } else if (props.$level>25 && props.$level<=75) {
+                return BMIAnimation2;
+            } else {
+                return ``
+            }
+        }} 1s ease-out forwards;
     }
 
     &::after {

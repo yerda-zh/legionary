@@ -19,8 +19,8 @@ const Hero = () => {
 
   return (
     <HeroContainer>
-      <Block style={{transform: `translateY(${ offsetY * 0.6}px)`}}/>
-      <Image src={bg} alt="background" fill placeholder="blur" style={{objectFit: 'cover', zIndex: -2, transform: `translateY(${ offsetY * 0.3}px)`}}/>
+      <Block style={{transform: `translateY(${ offsetY * 0.3}px)`}}/>
+      <Image src={bg} alt="background" fill placeholder="blur" style={{objectFit: 'cover', zIndex: -2, transform: `translateY(${ offsetY * 0.4}px)`}}/>
       <ContentDiv>
         <h1>Welcome to Legionary,</h1>
         <p>website designed to create personalized workout routines</p>

@@ -6,7 +6,7 @@ export const FooterContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
-    padding: 1rem;
+    padding: 1.5rem;
 
     @media screen and (max-width: 600px) {
         gap: 0.3rem;

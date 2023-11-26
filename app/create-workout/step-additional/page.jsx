@@ -1,7 +1,7 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { setRoutine, setBmi } from "@/app/redux/userSlice";
+import { setRoutine, setBmi, resetRoutine } from "@/app/redux/userSlice";
 import { useState } from "react";
 import { setFetching } from "@/app/redux/fetchingSlice";
 import { resetAnswer } from "@/app/redux/answersSlice";
@@ -33,6 +33,9 @@ export default function StepAdditional() {
 
       if(answers.length === 9) {
         try {
+          dispatch(resetRoutine());
+          dispatch(resetAnswer());
+          
           const response = await fetch("http://localhost:5000/chat", {
             method: "post",
             headers: { "Content-Type": "application/json" },
@@ -41,7 +44,6 @@ export default function StepAdditional() {
             }),
           });
 
-          dispatch(resetAnswer());
 
           if(response.status === 200) {
             const routine = await response.json();

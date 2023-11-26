@@ -32,7 +32,10 @@ const userSlice = createSlice({
     resetUser: (state, action) => {
       return INITIAL_STATE;
     },
+    resetRoutine: (state, action) => {
+      state.routine = null;
+    }
   },
 });
-export const { setUser, setRoutine, setBmi, resetUser } = userSlice.actions;
+export const { setUser, setRoutine, setBmi, resetUser, resetRoutine } = userSlice.actions;
 export default userSlice.reducer;

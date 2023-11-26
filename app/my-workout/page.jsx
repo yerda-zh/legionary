@@ -118,7 +118,6 @@ export default function MyWorkout() {
       }
     }
   };
-  console.log(user.routine)
 
   if (fetching) {
     return (
@@ -130,14 +129,7 @@ export default function MyWorkout() {
         </div>
       </FetchingContainer>
     );
-  } else if(!fetching && !user.routine) {
-    return (
-      <DefaultContainer>
-        <h2>It looks like you haven't set up any workout routines yet.</h2>
-        <p>To begin creating your personalized workout routine, simply navigate <span onClick={()=>router.push('/create-workout')}>here</span></p>
-      </DefaultContainer>
-    )
-  } else {
+  } else if(!fetching && user.routine) {
     return (
       <WorkoutContainer>
         <h2>My Workout Plan</h2>
@@ -154,7 +146,7 @@ export default function MyWorkout() {
           </EquipmentDiv>
 
           <LevelIndicator>
-            <BMICircle $level={user.bmi} />
+            <BMICircle $level={70} />
             <div>
               <h3 className="bmi">{`Your BMI is: ${user.bmi}`}</h3>
               <p className="category">{category}</p>
@@ -189,6 +181,13 @@ export default function MyWorkout() {
         {message && <p className="message">{message}</p>}
         <button onClick={handleSaveButton}>Save my workout</button>
       </WorkoutContainer>
+    )
+  } else {
+    return (
+      <DefaultContainer>
+        <h2>It looks like you haven't set up any workout routines yet.</h2>
+        <p>To begin creating your personalized workout routine, simply navigate <span onClick={()=>router.push('/create-workout')}>here</span></p>
+      </DefaultContainer>
     );
   }
 }
