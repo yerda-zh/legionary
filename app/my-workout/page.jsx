@@ -125,7 +125,7 @@ export default function MyWorkout() {
         <h2>Building your personalized workout routine</h2>
         <p>This might take a minute, so hang tight while our AI puts together an awesome plan that suits you best. Thanks for your patience!</p>
         <div>
-          <l-trio size="80" speed="1.3" color="var(--color-accent)"/>
+          <l-trio size="80" speed="1.3" color="var(--color-accent-light)"/>
         </div>
       </FetchingContainer>
     );
@@ -148,7 +148,7 @@ export default function MyWorkout() {
           <LevelIndicator>
             <BMICircle $level={70} />
             <div>
-              <h3 className="bmi">{`Your BMI is: ${user.bmi}`}</h3>
+              <h3 className="bmi">{`Your BMI - ${user.bmi}`}</h3>
               <p className="category">{category}</p>
               <p>{description}</p>
             </div>

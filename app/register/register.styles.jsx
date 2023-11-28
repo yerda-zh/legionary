@@ -28,11 +28,11 @@ export const RegisterContainer = styled.div`
 
     h2 {
         color: var(--color-accent);
-        font-size: clamp(1.5rem, 2vw + 1.5rem, 2rem);
+        font-size: clamp(1rem, 2vw + 1.3rem, 2.3rem);
     }
 
     p{
-        font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
         margin-top: 1.5rem;
     }
 

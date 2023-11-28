@@ -10,16 +10,16 @@ export const ProfileContainer = styled.div`
 
     h2 {
         color: var(--color-accent);
-        font-size: clamp(1.5rem, 2vw + 1.5rem, 2rem);
+        font-size: clamp(1rem, 2vw + 1.4rem, 2.3rem);
         margin-bottom: 3rem;
     }
 
     h4 {
-        font-size: clamp(1rem, 2vw + 1.1rem, 1.4rem);
+        font-size: clamp(0.8rem, 2vw + 1.1rem, 1.3rem);
     }
 
     p {
-        font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
         margin: 1rem 0;
     }
 

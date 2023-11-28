@@ -9,7 +9,7 @@ export const CreateWorkoutContainer = styled.div`
   margin: 0rem 2rem 2rem 2rem;
 
   p {
-    font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+    font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
   }
 
   .indicator {
@@ -30,7 +30,7 @@ export const CreateWorkoutContainer = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    margin: 0 1rem 2rem 1rem;
+    margin: 0 1.5rem 2rem 1.5rem;
   }
 `;
 
@@ -64,11 +64,11 @@ export const QuestionDiv = styled.div`
     padding: 1.5rem 1rem;
   }
 
-  h4 {
+  h3 {
     color: var(--color-accent-light);
-    font-size: clamp(1rem, 2vw + 1.1rem, 1.4rem);
+    font-size: clamp(1rem, 2vw + 1.2rem, 1.6rem);
     text-align: center;
-    margin-bottom: 1.5rem;
+    margin: 0 0.5rem 1.5rem 0.5rem;
   }
 
   button {
@@ -124,7 +124,7 @@ export const InfoDiv = styled.div`
   height: fit-content;
 
   p {
-    font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+    font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
     line-height: 1.9rem;
     opacity: 0.8;
     text-align: justify;
@@ -140,7 +140,7 @@ export const LoginContainer = styled.div`
   text-align: center;
 
   h2 {
-    font-size: clamp(1rem, 2vw + 1rem, 1.7rem);
+    font-size: clamp(1rem, 2vw + 1.4rem, 2.3rem);
   }
 
   p {

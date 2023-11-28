@@ -1,9 +1,20 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Outfit, Lato } from "next/font/google";
 import Navbar from "./_components/navbar/Navbar";
-const inter = Inter({ subsets: ["latin"] });
 import StyledComponentsRegistry from "./lib/registry";
 import ReduxProvider from "./redux/redux.provider";
+
+const fontMain = Outfit({
+  subsets: ["latin"],
+  variable: '--font-main',
+  display: 'swap',
+});
+const fontSecondary = Lato({ 
+  subsets: ["latin"],
+  weight: '400',
+  variable: '--font-secondary',
+  display: 'swap',
+});
 
 export const metadata = {
   title: "Legionary",
@@ -12,8 +23,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={`${fontMain.variable} ${fontSecondary.variable}`}>
+      <body>
         <ReduxProvider>
           <StyledComponentsRegistry>
             <Navbar/>

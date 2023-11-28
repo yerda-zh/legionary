@@ -11,7 +11,7 @@ export const JoinContainer = styled.div`
 export const WhyContainer = styled.div`
     h2 {
         color: var(--color-accent);
-        font-size: clamp(1rem, 2vw + 1rem, 2rem);
+        font-size: clamp(1rem, 2vw + 1.3rem, 2.3rem);
         margin-bottom: 2.5rem;
         text-align: center;
     }
@@ -77,13 +77,15 @@ export const JoinDiv = styled.div`
     }
 
     h2{
-        font-size: clamp(1rem, 2vw + 1rem, 2rem);
-        margin-bottom: 1rem;
+        text-align: center;
+        line-height: 1.9rem;
+        font-size: clamp(1rem, 2vw + 1.3rem, 2.3rem);
+        margin: 1rem 0;
     }
 
     p {
         color: var(--color-secondary);
-        font-size: clamp(0.5rem, 2vw + 1rem, 1rem);
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
         margin-bottom: 1rem;
         text-align: center;
     }

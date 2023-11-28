@@ -34,7 +34,7 @@ export const ContentDiv = styled.div`
     justify-content: center;
 
     h1{
-        font-size: clamp(2.5rem, 4vw + 1rem, 4rem);
+        font-size: clamp(2.5rem, 4vw + 2.5rem, 4.2rem);
         background: linear-gradient(90deg, #F3A26D 0%, #B45C23 100%);
         margin-bottom: 0.3rem;
         font-weight: 700;
@@ -44,13 +44,13 @@ export const ContentDiv = styled.div`
     }
 
     p {
-        font-size: clamp(0.5rem, 2vw + 0.5rem, 1.2rem);
-        margin-bottom: 4rem;
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
+        margin-bottom: 3rem;
         font-weight: 400;
     }
 
     h3 {
-        font-size: clamp(0.7rem, 2vw + 0.5rem, 1.2rem);
+        font-size: clamp(0.7rem, 2vw + 1rem, 1.2rem);
         margin-bottom: 1rem;
     }
 

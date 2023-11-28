@@ -20,7 +20,7 @@ const Navbar = () => {
   return (
     <NavContainer>
       <FirstDiv>
-        <p onClick={() => router.push("/")}>LEGIONARY</p>
+        <h4 onClick={() => router.push("/")}>LEGIONARY</h4>
       </FirstDiv>
       <SecondDiv>
         <p onClick={() => router.push("/my-workout")}>My Workout Plan</p>

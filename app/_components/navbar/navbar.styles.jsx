@@ -30,6 +30,9 @@ export const NavContainer = styled.nav`
     }
 `;
 export const FirstDiv = styled.div`
+    h4 {
+        cursor: pointer;
+    }
     p {
         font-weight: bold;
     }

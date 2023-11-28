@@ -8,8 +8,8 @@ export const AdditionalDiv = styled.div`
     align-items: center;
     margin: 0 1rem 1rem 1rem;
 
-    h4 {
-        font-size: clamp(1rem, 2vw + 1.1rem, 1.4rem);
+    h3 {
+        font-size: clamp(1rem, 2vw + 1.2rem, 1.7rem);
         margin: 2rem 0 1rem 0;
         text-align: center;
     }

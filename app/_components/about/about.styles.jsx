@@ -56,13 +56,13 @@ export const ContentDiv = styled.div`
     z-index: 1;
 
     h2 {
-        font-size: clamp(1rem, 2vw + 1rem, 2rem);
+        font-size: clamp(1rem, 2vw + 1.3rem, 2.3rem);
         margin-bottom: 1.5rem;
         color: var(--color-accent);
     }
 
     p {
-        font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
         text-align: justify;
         line-height: 1.9rem;
     }

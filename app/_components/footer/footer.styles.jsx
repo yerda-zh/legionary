@@ -18,7 +18,7 @@ export const InfoDiv = styled.div`
     grid-template-columns: repeat(3, 1fr);
 
     h5 {
-        font-size: clamp(0.3rem, 2vw + 0.5rem, 1rem);
+        font-size: clamp(0.3rem, 2vw + 0.7rem, 1rem);
         text-align: center;
     }
 

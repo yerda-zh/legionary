@@ -27,24 +27,24 @@ const MessageAnimation = keyframes`
 
 export const WorkoutContainer = styled.div`
     color: var(--color-base);
-    margin: 1.5rem 1rem;
+    margin: 2rem 1.5rem;
 
     h2 {
         color: var(--color-accent);
         margin-bottom: 1.2rem;
         text-align: center;
-        font-size: clamp(1.5rem, 2vw + 1.5rem, 2rem);
+        font-size: clamp(1rem, 2vw + 1.4rem, 2.3rem);
     }
 
     h3 {
         color: var(--color-accent);
         text-align: center;
-        font-size: clamp(1.2rem, 2vw + 1.3rem, 1.5rem);
+        font-size: clamp(1rem, 2vw + 1.2rem, 1.7rem);
         margin-bottom: 1rem;
     }
 
     p {
-        font-size: clamp(0.5rem, 2vw + 0.5rem, 1rem);
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
         line-height: 1.6rem;
         text-align: justify;
     }
@@ -57,7 +57,7 @@ export const WorkoutContainer = styled.div`
     }
 
     button {
-        margin: 1rem 0;
+        margin: 1.2rem 0;
         background: var(--color-accent);
         color: var(--color-main);
         border: none;
@@ -117,7 +117,7 @@ export const EquipmentDiv = styled.div`
 
         li {
             color: var(--color-base);
-            font-size: clamp(0.5rem, 2vw + 0.7rem, 1rem);
+            font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
             line-height: 1.4rem;
         }
     }
@@ -202,7 +202,7 @@ export const WorkoutRoutineDiv = styled.div`
         transition: 0.2s ease;
 
         h4 {
-            font-size: clamp(1rem, 2vw + 1.1rem, 1.2rem);
+            font-size: clamp(0.8rem, 2vw + 1.1rem, 1.3rem);
             text-align: center;
             margin-bottom: 1rem;
             padding-bottom: 0.5rem;
@@ -273,12 +273,13 @@ export const RightButton = styled(HiArrowCircleRight)`
 
 export const DefaultContainer = styled.div`
     text-align: center;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 7rem 1rem 1rem 1rem;
     h2 {
         color: var(--color-base);
-        font-size: clamp(1rem, 2vw + 1rem, 1.7rem);
+        font-size: clamp(1rem, 2vw + 1.3rem, 2.3rem);
     }
     p {
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
         margin-top: 1.5rem;
         color: rgba(255,255,255,0.8);
     }
@@ -305,14 +306,15 @@ export const FetchingContainer = styled.div`
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2.5rem 1rem 1rem 1rem;
 
     h2 {
         color: var(--color-base);
-        font-size: clamp(1rem, 2vw + 1rem, 1.7rem);
+        font-size: clamp(1rem, 2vw + 1.3rem, 2.3rem);
     }
 
     p {
+        font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
         margin-top: 1.5rem;
         color: rgba(255,255,255,0.8);
     }

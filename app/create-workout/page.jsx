@@ -78,7 +78,7 @@ export default function CreateWorkout() {
         <div className="grid">
           <div/>
           <QuestionDiv>
-            <h4>{questionsArray[index] && questionsArray[index].question}</h4>
+            <h3>{questionsArray[index] && questionsArray[index].question}</h3>
             <>
               {questionsArray[index] &&
                 questionsArray[index].options.map((option, opIndex) => (
@@ -88,7 +88,7 @@ export default function CreateWorkout() {
                     $divindex={option}
                     key={opIndex}
                   >
-                    {option}
+                    <p>{option}</p>
                     {questionsArray[index].description && (
                       <AiFillInfoCircle
                         onMouseEnter={() =>
