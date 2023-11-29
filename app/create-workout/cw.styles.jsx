@@ -6,7 +6,7 @@ export const CreateWorkoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0rem 2rem 2rem 2rem;
+  margin: 0rem 2rem 3rem 2rem;
 
   p {
     font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);

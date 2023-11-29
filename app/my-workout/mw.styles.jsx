@@ -11,9 +11,6 @@ const BMIAnimation2 = keyframes`
         clip-path: polygon(0 50%, 50% 50%, 0 50%, 0 0, 0 0);
         opacity: 0;
     }
-    /* 15% {
-        clip-path: polygon(0 50%, 50% 50%, 0 0, 0 0, 0 0);
-    } */
 `;
 
 const MessageAnimation = keyframes`
@@ -83,8 +80,8 @@ export const FirstDiv = styled.div`
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    gap: 1.5rem;
-    margin: 1.5rem 0;
+    gap: 2rem;
+    margin: 2.5rem 0;
 
     .bmi {
         text-align: start;
@@ -189,7 +186,7 @@ export const WorkoutRoutineDiv = styled.div`
     background: linear-gradient(90deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
     display: grid;
     grid-template-columns: repeat(7, minmax(11rem, 1fr));
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     gap: 0.5rem;
     padding: 0.3rem;
     border-radius: 0.5rem;
@@ -226,7 +223,7 @@ export const WorkoutRoutineDiv = styled.div`
     }
 
     @media screen and (max-width: 450px) {
-        grid-template-columns: repeat(7, minmax(85%, 1fr));
+        grid-template-columns: repeat(7, minmax(100%, 1fr));
     }
 
     @media screen and (max-width: 1320px) {

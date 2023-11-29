@@ -34,7 +34,7 @@ export const ContentDiv = styled.div`
     justify-content: center;
 
     h1{
-        font-size: clamp(2.5rem, 4vw + 2.5rem, 4.2rem);
+        font-size: clamp(2.5rem, 4vw + 2.5rem, 4.3rem);
         background: linear-gradient(90deg, #F3A26D 0%, #B45C23 100%);
         margin-bottom: 0.3rem;
         font-weight: 700;

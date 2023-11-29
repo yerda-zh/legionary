@@ -13,14 +13,14 @@ export const RowContainer = styled.div`
 
     @media screen and (max-width: 1064px){
         flex-direction: column;
-        padding: 1rem;
+        padding: 2rem 1rem;
         gap: 2rem;
     }
 `;
 
 export const ImageContainer = styled.div`
     position: relative;
-    width: 110rem;
+    width: 115rem;
     max-width: 100%;
     aspect-ratio: 16/9;
 `;

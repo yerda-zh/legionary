@@ -5,12 +5,8 @@ export const FooterContainer = styled.div`
     color: var(--color-base);
     display: flex;
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 1.5rem;
     padding: 1.5rem;
-
-    @media screen and (max-width: 600px) {
-        gap: 0.3rem;
-    }
 `;
 
 export const InfoDiv = styled.div`
@@ -45,8 +41,8 @@ export const InfoDiv = styled.div`
     }
 
     @media screen and (max-width: 1055px) {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.3rem;
+        grid-template-columns: 1fr 2fr;
+        gap: 0.5rem;
 
         h5 {
             text-align: end;

@@ -4,12 +4,12 @@ import { useSelector } from "react-redux";
 import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle, LoaderDiv, FetchingContainer } from "./mw.styles";
 import { bmiCategories } from "../_constants/constants";
 import { useRouter } from "next/navigation";
-import { trio, orbit } from 'ldrs';
+import { orbit, hourglass } from 'ldrs';
 
 
 export default function MyWorkout() {
-  trio.register();
   orbit.register();
+  hourglass.register();
   const router = useRouter();
 
   const user = useSelector((state) => state.user);
@@ -97,7 +97,7 @@ export default function MyWorkout() {
 
   const scrollLeft = () => {
     if (container) {
-      const elementWidth = container.querySelector('.oneDay').offsetWidth;
+      const elementWidth = container.querySelector('.oneDay').offsetWidth+10;
       container.scrollLeft -= elementWidth;
       setRightArrow(true);
 
@@ -109,8 +109,10 @@ export default function MyWorkout() {
 
   const scrollRight = () => {
     if (container) {
-      const elementWidth = container.querySelector('.oneDay').offsetWidth;
+      const elementWidth = container.querySelector('.oneDay').offsetWidth+10;
+      console.log(elementWidth);
       container.scrollLeft += elementWidth;
+      
       setleftArrow(true);
 
       if (container.scrollLeft + 10 > container.scrollWidth-container.clientWidth) {
@@ -125,7 +127,7 @@ export default function MyWorkout() {
         <h2>Building your personalized workout routine</h2>
         <p>This might take a minute, so hang tight while our AI puts together an awesome plan that suits you best. Thanks for your patience!</p>
         <div>
-          <l-trio size="80" speed="1.3" color="var(--color-accent-light)"/>
+          <l-hourglass size="85" speed="2.2" color="var(--color-accent-light)"/>
         </div>
       </FetchingContainer>
     );
@@ -134,16 +136,17 @@ export default function MyWorkout() {
       <WorkoutContainer>
         <h2>My Workout Plan</h2>
         <p>{user.routine.introduction}</p>
-
         <FirstDiv>
-          <EquipmentDiv>
-            <h3>Equipment Needed</h3>
-            <ul>
-              {user.routine.equipment.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </EquipmentDiv>
+          {user.routine.equipment.length !== 0 && (
+            <EquipmentDiv>
+              <h3>Equipment Needed</h3>
+              <ul>
+                {user.routine.equipment.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </EquipmentDiv>
+          )}
 
           <LevelIndicator>
             <BMICircle $level={70} />
@@ -169,19 +172,21 @@ export default function MyWorkout() {
               </div>
             ))}
           </WorkoutRoutineDiv>
-          {leftArrow && <LeftButton onClick={scrollLeft}/>}
-          {rightArrow && <RightButton onClick={scrollRight}/>}
+          {leftArrow && <LeftButton onClick={scrollLeft} />}
+          {rightArrow && <RightButton onClick={scrollRight} />}
         </RoutineContainer>
 
         <h3>Advice</h3>
         <p>{user.routine.advice}</p>
-        {saveFetching && <LoaderDiv>
-          <l-orbit size="35" speed="1.3"color="white"/>
-        </LoaderDiv>}
+        {saveFetching && (
+          <LoaderDiv>
+            <l-orbit size="35" speed="1.3" color="white" />
+          </LoaderDiv>
+        )}
         {message && <p className="message">{message}</p>}
         <button onClick={handleSaveButton}>Save my workout</button>
       </WorkoutContainer>
-    )
+    );
   } else {
     return (
       <DefaultContainer>
