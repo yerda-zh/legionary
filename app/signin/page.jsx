@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
-import { SigninContainer, LoaderDiv } from "./signin.styles";
+import { SigninContainer, LoaderDiv, EmailIcon, PasswordIcon } from "./signin.styles";
 import { orbit } from 'ldrs';
 
 export default function SignIn() {
@@ -70,21 +70,29 @@ export default function SignIn() {
         <h2>Sign In</h2>
         <form onSubmit={onSubmitSignIn}>
           <p>Email</p>
-          <input
-            placeholder="Enter Email"
-            type="email"
-            value={email}
-            onChange={onEmailChange}
-            required
-          />
+          <div className="inputDiv">
+             <input
+              placeholder="Enter Email"
+              type="email"
+              value={email}
+              onChange={onEmailChange}
+              required
+            />
+            <EmailIcon />
+          </div>
+         
           <p>Password</p>
-          <input
-            placeholder="Enter Password"
-            type="password"
-            value={password}
-            onChange={onPasswordChange}
-            required
-          />
+          <div className="inputDiv">
+            <input
+              placeholder="Enter Password"
+              type="password"
+              value={password}
+              onChange={onPasswordChange}
+              required
+            />
+            <PasswordIcon/>
+          </div>
+          
           {fetching && <LoaderDiv>
             <l-orbit size="35" speed="1.3"color="white"/>
           </LoaderDiv>}

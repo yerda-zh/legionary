@@ -5,8 +5,8 @@ export const FooterContainer = styled.div`
     color: var(--color-base);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 1.5rem;
+    gap: 1.3rem;
+    padding: 2rem;
 `;
 
 export const InfoDiv = styled.div`

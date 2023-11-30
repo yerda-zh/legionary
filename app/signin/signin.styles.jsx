@@ -1,5 +1,7 @@
 'use client'
 import styled from "styled-components";
+import { IoMailOutline } from "react-icons/io5";
+import { IoLockClosedOutline } from "react-icons/io5";
 
 export const SigninContainer = styled.div`
     color: var(--color-base);
@@ -34,7 +36,7 @@ export const SigninContainer = styled.div`
 
     p {
         font-size: clamp(0.5rem, 2vw + 1rem, 1.1rem);
-        margin: 1.5rem 0 0.2rem 0;
+        margin: 1.5rem 0 0.5rem 0;
     }
     .register {
         cursor: pointer;
@@ -48,6 +50,12 @@ export const SigninContainer = styled.div`
         }
     }
 
+    .inputDiv {
+        width: 100%;
+        padding: 0;
+        position: relative;
+    }
+
     input {
         padding: 0.8rem 1rem;
         border-radius: 0.7rem;
@@ -58,12 +66,10 @@ export const SigninContainer = styled.div`
         transition: 0.2s ease-in-out;
 
         &:focus {
-            background: rgba(255, 255, 255, 0.9);
-            color: var(--color-main);
+            background: var(--color-main-dark);
+            color: var(--color-base);
         }
-        &:focus::placeholder {
-            color: var(--color-secondary-light);
-        }
+       
     }
 
     button {
@@ -94,7 +100,7 @@ export const SigninContainer = styled.div`
         }
 
         input {
-            background: var(--color-main-dark);
+            background: var(--color-secondary-dark);
         }
     }
 `;
@@ -103,4 +109,20 @@ export const LoaderDiv = styled.div`
     padding: 0!important;
     margin-top: 1.5rem;
 `
+
+export const EmailIcon = styled(IoMailOutline)`
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    font-size: 1.15rem;
+    color: var(--color-accent-light);
+`;
+
+export const PasswordIcon = styled(IoLockClosedOutline)`
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    font-size: 1.15rem;
+    color: var(--color-accent-light);
+`;
 

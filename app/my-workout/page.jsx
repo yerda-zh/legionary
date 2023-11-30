@@ -6,7 +6,6 @@ import { bmiCategories } from "../_constants/constants";
 import { useRouter } from "next/navigation";
 import { orbit, hourglass } from 'ldrs';
 
-
 export default function MyWorkout() {
   orbit.register();
   hourglass.register();
@@ -149,7 +148,7 @@ export default function MyWorkout() {
           )}
 
           <LevelIndicator>
-            <BMICircle $level={70} />
+            <BMICircle $level={user.bmi}>BMI</BMICircle>
             <div>
               <h3 className="bmi">{`Your BMI - ${user.bmi}`}</h3>
               <p className="category">{category}</p>
@@ -184,7 +183,7 @@ export default function MyWorkout() {
           </LoaderDiv>
         )}
         {message && <p className="message">{message}</p>}
-        <button onClick={handleSaveButton}>Save my workout</button>
+        <button onClick={handleSaveButton}>Save this workout</button>
       </WorkoutContainer>
     );
   } else {

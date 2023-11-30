@@ -1,15 +1,12 @@
 import styled, { keyframes } from "styled-components";
 import { HiArrowCircleLeft,  HiArrowCircleRight} from "react-icons/hi";
 
-const BMIAnimation1 = keyframes`
+const BMIAnimation = keyframes`
     0% {
-        clip-path: polygon(0 50%, 50% 50%, 0 50%, 0 0, 0 0);
+        transform : rotate(-45deg);
     }
-`;
-const BMIAnimation2 = keyframes`
-    0% {
-        clip-path: polygon(0 50%, 50% 50%, 0 50%, 0 0, 0 0);
-        opacity: 0;
+    50% {
+        transform: rotate(135deg);
     }
 `;
 
@@ -130,56 +127,43 @@ export const EquipmentDiv = styled.div`
 `;
 export const LevelIndicator = styled.div`
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
 `;
 
 export const BMICircle = styled.div`
-    background: var(--color-main-dark);
-    width: 10rem;
-    min-width: 8rem;
-    aspect-ratio: 1/1;
-    border-radius: 50%;
+    font-family: var(--font-main);
+    font-weight: bold;
+    font-size: clamp(0.5rem, 2vw + 1rem, 1.5rem);
+    min-width: 13rem;
+    aspect-ratio: 2/1;
+    color: #fff;
     position: relative;
-    clip-path: polygon(0 0, 100% 0, 100% 52%, 0 50%);
-
-    &::before {
-        background: var(--color-accent);
-        content: "";
-        position: absolute;
-        width: 100%;
-        aspect-ratio: 1/1;
-        border-radius: 50%;
-        clip-path: ${(props) => {
-            if(props.$level <= 25) {
-                return `polygon(0 50%, 50% 50%, 0 ${-2*props.$level+50}%, 0 0, 0 0);`
-            } else if (props.$level>25 && props.$level<=75) {
-                return `polygon(0 50%, 50% 50%, ${2*props.$level-50}% 0, ${2*props.$level-50}% 0, 0 0);`
-            } else {
-                return `polygon(0 50%, 50% 50%, 100% ${2*props.$level-150}%, 100% 0, 0 0);`
-            }
-        }};
-        animation: ${(props) => {
-            if(props.$level <= 25) {
-                return BMIAnimation1;
-            } else if (props.$level>25 && props.$level<=75) {
-                return BMIAnimation2;
-            } else {
-                return ``
-            }
-        }} 1s ease-out forwards;
-    }
+    overflow: hidden;
+    color: var(--color-accent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-sizing : border-box;
 
     &::after {
-        background: var(--color-main);
-        content: "";
-        position: absolute;
-        clip-path: circle(32% at 50% 50%);
+        content: '';
         width: 100%;
         aspect-ratio: 1/1;
+        border: 1.9rem solid;
+        border-color : var(--color-main-dark) var(--color-main-dark) var(--color-accent) var(--color-accent);
+        position: absolute;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        box-sizing : border-box;
+        transform: rotate( calc( 1deg * ( -45 + ${(props) => (props.$level*2.5)} * 1.8 ) ) );
+        animation : ${BMIAnimation} 1.3s ease-in-out;
     }
 
+    @media screen and (max-width: 600px) {
+        min-width: 10rem;
+    }
 `;
 
 export const WorkoutRoutineDiv = styled.div`
