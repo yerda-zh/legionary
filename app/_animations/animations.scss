@@ -1,26 +1,90 @@
 .navbar-slide-down {
-    -webkit-animation: navbar-slide-down 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-              animation: navbar-slide-down 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    animation: navbar-slide-down 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
-
-@-webkit-keyframes navbar-slide-down {
-    0% {
-        -webkit-transform: translateY(-100%);
-                transform: translateY(-100%);
-    }
-    100% {
-        -webkit-transform: translateY(0);
-                transform: translateY(0);
-    }
-}
-
 @keyframes navbar-slide-down {
     0% {
-        -webkit-transform: translateY(-100%);
-                transform: translateY(-100%);
+        transform: translateY(-100%);
     }
     100% {
-        -webkit-transform: translateY(0);
-                transform: translateY(0);
+        transform: translateY(0);
     }
+}
+
+.slide-right {
+    animation: slide-right 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-right {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }   
+}
+
+.slide-right-2 {
+    animation: slide-right-2 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-right-2 {
+    0% {
+        transform: translateX(-20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }   
+}
+
+.slide-left {
+    animation: slide-left 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-left {
+    0% {
+        transform: translateX(20%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }   
+}
+
+.slide-left-first {
+    animation: slide-left-2 0.3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-left-2 {
+    0% {
+        transform: translateX(50vw);
+    }
+    100% {
+        transform: translateX(0);
+    }   
+}
+
+
+.slide-left-second {
+    animation: slide-left-2 0.6s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-left-third {
+    animation: slide-left-2 0.9s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-left-forth {
+    animation: slide-left-2 1.2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+.slide-down {
+    animation: slide-down 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+@keyframes slide-down {
+    0% {
+        transform: scaleY(0);
+        transform-origin: top;
+    }
+    100% {
+        transform: scaleY(1);
+        transform-origin: top;
+    }   
 }

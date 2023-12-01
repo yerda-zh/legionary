@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const AboutContainer = styled.div`
     background: linear-gradient(130deg, var(--color-secondary) 0%, var(--color-main) 100%);
     color: var(--color-base);
+    overflow-x: hidden!important;
 `;
 
 export const RowContainer = styled.div`

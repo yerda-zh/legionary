@@ -4,8 +4,14 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import About1 from '../../../public/about1.jpg';
 import About6 from '../../../public/about6.jpg';
+import { useInView } from "react-intersection-observer";
+import '../../_animations/animations.scss';
 
 const About = () => {
+  const {ref: img1Ref, inView: isImg1Visible} = useInView();
+  const {ref: content1Ref, inView: isContent1Visible} = useInView();
+  const {ref: img2Ref, inView: isImg2Visible} = useInView();
+  const {ref: content2Ref, inView: isContent2Visible} = useInView();
 
   const [offsetY, setOffsetY] = useState(0);
   const handleScroll = () => setOffsetY(window.scrollY);
@@ -20,10 +26,10 @@ const About = () => {
     <AboutContainer>
       <RowContainer>
         <ImageContainer>
-          <Image  src={About1} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Image ref={img1Ref} className={`${isImg1Visible ? 'slide-right-2' : ''}`}  src={About1} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
           <Block1 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
         </ImageContainer>
-        <ContentDiv>
+        <ContentDiv ref={content1Ref} className={`${isContent1Visible ? 'slide-left' : ''}`}>
           <h2>Future of Fitness: AI-Powered Workout Routine</h2>
           <p>
             In the fast-paced world of fitness, staying motivated and achieving
@@ -36,7 +42,7 @@ const About = () => {
       </RowContainer>
 
       <RowContainer>
-        <ContentDiv>
+        <ContentDiv ref={content2Ref} className={`${isContent2Visible ? 'slide-right-2' : ''}`}>
           <h2>The Power of AI in Fitness</h2>
           <p>
             Our platform harnesses the incredible capabilities of artificial
@@ -47,7 +53,7 @@ const About = () => {
           </p>
         </ContentDiv>
         <ImageContainer>
-          <Image  src={About6} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Image ref={img2Ref} className={`${isImg2Visible ? 'slide-left' : ''}`}  src={About6} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
           <Block2 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
         </ImageContainer>
       </RowContainer>

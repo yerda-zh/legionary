@@ -12,11 +12,10 @@ import {
 import { sex, questionsMale, questionsFemale } from "../_constants/constants";
 import { useRouter } from "next/navigation";
 import { AiFillInfoCircle } from "react-icons/ai";
-
 import { useSelector, useDispatch } from "react-redux";
 import { addAnswer, updateAnswer } from "../redux/answersSlice";
-
 import { momentum } from "ldrs";
+import '../_animations/animations.scss';
 
 export default function CreateWorkout() {
   momentum.register();

@@ -66,7 +66,7 @@ export default function Profile() {
     <ProfileContainer>
       <h2>My Profile</h2>
       {user.name && (
-        <ProfileDiv>
+        <ProfileDiv className="slide-down">
           <div>
             <h4>{user.name}</h4>
           </div>

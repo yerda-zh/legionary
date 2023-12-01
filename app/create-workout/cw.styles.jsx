@@ -1,5 +1,11 @@
 "use client";
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+const DivAnimation = keyframes`
+    0% {
+        width: 18rem;
+    }
+`;
 
 export const CreateWorkoutContainer = styled.div`
   color: var(--color-base);
@@ -59,6 +65,8 @@ export const QuestionDiv = styled.div`
   border-radius: 0.7rem;
   width: 40rem;
   max-width: 100%;
+  animation: ${DivAnimation} 0.5s ease-out forwards;
+  justify-self: center;
 
   @media screen and (max-width: 600px) {
     padding: 1.5rem 1rem;
