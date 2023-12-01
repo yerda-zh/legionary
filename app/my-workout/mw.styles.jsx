@@ -1,3 +1,4 @@
+'use client'
 import styled, { keyframes } from "styled-components";
 import { HiArrowCircleLeft,  HiArrowCircleRight} from "react-icons/hi";
 

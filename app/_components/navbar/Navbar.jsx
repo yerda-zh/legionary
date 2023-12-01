@@ -29,7 +29,7 @@ const Navbar = () => {
             {user.name}
           </p>
         ) : (
-          <p onClick={() => router.push("/signin")}>Log In</p>
+          <p onClick={() => router.push("/signin")}>Login</p>
         )}
       </SecondDiv>
 

@@ -1,5 +1,11 @@
 'use client'
-import { styled } from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const NavbarAnimation = keyframes`
+    0% {
+        transform: translateY(-100%);
+    }
+`;
 
 export const NavContainer = styled.nav`
     background: var(--color-main-dark);
@@ -11,17 +17,37 @@ export const NavContainer = styled.nav`
     position: sticky;
     top: 0;
     z-index: 5;
+    animation: ${NavbarAnimation} 0.7s ease-out forwards;
 
     p {
         cursor: pointer;
         transition: 0.2s ease;
+        position: relative;
 
-        &:hover {
-            opacity: 0.7;
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.3rem;
+            width: 100%;
+            height: 0.11rem;
+            border-radius: 0.2rem;
+            background: var(--color-base);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s;
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
         }
     }
 
     .username {
+        &::after {
+            background: var(--color-accent);
+        }
+        
         color: var(--color-accent);
     }
 
@@ -39,6 +65,7 @@ export const FirstDiv = styled.div`
 `;
 export const SecondDiv = styled.div`
     display: flex;
+    align-items: center;
     gap: 2rem;
 
     @media screen and (max-width: 576px) {

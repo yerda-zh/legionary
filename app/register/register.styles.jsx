@@ -1,5 +1,14 @@
 'use client'
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+import { IoMailOutline } from "react-icons/io5";
+import { IoLockClosedOutline } from "react-icons/io5";
+import { IoPersonSharp } from "react-icons/io5";
+
+const Animation = keyframes`
+    0% {
+        width: 10rem;
+    }
+`;
 
 export const RegisterContainer = styled.div`
     color: var(--color-base);
@@ -23,6 +32,7 @@ export const RegisterContainer = styled.div`
             flex-direction: column;
             align-items: center;
             width: 100%;
+            animation: ${Animation} 0.4s ease-out forwards;
         }
     }
 
@@ -36,9 +46,15 @@ export const RegisterContainer = styled.div`
         margin-top: 1.5rem;
     }
 
+    .inputDiv {
+        width: 100%;
+        padding: 0;
+        position: relative;
+        margin-top: 0.5rem;
+    }
+
     input {
-        margin: 0.3rem 0;
-        padding: 0.8rem 1rem;
+        padding: 0.8rem 2rem 0.8rem 1.2rem;
         border-radius: 0.7rem;
         border: none;
         width: 100%;
@@ -47,11 +63,11 @@ export const RegisterContainer = styled.div`
         transition: 0.2s ease-in-out;
 
         &:focus {
-            background: rgba(255, 255, 255, 0.8);
-            color: var(--color-main);
+            background: var(--color-main-dark);
+            color: var(--color-base);
         }
-        &:focus::placeholder {
-            color: var(--color-secondary-light);
+       &::-ms-reveal {
+            filter: invert(100%);
         }
     }
 
@@ -91,4 +107,28 @@ export const RegisterContainer = styled.div`
 export const LoaderDiv = styled.div`
     padding: 0!important;
     margin-top: 1.5rem;
+`;
+
+export const EmailIcon = styled(IoMailOutline)`
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    font-size: 1.15rem;
+    color: var(--color-accent-light);
+`;
+
+export const PasswordIcon = styled(IoLockClosedOutline)`
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    font-size: 1.15rem;
+    color: var(--color-accent-light);
+`;
+
+export const NameIcon = styled(IoPersonSharp )`
+    position: absolute;
+    top: 30%;
+    right: 3%;
+    font-size: 1.05rem;
+    color: var(--color-accent-light);
 `;

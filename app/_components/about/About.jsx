@@ -20,7 +20,7 @@ const About = () => {
     <AboutContainer>
       <RowContainer>
         <ImageContainer>
-          <Image  src={About1} alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Image  src={About1} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
           <Block1 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
         </ImageContainer>
         <ContentDiv>
@@ -47,7 +47,7 @@ const About = () => {
           </p>
         </ContentDiv>
         <ImageContainer>
-          <Image  src={About6} alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Image  src={About6} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
           <Block2 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
         </ImageContainer>
       </RowContainer>

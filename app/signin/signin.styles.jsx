@@ -1,7 +1,13 @@
 'use client'
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 import { IoMailOutline } from "react-icons/io5";
 import { IoLockClosedOutline } from "react-icons/io5";
+
+const Animation = keyframes`
+    0% {
+        width: 10rem;
+    }
+`;
 
 export const SigninContainer = styled.div`
     color: var(--color-base);
@@ -9,6 +15,7 @@ export const SigninContainer = styled.div`
     flex-direction: column;
     align-items: center;
     margin-top: 7rem;
+   
 
     div {
         background: var(--color-secondary);
@@ -26,6 +33,7 @@ export const SigninContainer = styled.div`
             flex-direction: column;
             align-items: center;
             width: 100%;
+            animation: ${Animation} 0.4s ease-out forwards;
         }
     }
 
@@ -57,7 +65,7 @@ export const SigninContainer = styled.div`
     }
 
     input {
-        padding: 0.8rem 1rem;
+        padding: 0.8rem 2rem 0.8rem 1.2rem;
         border-radius: 0.7rem;
         border: none;
         width: 100%;
@@ -69,7 +77,9 @@ export const SigninContainer = styled.div`
             background: var(--color-main-dark);
             color: var(--color-base);
         }
-       
+       &::-ms-reveal {
+            filter: invert(100%);
+        }
     }
 
     button {
@@ -97,6 +107,7 @@ export const SigninContainer = styled.div`
         div {
             background: transparent;
             padding: 1rem;
+            animation: ${Animation} 0.4s ease-out forwards;
         }
 
         input {
@@ -108,7 +119,7 @@ export const SigninContainer = styled.div`
 export const LoaderDiv = styled.div`
     padding: 0!important;
     margin-top: 1.5rem;
-`
+`;
 
 export const EmailIcon = styled(IoMailOutline)`
     position: absolute;

@@ -3,7 +3,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { resetUser } from "../redux/userSlice";
 import { useState } from "react";
-import {ProfileContainer, ProfileDiv, Block} from './profile.styles';
+import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
+import { IoClose } from "react-icons/io5";
+import { orbit } from 'ldrs';
 
 export default function Profile() {
   const router = useRouter();
@@ -11,6 +13,8 @@ export default function Profile() {
 
   const user = useSelector((state) => state.user);
   const [message, setMessage] = useState('');
+  const [deleteClicked, setDeleteClicked] = useState(false);
+  const [fetching, setFetching] = useState(false);
 
   const date = new Date(user.joined);
   const year = date.getFullYear();
@@ -19,6 +23,9 @@ export default function Profile() {
   const formattedDate = `${month}/${day}/${year}`;
 
   const handleDeleteButton = async () => {
+    setMessage('');
+    setFetching(true);
+
     try {
       const response = await fetch("http://localhost:5000/delete", {
         method: "delete",
@@ -29,17 +36,26 @@ export default function Profile() {
       });
 
       if(response.status === 400) {
+        setFetching(false);
         setMessage('There was an issue, try again');
       } else {
         const result = await response.json();
         dispatch(resetUser());
-        router.push("/");
-        alert(result);
+        setFetching(false);
+        setMessage(result);
       }
     } catch (error) {
+      setFetching(false);
       setMessage('There was an issue, try again');
     }
   };
+
+  const handleCloseButton =() => {
+    if (!user.id) {
+      router.push('/');
+    }
+    setDeleteClicked(false);
+  }
 
   const handleSignOut = () => {
     dispatch(resetUser());
@@ -60,11 +76,19 @@ export default function Profile() {
             <p><span>BMI - </span>{user.bmi}</p>
             <p><span>Date joined - </span>{formattedDate}</p>
             <button onClick={handleSignOut}>Sign out</button>
-            <button onClick={handleDeleteButton}>Delete account</button>
+            <button onClick={()=>setDeleteClicked(true)}>Delete account</button>
           </div>
         </ProfileDiv>
       )}
-      {message && <p>{message}</p>}
+      <Modal $clicked={deleteClicked}>
+        <IoClose className="close" onClick={handleCloseButton}/>
+        <h4>Are you sure?</h4>
+        <button onClick={handleDeleteButton}>Delete account</button>
+        {fetching && <LoaderDiv>
+            <l-orbit size="35" speed="1.3"color="var(--color-main)"/>
+          </LoaderDiv>}
+        {<p>{message}</p>} 
+      </Modal>
     </ProfileContainer>
   );
 }

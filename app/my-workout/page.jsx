@@ -109,7 +109,6 @@ export default function MyWorkout() {
   const scrollRight = () => {
     if (container) {
       const elementWidth = container.querySelector('.oneDay').offsetWidth+10;
-      console.log(elementWidth);
       container.scrollLeft += elementWidth;
       
       setleftArrow(true);

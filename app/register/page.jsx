@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
-import { RegisterContainer, LoaderDiv } from "./register.styles";
+import { RegisterContainer, LoaderDiv, EmailIcon, PasswordIcon, NameIcon } from "./register.styles";
 import { orbit } from 'ldrs';
 
 export default function Register() {
@@ -74,6 +74,7 @@ export default function Register() {
         console.error(error);
       }
     } else {
+      setFetching(false);
       setMessage("Passwords must match");
     }
   };
@@ -84,36 +85,51 @@ export default function Register() {
         <h2>Register</h2>
         <form onSubmit={onSubmitRegister}>
           <p>Name</p>
-          <input
-            placeholder="Enter Name"
-            type="text"
-            value={name}
-            onChange={onNameChange}
-            required
-          />
+          <div className="inputDiv">
+            <input
+              placeholder="Enter Name"
+              type="text"
+              value={name}
+              onChange={onNameChange}
+              required
+            />
+            <NameIcon />
+          </div>
+          
           <p>Email</p>
-          <input
-            placeholder="Enter Email"
-            type="email"
-            value={email}
-            onChange={onEmailChange}
-            required
-          />
+          <div className="inputDiv">
+            <input
+              placeholder="Enter Email"
+              type="email"
+              value={email}
+              onChange={onEmailChange}
+              required
+            />
+            <EmailIcon />
+          </div>
+          
           <p>Password</p>
-          <input
-            placeholder="Enter Password"
-            type="password"
-            value={pass1}
-            onChange={onPass1Change}
-            required
-          />
-          <input
-            placeholder="Enter Password Again"
-            type="password"
-            value={pass2}
-            onChange={onPass2Change}
-            required
-          />
+          <div className="inputDiv">
+            <input
+              placeholder="Enter Password"
+              type="password"
+              value={pass1}
+              onChange={onPass1Change}
+              required
+            />
+            <PasswordIcon />
+          </div>
+          <div className="inputDiv">
+            <input
+              placeholder="Enter Password Again"
+              type="password"
+              value={pass2}
+              onChange={onPass2Change}
+              required
+            />
+            <PasswordIcon />
+          </div>
+          
           {fetching && <LoaderDiv>
             <l-orbit size="35" speed="1.3"color="white"/>
           </LoaderDiv> }

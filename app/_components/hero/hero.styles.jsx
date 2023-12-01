@@ -4,8 +4,8 @@ import styled from "styled-components";
 export const HeroContainer = styled.div`
     color: var(--color-base);
     height: 85vh;
-    position: relative;
     display: flex;
+    top: 0;
 `;
 
 export const Block = styled.div`
@@ -17,6 +17,7 @@ export const Block = styled.div`
     width: 100%;
     height: 100%;
     clip-path: polygon(0 0, 60% 0, 30% 100%, 0 100%);
+    top: 0;
 
     @media screen and (max-width: 1300px){
         clip-path: polygon(0 0, 70% 0, 40% 100%, 0 100%);
