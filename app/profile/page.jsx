@@ -8,6 +8,12 @@ import { orbit } from 'ldrs';
 import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { ButtonGrey } from "../_components/buttons/Button";
 
+export function getInitialProps() {
+  return {
+    props: {}, // Optional props to pass to the page
+  };
+}
+
 export default function Profile() {
   orbit.register();
   const router = useRouter();

@@ -18,6 +18,12 @@ import {
 } from "./cw.styles";
 import { ButtonAccent, ButtonGrey} from "../_components/buttons/Button";
 
+export function getInitialProps() {
+  return {
+    props: {}, // Optional props to pass to the page
+  };
+}
+
 export default function CreateWorkout() {
   momentum.register();
   const router = useRouter();
