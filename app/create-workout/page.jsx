@@ -18,7 +18,7 @@ import {
 } from "./cw.styles";
 import { ButtonAccent, ButtonGrey} from "../_components/buttons/Button";
 
-export function getInitialProps() {
+export async function getServerSideProps() {
   return {
     props: {}, // Optional props to pass to the page
   };

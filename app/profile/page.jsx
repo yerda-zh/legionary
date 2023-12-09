@@ -8,7 +8,7 @@ import { orbit } from 'ldrs';
 import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { ButtonGrey } from "../_components/buttons/Button";
 
-export function getInitialProps() {
+export async function getServerSideProps() {
   return {
     props: {}, // Optional props to pass to the page
   };
