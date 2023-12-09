@@ -7,10 +7,9 @@ import { IoClose } from "react-icons/io5";
 import { orbit } from 'ldrs';
 import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { ButtonGrey } from "../_components/buttons/Button";
-import noSsrWrapper from "../_components/no-ssr-wrapper";
 import NoSsrWrapper from "../_components/no-ssr-wrapper";
 
-export default function Profile() {
+export default function Profile(props) {
   useEffect(()=>{
     orbit.register();
   }, []);
