@@ -12,6 +12,7 @@ export const ButtonAccent = styled.button`
     border-radius: 0.7rem;
     transition: 0.3s ease;
     cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
         color: var(--color-base);
@@ -31,6 +32,7 @@ export const ButtonAccentDark = styled(ButtonAccent)`
     color: var(--color-accent);
     padding: 0.5rem 1.7rem;
     border-radius: 0.4rem;
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
         background: var(--color-accent);
@@ -43,6 +45,7 @@ export const ButtonGrey = styled(ButtonAccentDark)`
     border: none;
     background: var(--color-secondary-light);
     color: var(--color-base);
+    -webkit-tap-highlight-color: transparent;
 
     &:hover {
         background: var(--color-main-dark);

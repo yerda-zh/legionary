@@ -1,5 +1,5 @@
 "use client";
-import {NavContainer, FirstDiv, SecondDiv, SmallScreenContainer, MenuIcon, SmallScreen} from "./navbar.styles";
+import {NavContainer, FirstDiv, SecondDiv, SmallScreenContainer, SmallScreen} from "./navbar.styles";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useState } from "react";

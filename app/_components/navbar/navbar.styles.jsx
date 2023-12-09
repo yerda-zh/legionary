@@ -1,5 +1,5 @@
 'use client'
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const NavContainer = styled.nav`
     background: var(--color-main-dark);
