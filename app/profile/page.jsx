@@ -7,8 +7,8 @@ import { IoClose } from "react-icons/io5";
 import { orbit } from 'ldrs';
 import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { ButtonGrey } from "../_components/buttons/Button";
-
-export const dynamic = 'force-dynamic';
+import noSsrWrapper from "../_components/no-ssr-wrapper";
+import NoSsrWrapper from "../_components/no-ssr-wrapper";
 
 export default function Profile() {
   useEffect(()=>{
@@ -70,32 +70,47 @@ export default function Profile() {
   }
 
   return (
-    <ProfileContainer>
-      <h2>My Profile</h2>
-      {user.name && (
-        <ProfileDiv>
-          <div>
-            <h4>{user.name}</h4>
-          </div>
-          <Block/>
-          <div>
-            <p><span>Email - </span>{user.email}</p>
-            <p><span>BMI - </span>{user.bmi}</p>
-            <p><span>Date joined - </span>{formattedDate}</p>
-            <ButtonGrey onClick={handleSignOut}>Sign out</ButtonGrey>
-            <ButtonGrey onClick={()=>setDeleteClicked(true)}>Delete account</ButtonGrey>
-          </div>
-        </ProfileDiv>
-      )}
-      <Modal $clicked={deleteClicked}>
-        <IoClose className="close" onClick={handleCloseButton}/>
-        <h4>Are you sure?</h4>
-        <ButtonGrey onClick={handleDeleteButton}>Delete account</ButtonGrey>
-        {fetching && <LoaderDiv>
-            <l-orbit size="35" speed="1.3"color="var(--color-main)"/>
-          </LoaderDiv>}
-        {<p>{message}</p>} 
-      </Modal>
-    </ProfileContainer>
+    <NoSsrWrapper>
+      <ProfileContainer>
+        <h2>My Profile</h2>
+        {user.name && (
+          <ProfileDiv>
+            <div>
+              <h4>{user.name}</h4>
+            </div>
+            <Block />
+            <div>
+              <p>
+                <span>Email - </span>
+                {user.email}
+              </p>
+              <p>
+                <span>BMI - </span>
+                {user.bmi}
+              </p>
+              <p>
+                <span>Date joined - </span>
+                {formattedDate}
+              </p>
+              <ButtonGrey onClick={handleSignOut}>Sign out</ButtonGrey>
+              <ButtonGrey onClick={() => setDeleteClicked(true)}>
+                Delete account
+              </ButtonGrey>
+            </div>
+          </ProfileDiv>
+        )}
+        <Modal $clicked={deleteClicked}>
+          <IoClose className="close" onClick={handleCloseButton} />
+          <h4>Are you sure?</h4>
+          <ButtonGrey onClick={handleDeleteButton}>Delete account</ButtonGrey>
+          {fetching && (
+            <LoaderDiv>
+              <l-orbit size="35" speed="1.3" color="var(--color-main)" />
+            </LoaderDiv>
+          )}
+          {<p>{message}</p>}
+        </Modal>
+      </ProfileContainer>
+    </NoSsrWrapper>
   );
 }
