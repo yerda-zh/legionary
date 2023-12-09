@@ -8,17 +8,13 @@ import { orbit } from 'ldrs';
 import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { ButtonGrey } from "../_components/buttons/Button";
 
-export function getInitialProps() {
-  return {
-    props: null, // Optional props to pass to the page
-  };
-}
+export const dynamic = 'force-dynamic';
 
-export default function Profile({ props }) {
+export default function Profile() {
   useEffect(()=>{
     orbit.register();
   }, []);
-
+  
   const router = useRouter();
   const dispatch = useDispatch();
 
