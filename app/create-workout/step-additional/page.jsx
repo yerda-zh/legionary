@@ -37,7 +37,7 @@ export default function StepAdditional() {
           dispatch(resetRoutine());
           dispatch(resetAnswer());
           
-          const response = await fetch("http://localhost:5000/chat", {
+          const response = await fetch("https://legionary-api.onrender.com/chat", {
             method: "post",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({

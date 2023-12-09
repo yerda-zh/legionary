@@ -29,7 +29,7 @@ export default function Profile() {
     setFetching(true);
 
     try {
-      const response = await fetch("http://localhost:5000/delete", {
+      const response = await fetch("https://legionary-api.onrender.com/delete", {
         method: "delete",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

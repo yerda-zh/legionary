@@ -67,7 +67,7 @@ export default function MyWorkout() {
     setSaveFetching(true);
 
     try {
-      const response = await fetch("http://localhost:5000/save", {
+      const response = await fetch("https://legionary-api.onrender.com/save", {
         method: "put",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
