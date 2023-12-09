@@ -72,7 +72,7 @@ export default function Profile(props) {
 
   return (
     <NoSsrWrapper>
-      {isSSR() && (
+      {!isSSR() && (
         <ProfileContainer>
           <h2>My Profile</h2>
           {user.name && (
