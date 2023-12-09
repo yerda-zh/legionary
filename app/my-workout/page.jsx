@@ -7,7 +7,7 @@ import { orbit, hourglass } from 'ldrs';
 import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle, LoaderDiv, FetchingContainer } from "./mw.styles";
 import { ButtonAccentDark } from "../_components/buttons/Button";
 
-export async function getServerSideProps() {
+export function getInitialProps() {
   return {
     props: {}, // Optional props to pass to the page
   };

@@ -2,20 +2,22 @@
 import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { resetUser } from "../redux/userSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { orbit } from 'ldrs';
 import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { ButtonGrey } from "../_components/buttons/Button";
 
-export async function getServerSideProps() {
+export function getInitialProps() {
   return {
     props: {}, // Optional props to pass to the page
   };
 }
 
 export default function Profile({ props }) {
-  orbit.register();
+  useEffect(()=>{
+    orbit.register();
+  }, []);
   const router = useRouter();
   const dispatch = useDispatch();
 

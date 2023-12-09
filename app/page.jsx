@@ -4,7 +4,7 @@ import Footer from "./_components/footer/Footer";
 import Hero from "./_components/hero/Hero";
 import Join from "./_components/join/Join";
 
-export async function getServerSideProps() {
+export function getInitialProps() {
   return {
     props: {}, // Optional props to pass to the page
   };

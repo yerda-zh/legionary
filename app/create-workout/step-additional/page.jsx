@@ -8,7 +8,7 @@ import { resetAnswer } from "@/app/redux/answersSlice";
 import {AdditionalDiv} from './additional.styles';
 import { ButtonGrey } from "@/app/_components/buttons/Button";
 
-export async function getServerSideProps() {
+export function getInitialProps() {
   return {
     props: {}, // Optional props to pass to the page
   };

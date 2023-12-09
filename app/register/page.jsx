@@ -7,7 +7,7 @@ import { RegisterContainer, LoaderDiv, EmailIcon, PasswordIcon, NameIcon } from 
 import { ButtonAccent } from "../_components/buttons/Button";
 import { orbit } from 'ldrs';
 
-export async function getServerSideProps() {
+export function getInitialProps() {
   return {
     props: {}, // Optional props to pass to the page
   };
