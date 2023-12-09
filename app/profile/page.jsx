@@ -18,6 +18,7 @@ export default function Profile({ props }) {
   useEffect(()=>{
     orbit.register();
   }, []);
+  
   const router = useRouter();
   const dispatch = useDispatch();
 
