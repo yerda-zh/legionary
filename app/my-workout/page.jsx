@@ -189,7 +189,7 @@ export default function MyWorkout() {
   } else {
     return (
       <DefaultContainer>
-        <h2>It looks like you haven't set up any workout routines yet.</h2>
+        <h2>It looks like you have not set up any workout routines yet.</h2>
         <p>To begin creating your personalized workout routine, simply navigate <span onClick={()=>router.push('/create-workout')}>here</span></p>
       </DefaultContainer>
     );

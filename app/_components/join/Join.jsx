@@ -45,7 +45,7 @@ const Join = () => {
             </div>
             
             <p>
-              With ever-evolving workouts and achievable goals, you'll stay
+              With ever-evolving workouts and achievable goals, you will stay
               motivated and eager to hit the gym.
             </p>
           </FeatureDiv>
@@ -55,7 +55,7 @@ const Join = () => {
               <PiTargetBold/>
             </div>
             <p>
-              AI's precision ensures you get results faster, helping you achieve
+              AI&apos;s precision ensures you get results faster, helping you achieve
               your fitness goals.
             </p>
           </FeatureDiv>

@@ -101,7 +101,7 @@ export default function SignIn() {
 
           <ButtonAccent type="submit">Sign In</ButtonAccent>
         </form>
-        <p>Don't have an account?</p>
+        <p>Do not have an account?</p>
         <p className="register" onClick={() => router.push("/register")}>Click here to register</p>
       </div>
     </SigninContainer>

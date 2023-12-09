@@ -64,9 +64,9 @@ export default function StepAdditional() {
 
   return (
     <AdditionalDiv>
-      <h3>What's your height? (cm)</h3>
+      <h3>What is your height? (cm)</h3>
       <input type="number" value={height} onChange={handleHeightChange} placeholder="Enter your height"/>
-      <h3>What's your current weight? (kg)</h3>
+      <h3>What is your current weight? (kg)</h3>
       <input type="number" value={weight} onChange={handleWeightChange} placeholder="Enter your weight"/>
       <ButtonGrey onClick={handleNextButton}>next</ButtonGrey>
     </AdditionalDiv>

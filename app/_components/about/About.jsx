@@ -35,7 +35,7 @@ const About = () => {
             In the fast-paced world of fitness, staying motivated and achieving
             your fitness goals can be a challenging task. But what if you had a
             personal fitness expert by your side, creating workout
-            routines tailored to your unique needs and goals? That's where our
+            routines tailored to your unique needs and goals? That&apos;s where our
             AI-powered workout routine platform comes in.
           </p>
         </ContentDiv>
@@ -47,7 +47,7 @@ const About = () => {
           <p>
             Our platform harnesses the incredible capabilities of artificial
             intelligence to revolutionize the way you approach your fitness
-            journey. With AI, we've made it easier than ever to access
+            journey. With AI, we&apos;ve made it easier than ever to access
             personalized workout routines that are not only effective but also
             enjoyable.
           </p>
