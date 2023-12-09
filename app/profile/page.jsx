@@ -10,7 +10,7 @@ import { ButtonGrey } from "../_components/buttons/Button";
 
 export function getInitialProps() {
   return {
-    props: {}, // Optional props to pass to the page
+    props: null, // Optional props to pass to the page
   };
 }
 
@@ -18,7 +18,7 @@ export default function Profile({ props }) {
   useEffect(()=>{
     orbit.register();
   }, []);
-  
+
   const router = useRouter();
   const dispatch = useDispatch();
 
