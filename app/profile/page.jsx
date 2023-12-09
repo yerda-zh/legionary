@@ -14,7 +14,7 @@ export function getInitialProps() {
   };
 }
 
-export default function Profile() {
+export default function Profile({ props }) {
   orbit.register();
   const router = useRouter();
   const dispatch = useDispatch();

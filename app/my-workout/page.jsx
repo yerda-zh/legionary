@@ -13,7 +13,7 @@ export function getInitialProps() {
   };
 }
 
-export default function MyWorkout() {
+export default function MyWorkout({ props }) {
   orbit.register();
   hourglass.register();
   const router = useRouter();

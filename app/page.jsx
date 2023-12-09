@@ -10,7 +10,7 @@ export function getInitialProps() {
   };
 }
 
-export default function Home() {
+export default function Home({ props }) {
   return (
     <div>
       <Hero/>

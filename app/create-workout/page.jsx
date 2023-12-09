@@ -24,7 +24,7 @@ export function getInitialProps() {
   };
 }
 
-export default function CreateWorkout() {
+export default function CreateWorkout({ props }) {
   momentum.register();
   const router = useRouter();
   const dispatch = useDispatch();

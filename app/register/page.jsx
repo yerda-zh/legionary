@@ -13,7 +13,7 @@ export function getInitialProps() {
   };
 }
 
-export default function Register() {
+export default function Register({ props }) {
   orbit.register();
 
   const dispatch = useDispatch();

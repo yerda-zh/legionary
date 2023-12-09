@@ -14,7 +14,7 @@ export function getInitialProps() {
   };
 }
 
-export default function StepAdditional() {
+export default function StepAdditional({ props }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const answers = useSelector((state) => state.answers);
