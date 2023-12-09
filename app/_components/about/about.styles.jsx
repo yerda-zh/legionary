@@ -56,6 +56,7 @@ export const Block2 = styled.div`
 
 export const ContentDiv = styled.div`
     z-index: 1;
+    opacity: 0;
 
     h2 {
         font-size: clamp(1rem, 2vw + 1.3rem, 2.3rem);

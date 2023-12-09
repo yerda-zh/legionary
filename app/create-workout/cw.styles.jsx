@@ -78,26 +78,6 @@ export const QuestionDiv = styled.div`
     text-align: center;
     margin: 0 0.5rem 1.5rem 0.5rem;
   }
-
-  button {
-    margin: 0.5rem 0.3rem;
-    background: var(--color-secondary-light);
-    color: var(--color-base);
-    border: none;
-    padding: 0.5rem 1.7rem;
-    font-weight: 700;
-    font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
-    border-radius: 0.4rem;
-    transition: 0.3s ease;
-    cursor: pointer;
-  }
-  button:hover {
-    background: var(--color-main-dark);
-  }
-  button:active {
-    transform: scale(0.95);
-    transition: 0.2s ease;
-  }
 `;
 
 
@@ -154,25 +134,5 @@ export const LoginContainer = styled.div`
   p {
     margin: 1.5rem 0 3rem 0;
     opacity: 0.85;
-  }
-
-  button {
-    background: var(--color-accent-light);
-    color: var(--color-main);
-    border: none;
-    padding: 0.7rem 3rem;
-    font-weight: 700;
-    font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
-    border-radius: 0.7rem;
-    transition: 0.3s ease;
-    cursor: pointer;
-  }
-  button:hover {
-    color: var(--color-base);
-    background: var(--color-accent);
-  }
-  button:active {
-    transform: scale(0.95);
-    transition: 0.2s ease;
   }
 `;

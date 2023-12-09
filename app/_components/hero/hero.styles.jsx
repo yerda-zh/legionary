@@ -5,7 +5,7 @@ export const HeroContainer = styled.div`
     color: var(--color-base);
     height: 85vh;
     display: flex;
-    top: 0;
+    position: relative;
 `;
 
 export const Block = styled.div`
@@ -17,7 +17,6 @@ export const Block = styled.div`
     width: 100%;
     height: 100%;
     clip-path: polygon(0 0, 60% 0, 30% 100%, 0 100%);
-    top: 0;
 
     @media screen and (max-width: 1300px){
         clip-path: polygon(0 0, 70% 0, 40% 100%, 0 100%);
@@ -33,6 +32,7 @@ export const ContentDiv = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    opacity: 0;
 
     h1{
         font-size: clamp(2.5rem, 4vw + 2.5rem, 4.3rem);

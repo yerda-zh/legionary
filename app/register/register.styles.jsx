@@ -71,27 +71,6 @@ export const RegisterContainer = styled.div`
         }
     }
 
-    button {
-        margin-top: 1.5rem;
-        background: var(--color-accent-light);
-        color: var(--color-main);
-        border: none;
-        padding: 0.7rem 3rem;
-        font-weight: 700;
-        font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
-        border-radius: 0.7rem;
-        transition: 0.3s ease;
-        cursor: pointer;
-    }
-    button:hover {
-        color: var(--color-base);
-        background: var(--color-accent);
-    }
-    button:active {
-        transform: scale(0.95);
-        transition: 0.2s ease;
-    }
-
     @media screen and (max-width: 484px) {
         div {
             background: transparent;

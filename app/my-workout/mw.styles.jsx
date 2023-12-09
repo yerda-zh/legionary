@@ -50,27 +50,6 @@ export const WorkoutContainer = styled.div`
         color: var(--color-accent);
         animation: ${MessageAnimation} 2s ease-out forwards;
     }
-
-    button {
-        margin: 1.2rem 0;
-        background: var(--color-accent);
-        color: var(--color-main);
-        border: none;
-        padding: 0.5rem 1.7rem;
-        font-weight: 700;
-        font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
-        border-radius: 0.4rem;
-        transition: 0.3s ease;
-        cursor: pointer;
-    }
-    button:hover {
-        background: var(--color-main-dark);
-        color: var(--color-accent);
-    }
-    button:active {
-        transform: scale(0.95);
-        transition: 0.2s ease;
-    }
 `;
 
 

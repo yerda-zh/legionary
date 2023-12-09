@@ -1,5 +1,5 @@
 'use client'
-import styled, { keyframes } from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 const ModalAnimation = keyframes`
     0% {
@@ -7,6 +7,12 @@ const ModalAnimation = keyframes`
         display: none;
     }
 `;
+const ProfileAnimation = keyframes`
+    0% {
+        width: 29rem;
+        max-width: 92%;
+    }
+`
 
 export const ProfileContainer = styled.div`
     color: var(--color-base);
@@ -45,35 +51,13 @@ export const ProfileDiv = styled.div`
     height: 15rem;
     padding: 1rem;
     border-radius: 0.7rem;
-
-    button {
-        margin: 1rem 0.3rem;
-        background: var(--color-secondary-light);
-        color: var(--color-base);
-        border: none;
-        padding: 0.5rem 1.7rem;
-        font-weight: 700;
-        font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
-        border-radius: 0.4rem;
-        transition: 0.3s ease;
-        cursor: pointer;
-
-        &:hover {
-            background: var(--color-main-dark);
-        }
-
-        &:active {
-            transform: scale(0.95);
-            transition: 0.2s ease;
-        }
-    }
+    animation: ${ProfileAnimation} 0.4s ease-out forwards;
+    
+    
 
     @media screen and (max-width: 525px) {
         flex-direction: column;
         height: auto;
-        button {
-            margin: 0.5rem 0.2rem;
-        }
     }
 `
 
@@ -102,28 +86,6 @@ export const Modal = styled.div`
         font-size: clamp(0.8rem, 2vw + 1.1rem, 1.3rem);
         color: var(--color-main-dark);
         margin-top: 2rem;
-    }
-
-    button {
-        margin: 1rem 0rem 1.5rem 0rem;
-        background: var(--color-main);
-        color: var(--color-base);
-        border: none;
-        padding: 0.5rem 1.7rem;
-        font-weight: 700;
-        font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
-        border-radius: 0.4rem;
-        transition: 0.3s ease;
-        cursor: pointer;
-
-        &:hover {
-            background: var(--color-secondary);
-        }
-
-        &:active {
-            transform: scale(0.95);
-            transition: 0.2s ease;
-        }
     }
 
     .close {

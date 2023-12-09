@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
 import { SigninContainer, LoaderDiv, EmailIcon, PasswordIcon } from "./signin.styles";
+import { ButtonAccent } from "../_components/buttons/Button";
 import { orbit } from 'ldrs';
 
 export default function SignIn() {
@@ -97,7 +98,8 @@ export default function SignIn() {
             <l-orbit size="35" speed="1.3"color="white"/>
           </LoaderDiv>}
           {message && <p>{message}</p>}
-          <button type="submit">Sign In</button>
+
+          <ButtonAccent type="submit">Sign In</ButtonAccent>
         </form>
         <p>Don't have an account?</p>
         <p className="register" onClick={() => router.push("/register")}>Click here to register</p>

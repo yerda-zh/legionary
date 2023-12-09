@@ -32,12 +32,27 @@ export const InfoDiv = styled.div`
         justify-self: end;
         align-items: center;
         gap: 0.3rem;
-        cursor: pointer;
         width: fit-content;
-        transition: 0.15s ease;
+        cursor: pointer;
+        transition: 0.2s ease;
+        position: relative;
 
-        &:hover {
-            color: var(--color-accent-light);
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.1rem;
+            width: 100%;
+            height: 0.09rem;
+            border-radius: 0.2rem;
+            background: var(--color-base);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s;
+        }
+
+        &:hover::after {
+            transform: scaleX(1);
         }
     }
 

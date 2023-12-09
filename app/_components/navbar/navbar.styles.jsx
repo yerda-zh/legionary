@@ -1,12 +1,6 @@
 'use client'
 import styled, { keyframes } from "styled-components";
 
-const NavbarAnimation = keyframes`
-    0% {
-        transform: translateY(-100%);
-    }
-`;
-
 export const NavContainer = styled.nav`
     background: var(--color-main-dark);
     color: var(--color-base);
@@ -17,7 +11,6 @@ export const NavContainer = styled.nav`
     position: sticky;
     top: 0;
     z-index: 5;
-    animation: ${NavbarAnimation} 0.7s ease-out forwards;
 
     p {
         cursor: pointer;

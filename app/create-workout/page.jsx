@@ -1,5 +1,12 @@
 "use client";
 import { useState } from "react";
+import { sex, questionsMale, questionsFemale } from "../_constants/constants";
+import { useRouter } from "next/navigation";
+import { AiFillInfoCircle } from "react-icons/ai";
+import { useSelector, useDispatch } from "react-redux";
+import { addAnswer, updateAnswer } from "../redux/answersSlice";
+import { momentum } from "ldrs";
+import '../_animations/animations.scss';
 import {
   OptionDiv,
   LoginContainer,
@@ -9,13 +16,7 @@ import {
   IndexBar,
   InfoDiv,
 } from "./cw.styles";
-import { sex, questionsMale, questionsFemale } from "../_constants/constants";
-import { useRouter } from "next/navigation";
-import { AiFillInfoCircle } from "react-icons/ai";
-import { useSelector, useDispatch } from "react-redux";
-import { addAnswer, updateAnswer } from "../redux/answersSlice";
-import { momentum } from "ldrs";
-import '../_animations/animations.scss';
+import { ButtonAccent, ButtonGrey} from "../_components/buttons/Button";
 
 export default function CreateWorkout() {
   momentum.register();
@@ -100,8 +101,8 @@ export default function CreateWorkout() {
                   </OptionDiv>
                 ))}
             </>
-            {index > 1 && <button onClick={handleBackButton}>back</button>}
-            <button onClick={handleNextButton}>next</button>
+            {index > 1 && <ButtonGrey onClick={handleBackButton}>back</ButtonGrey>}
+            <ButtonGrey onClick={handleNextButton}>next</ButtonGrey>
           </QuestionDiv>
           <InfoDiv $status={info.status}>
             {questionsArray[index].description && (
@@ -121,7 +122,7 @@ export default function CreateWorkout() {
             preferences, and access exclusive content. Thank you for being part
             of our community!
           </p>
-          <button onClick={() => router.push("/signin")}>Login</button>
+          <ButtonAccent onClick={() => router.push("/signin")}>Login</ButtonAccent>
         </LoginContainer>
       </CreateWorkoutContainer>
     );

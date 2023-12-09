@@ -1,10 +1,11 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle, LoaderDiv, FetchingContainer } from "./mw.styles";
-import { bmiCategories } from "../_constants/constants";
 import { useRouter } from "next/navigation";
+import { bmiCategories } from "../_constants/constants";
 import { orbit, hourglass } from 'ldrs';
+import { WorkoutRoutineDiv, FirstDiv, EquipmentDiv, LevelIndicator, DefaultContainer, RoutineContainer, WorkoutContainer, LeftButton, RightButton, BMICircle, LoaderDiv, FetchingContainer } from "./mw.styles";
+import { ButtonAccentDark } from "../_components/buttons/Button";
 
 export default function MyWorkout() {
   orbit.register();
@@ -133,10 +134,10 @@ export default function MyWorkout() {
     return (
       <WorkoutContainer>
         <h2>My Workout Plan</h2>
-        <p className="slide-down">{user.routine.introduction}</p>
+        <p className="expand-down">{user.routine.introduction}</p>
         <FirstDiv>
           {user.routine.equipment.length !== 0 && (
-            <EquipmentDiv className="slide-right-2">
+            <EquipmentDiv className="slide-right">
               <h3>Equipment Needed</h3>
               <ul>
                 {user.routine.equipment.map((item) => (
@@ -158,7 +159,7 @@ export default function MyWorkout() {
 
         <h3>Routine</h3>
         <RoutineContainer>
-          <WorkoutRoutineDiv ref={routineContainerRef} className="slide-down">
+          <WorkoutRoutineDiv ref={routineContainerRef} className="expand-down">
             {days.map((day) => (
               <div className="oneDay" key={day}>
                 <h4>{day.charAt(0).toUpperCase() + day.slice(1)}</h4>
@@ -175,14 +176,14 @@ export default function MyWorkout() {
         </RoutineContainer>
 
         <h3>Advice</h3>
-        <p className="slide-down">{user.routine.advice}</p>
+        <p className="expand-down">{user.routine.advice}</p>
         {saveFetching && (
           <LoaderDiv>
             <l-orbit size="35" speed="1.3" color="white" />
           </LoaderDiv>
         )}
         {message && <p className="message">{message}</p>}
-        <button onClick={handleSaveButton}>Save this workout</button>
+        <ButtonAccentDark onClick={handleSaveButton}>Save this workout</ButtonAccentDark>
       </WorkoutContainer>
     );
   } else {

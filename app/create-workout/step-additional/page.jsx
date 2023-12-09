@@ -6,6 +6,7 @@ import { useState } from "react";
 import { setFetching } from "@/app/redux/fetchingSlice";
 import { resetAnswer } from "@/app/redux/answersSlice";
 import {AdditionalDiv} from './additional.styles';
+import { ButtonGrey } from "@/app/_components/buttons/Button";
 
 export default function StepAdditional() {
   const router = useRouter();
@@ -67,7 +68,7 @@ export default function StepAdditional() {
       <input type="number" value={height} onChange={handleHeightChange} placeholder="Enter your height"/>
       <h3>What's your current weight? (kg)</h3>
       <input type="number" value={weight} onChange={handleWeightChange} placeholder="Enter your weight"/>
-      <button onClick={handleNextButton}>next</button>
+      <ButtonGrey onClick={handleNextButton}>next</ButtonGrey>
     </AdditionalDiv>
   );
 }

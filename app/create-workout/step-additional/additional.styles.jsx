@@ -38,25 +38,4 @@ export const AdditionalDiv = styled.div`
             color: var(--color-secondary-light);
         }
     }
-
-    button {
-        margin: 1rem 0;
-        background: var(--color-secondary-light);
-        color: var(--color-base);
-        border: none;
-        padding: 0.5rem 1.7rem;
-        font-weight: 700;
-        font-size: clamp(0.7rem, 2vw + 0.5rem, 1.1rem);
-        border-radius: 0.4rem;
-        transition: 0.3s ease;
-        cursor: pointer;
-    }
-    button:hover {
-        background: var(--color-main-dark);
-    }
-    button:active {
-        transform: scale(0.95);
-        transition: 0.2s ease;
-    }
-    
-`
+`;

@@ -25,7 +25,7 @@ const Hero = () => {
     <HeroContainer>
       <Block style={{transform: `translateY(${ offsetY * 0.3}px)`}}/>
       <Image src={bg} sizes="100%" alt="background" fill placeholder="blur" style={{objectFit: 'cover', zIndex: -2, transform: `translateY(${ offsetY * 0.4}px)`}}/>
-      <ContentDiv ref={contentRef} className={`${isContentVisible ? 'slide-right' : ''}`}>
+      <ContentDiv ref={contentRef} className={`${isContentVisible ? 'slide-right-main' : ''}`}>
         <h1>Welcome to Legionary,</h1>
         <p>platform designed to create personalized workout routines</p>
         <h3>Unleash Your Potential with AI-Powered Fitness!</h3>

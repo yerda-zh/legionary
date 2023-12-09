@@ -38,6 +38,7 @@ export const FeatureDiv = styled.div`
     padding: 2.5rem 1rem;
     border-radius: 1rem;
     transition: 0.25s ease-in-out;
+    opacity: 0;
 
     div {
         color: var(--color-accent-light);

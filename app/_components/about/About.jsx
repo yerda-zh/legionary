@@ -26,10 +26,10 @@ const About = () => {
     <AboutContainer>
       <RowContainer>
         <ImageContainer>
-          <Image ref={img1Ref} className={`${isImg1Visible ? 'slide-right-2' : ''}`}  src={About1} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Image ref={img1Ref} className={`${isImg1Visible ? 'slide-down' : ''}`}  src={About1} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1, opacity: 0}}/>
           <Block1 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
         </ImageContainer>
-        <ContentDiv ref={content1Ref} className={`${isContent1Visible ? 'slide-left' : ''}`}>
+        <ContentDiv ref={content1Ref} className={`${isContent1Visible ? 'slide-up' : ''}`}>
           <h2>Future of Fitness: AI-Powered Workout Routine</h2>
           <p>
             In the fast-paced world of fitness, staying motivated and achieving
@@ -42,7 +42,7 @@ const About = () => {
       </RowContainer>
 
       <RowContainer>
-        <ContentDiv ref={content2Ref} className={`${isContent2Visible ? 'slide-right-2' : ''}`}>
+        <ContentDiv ref={content2Ref} className={`${isContent2Visible ? 'slide-up' : ''}`}>
           <h2>The Power of AI in Fitness</h2>
           <p>
             Our platform harnesses the incredible capabilities of artificial
@@ -53,7 +53,7 @@ const About = () => {
           </p>
         </ContentDiv>
         <ImageContainer>
-          <Image ref={img2Ref} className={`${isImg2Visible ? 'slide-left' : ''}`}  src={About6} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1}}/>
+          <Image ref={img2Ref} className={`${isImg2Visible ? 'slide-down' : ''}`}  src={About6} sizes="100%" alt="about1" fill placeholder="blur" style={{objectFit: 'cover', zIndex: 1, opacity: 0}}/>
           <Block2 style={{transform: `translateY(${ offsetY * 0.1}px)`}}/>
         </ImageContainer>
       </RowContainer>

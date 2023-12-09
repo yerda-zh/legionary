@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { setUser } from "../redux/userSlice";
 import { RegisterContainer, LoaderDiv, EmailIcon, PasswordIcon, NameIcon } from "./register.styles";
+import { ButtonAccent } from "../_components/buttons/Button";
 import { orbit } from 'ldrs';
 
 export default function Register() {
@@ -134,7 +135,8 @@ export default function Register() {
             <l-orbit size="35" speed="1.3"color="white"/>
           </LoaderDiv> }
           {message && <p>{message}</p>}
-          <button type="submit">Register</button>
+          
+          <ButtonAccent type="submit">Register</ButtonAccent>
         </form>
       </div>
     </RegisterContainer>

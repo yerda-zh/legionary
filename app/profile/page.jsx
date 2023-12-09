@@ -3,11 +3,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { useRouter } from "next/navigation";
 import { resetUser } from "../redux/userSlice";
 import { useState } from "react";
-import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { IoClose } from "react-icons/io5";
 import { orbit } from 'ldrs';
+import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
+import { ButtonGrey } from "../_components/buttons/Button";
 
 export default function Profile() {
+  orbit.register();
   const router = useRouter();
   const dispatch = useDispatch();
 
@@ -66,7 +68,7 @@ export default function Profile() {
     <ProfileContainer>
       <h2>My Profile</h2>
       {user.name && (
-        <ProfileDiv className="slide-down">
+        <ProfileDiv>
           <div>
             <h4>{user.name}</h4>
           </div>
@@ -75,15 +77,15 @@ export default function Profile() {
             <p><span>Email - </span>{user.email}</p>
             <p><span>BMI - </span>{user.bmi}</p>
             <p><span>Date joined - </span>{formattedDate}</p>
-            <button onClick={handleSignOut}>Sign out</button>
-            <button onClick={()=>setDeleteClicked(true)}>Delete account</button>
+            <ButtonGrey onClick={handleSignOut}>Sign out</ButtonGrey>
+            <ButtonGrey onClick={()=>setDeleteClicked(true)}>Delete account</ButtonGrey>
           </div>
         </ProfileDiv>
       )}
       <Modal $clicked={deleteClicked}>
         <IoClose className="close" onClick={handleCloseButton}/>
         <h4>Are you sure?</h4>
-        <button onClick={handleDeleteButton}>Delete account</button>
+        <ButtonGrey onClick={handleDeleteButton}>Delete account</ButtonGrey>
         {fetching && <LoaderDiv>
             <l-orbit size="35" speed="1.3"color="var(--color-main)"/>
           </LoaderDiv>}
