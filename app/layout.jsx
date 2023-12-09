@@ -3,6 +3,7 @@ import { Outfit, Lato } from "next/font/google";
 import Navbar from "./_components/navbar/Navbar";
 import StyledComponentsRegistry from "./lib/registry";
 import ReduxProvider from "./redux/redux.provider";
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const fontMain = Outfit({
   subsets: ["latin"],
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
             {children}
           </StyledComponentsRegistry>
         </ReduxProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
