@@ -8,6 +8,7 @@ export const JoinContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    max-width: 100%!important; overflow-x: hidden!important;
 `;
 export const WhyContainer = styled.div`
     h2 {

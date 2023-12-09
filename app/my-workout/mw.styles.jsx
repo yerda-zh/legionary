@@ -187,7 +187,7 @@ export const WorkoutRoutineDiv = styled.div`
     }
 
     @media screen and (max-width: 450px) {
-        grid-template-columns: repeat(7, minmax(100%, 1fr));
+        grid-template-columns: repeat(7, minmax(85%, 1fr));
     }
 
     @media screen and (max-width: 1320px) {

@@ -82,5 +82,6 @@ export const InfoDiv = styled.div`
 
 export const RightsDiv = styled.div`
     align-self: center;
+    text-align: center;
     font-size: clamp(0.5rem, 2vw + 0.85rem, 0.85rem);
 `;
