@@ -7,20 +7,15 @@ import { IoClose } from "react-icons/io5";
 import { orbit } from 'ldrs';
 import {ProfileContainer, ProfileDiv, Block, Modal, LoaderDiv} from './profile.styles';
 import { ButtonGrey } from "../_components/buttons/Button";
-import NoSsrWrapper from "../_components/no-ssr-wrapper";
 
-const isSSR = () => typeof window === 'undefined';
+export default function Profile() {
+  orbit.register();
 
-export default function Profile(props) {
-  useEffect(()=>{
-    orbit.register();
-  }, []);
-  
   const router = useRouter();
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.user);
-  const [message, setMessage] = useState('');
+  const [message, setMessage] = useState("");
   const [deleteClicked, setDeleteClicked] = useState(false);
   const [fetching, setFetching] = useState(false);
 
@@ -31,21 +26,24 @@ export default function Profile(props) {
   const formattedDate = `${month}/${day}/${year}`;
 
   const handleDeleteButton = async () => {
-    setMessage('');
+    setMessage("");
     setFetching(true);
 
     try {
-      const response = await fetch("https://legionary-api.onrender.com/delete", {
-        method: "delete",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: user.email,
-        }),
-      });
+      const response = await fetch(
+        "https://legionary-api.onrender.com/delete",
+        {
+          method: "delete",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: user.email,
+          }),
+        }
+      );
 
-      if(response.status === 400) {
+      if (response.status === 400) {
         setFetching(false);
-        setMessage('There was an issue, try again');
+        setMessage("There was an issue, try again");
       } else {
         const result = await response.json();
         dispatch(resetUser());
@@ -54,66 +52,62 @@ export default function Profile(props) {
       }
     } catch (error) {
       setFetching(false);
-      setMessage('There was an issue, try again');
+      setMessage("There was an issue, try again");
     }
   };
 
-  const handleCloseButton =() => {
+  const handleCloseButton = () => {
     if (!user.id) {
-      router.push('/');
+      router.push("/");
     }
     setDeleteClicked(false);
-  }
+  };
 
   const handleSignOut = () => {
     dispatch(resetUser());
-    router.push('/');
-  }
+    router.push("/");
+  };
 
   return (
-    <NoSsrWrapper>
-      {!isSSR() && (
-        <ProfileContainer>
-          <h2>My Profile</h2>
-          {user.name && (
-            <ProfileDiv>
-              <div>
-                <h4>{user.name}</h4>
-              </div>
-              <Block />
-              <div>
-                <p>
-                  <span>Email - </span>
-                  {user.email}
-                </p>
-                <p>
-                  <span>BMI - </span>
-                  {user.bmi}
-                </p>
-                <p>
-                  <span>Date joined - </span>
-                  {formattedDate}
-                </p>
-                <ButtonGrey onClick={handleSignOut}>Sign out</ButtonGrey>
-                <ButtonGrey onClick={() => setDeleteClicked(true)}>
-                  Delete account
-                </ButtonGrey>
-              </div>
-            </ProfileDiv>
-          )}
-          <Modal $clicked={deleteClicked}>
-            <IoClose className="close" onClick={handleCloseButton} />
-            <h4>Are you sure?</h4>
-            <ButtonGrey onClick={handleDeleteButton}>Delete account</ButtonGrey>
-            {fetching && (
-              <LoaderDiv>
-                <l-orbit size="35" speed="1.3" color="var(--color-main)" />
-              </LoaderDiv>
-            )}
-            {<p>{message}</p>}
-          </Modal>
-        </ProfileContainer>
+    <ProfileContainer>
+      <h2>My Profile</h2>
+      {user.name && (
+        <ProfileDiv>
+          <div>
+            <h4>{user.name}</h4>
+          </div>
+          <Block />
+          <div>
+            <p>
+              <span>Email - </span>
+              {user.email}
+            </p>
+            <p>
+              <span>BMI - </span>
+              {user.bmi}
+            </p>
+            <p>
+              <span>Date joined - </span>
+              {formattedDate}
+            </p>
+            <ButtonGrey onClick={handleSignOut}>Sign out</ButtonGrey>
+            <ButtonGrey onClick={() => setDeleteClicked(true)}>
+              Delete account
+            </ButtonGrey>
+          </div>
+        </ProfileDiv>
       )}
-    </NoSsrWrapper>
+      <Modal $clicked={deleteClicked}>
+        <IoClose className="close" onClick={handleCloseButton} />
+        <h4>Are you sure?</h4>
+        <ButtonGrey onClick={handleDeleteButton}>Delete account</ButtonGrey>
+        {fetching && (
+          <LoaderDiv>
+            <l-orbit size="35" speed="1.3" color="var(--color-main)" />
+          </LoaderDiv>
+        )}
+        {<p>{message}</p>}
+      </Modal>
+    </ProfileContainer>
   );
 }

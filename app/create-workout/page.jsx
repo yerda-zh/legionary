@@ -12,19 +12,12 @@ import {
   LoginContainer,
   CreateWorkoutContainer,
   QuestionDiv,
-  OptionsContainer,
   IndexBar,
   InfoDiv,
 } from "./cw.styles";
 import { ButtonAccent, ButtonGrey} from "../_components/buttons/Button";
 
-export function getInitialProps() {
-  return {
-    props: {}, // Optional props to pass to the page
-  };
-}
-
-export default function CreateWorkout({ props }) {
+export default function CreateWorkout() {
   momentum.register();
   const router = useRouter();
   const dispatch = useDispatch();

@@ -7,13 +7,7 @@ import { SigninContainer, LoaderDiv, EmailIcon, PasswordIcon } from "./signin.st
 import { ButtonAccent } from "../_components/buttons/Button";
 import { orbit } from 'ldrs';
 
-export function getInitialProps() {
-  return {
-    props: {}, // Optional props to pass to the page
-  };
-}
-
-export default function SignIn({ props }) {
+export default function SignIn() {
   orbit.register();
 
   const dispatch = useDispatch();

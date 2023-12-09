@@ -8,13 +8,8 @@ import { resetAnswer } from "@/app/redux/answersSlice";
 import {AdditionalDiv} from './additional.styles';
 import { ButtonGrey } from "@/app/_components/buttons/Button";
 
-export function getInitialProps() {
-  return {
-    props: {}, // Optional props to pass to the page
-  };
-}
 
-export default function StepAdditional({ props }) {
+export default function StepAdditional() {
   const router = useRouter();
   const dispatch = useDispatch();
   const answers = useSelector((state) => state.answers);
