@@ -115,6 +115,7 @@ export const JoinDiv = styled.div`
         background-color: transparent;
 	    transition: 0.25s ease-in-out;
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
     span {
         z-index: 1;

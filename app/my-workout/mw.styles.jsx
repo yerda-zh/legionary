@@ -210,6 +210,7 @@ export const LeftButton = styled(HiArrowCircleLeft)`
     color: var(--color-accent);
     background-color: rgba(0,0,0,0.7);
     border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
 
     @media screen and (max-width: 1320px) {
         display: block;
@@ -226,6 +227,7 @@ export const RightButton = styled(HiArrowCircleRight)`
     color: var(--color-accent);
     background-color: rgba(0,0,0,0.7);
     border-radius: 50%;
+    -webkit-tap-highlight-color: transparent;
 
     @media screen and (max-width: 1320px) {
         display: block;

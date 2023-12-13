@@ -51,6 +51,7 @@ export const NavContainer = styled.nav`
 export const FirstDiv = styled.div`
     h4 {
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
     p {
         font-weight: bold;
@@ -69,6 +70,7 @@ export const SecondDiv = styled.div`
 export const SmallScreenContainer = styled.div`
     display: none;
     color: var(--color-white);
+    -webkit-tap-highlight-color: transparent;
     
     @media screen and (max-width: 576px) {
         display: flex;
@@ -86,7 +88,7 @@ export const SmallScreen = styled.div`
     left: 0;
     width: 100vw;
     height: 100svh;
-    transition: .5s ease;
+    transition: .5s ease-out;
 
 
     ul {
