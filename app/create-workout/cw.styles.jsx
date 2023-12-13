@@ -93,6 +93,7 @@ export const OptionDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  -webkit-tap-highlight-color: transparent;
 
   &:hover {
     background: var(--color-main);
