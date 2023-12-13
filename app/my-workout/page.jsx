@@ -175,15 +175,22 @@ export default function MyWorkout() {
           {rightArrow && <RightButton onClick={scrollRight} />}
         </RoutineContainer>
 
-        <h3>Advice</h3>
-        <p className="expand-down">{user.routine.advice}</p>
+        {user.routine.advice && (
+          <>
+            <h3>Advice</h3>
+            <p className="expand-down">{user.routine.advice}</p>
+          </>
+        )}
+
         {saveFetching && (
           <LoaderDiv>
             <l-orbit size="35" speed="1.3" color="white" />
           </LoaderDiv>
         )}
         {message && <p className="message">{message}</p>}
-        <ButtonAccentDark onClick={handleSaveButton}>Save this workout</ButtonAccentDark>
+        <ButtonAccentDark onClick={handleSaveButton}>
+          Save this workout
+        </ButtonAccentDark>
       </WorkoutContainer>
     );
   } else {
