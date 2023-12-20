@@ -4,6 +4,7 @@ import Navbar from "./_components/navbar/Navbar";
 import StyledComponentsRegistry from "./lib/registry";
 import ReduxProvider from "./redux/redux.provider";
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react';
 
 const fontMain = Outfit({
   subsets: ["latin"],
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
           </StyledComponentsRegistry>
         </ReduxProvider>
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
